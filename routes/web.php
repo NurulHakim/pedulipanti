@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('logo/index', function () {
+    return view('logo/index');
+});
