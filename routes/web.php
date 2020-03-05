@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('logo/index', function () {
     return view('logo/index');
 });
+
+Route::get('header/index', function () {
+    return view('header/index');
+});
