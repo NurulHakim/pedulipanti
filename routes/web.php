@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('footer/index', function () {
+    return view('footer/index');
+});
+
+
