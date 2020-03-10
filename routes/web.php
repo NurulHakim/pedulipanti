@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Routing\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,3 +23,10 @@ Route::get('footer/index', function () {
 });
 
 
+Route::get('logo/index', function () {
+    return view('logo/index');
+});
+
+Route::get('header/index', function () {
+    return view('header/index');
+});
