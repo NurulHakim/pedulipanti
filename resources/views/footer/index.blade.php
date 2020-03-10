@@ -16,11 +16,12 @@
         <div class="row">
             <div class="col-6 col-md-4">
                 <h5 class="card-title">Berdayakan panti bersama pedulipanti</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text">pedulipanti adalah layanan untuk perusahaan atau organisasi yang mencari sebuah informasi panti asuhan.</p>
             </div>
             <div class="col-6 col-md-4">
                 <h5 class="card-title">Media Sosial</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text">Instagram</p>
+                <p class="card-text">Facebook</p>
             </div>
             <div class="col-6 col-md-4">
                 <h5 class="card-title">Hubungi Kami</h5>
