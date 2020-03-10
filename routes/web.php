@@ -22,3 +22,7 @@ Route::get('logo/index', function () {
 Route::get('header/index', function () {
     return view('header/index');
 });
+
+Route::get('footer/index', function () {
+    return view('footer/index');
+});
