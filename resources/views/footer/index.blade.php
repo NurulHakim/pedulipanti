@@ -25,7 +25,7 @@
             </div>
             <div class="col-6 col-md-4">
                 <h5 class="card-title">Hubungi Kami</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text">+6282281490501</p>
             </div>
         </div>
     </div>

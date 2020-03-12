@@ -30,3 +30,8 @@ Route::get('logo/index', function () {
 Route::get('header/index', function () {
     return view('header/index');
 });
+
+Route::get('body/landingpage', function(){
+    return view('body/landingpage');
+});
+
