@@ -16,6 +16,9 @@
 Route::get('/', function(){
     return view('welcome');
 });
+Route::get('body/login', function(){
+    return view('body/login');
+});
 
 
 Route::get('footer/index', function () {
