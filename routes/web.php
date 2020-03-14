@@ -26,6 +26,6 @@ Route::get('header/index', function () {
 Route::get('footer/index', function () {
     return view('footer/index');
 });
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
