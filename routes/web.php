@@ -11,9 +11,20 @@
 |
 */
 
-Route::get('/', function () {
+ use Illuminate\Support\Facades\Route;
+
+Route::get('/', function(){
     return view('welcome');
 });
+Route::get('body/login', function(){
+    return view('body/login');
+});
+
+
+Route::get('footer/index', function () {
+    return view('footer/index');
+});
+
 
 Route::get('logo/index', function () {
     return view('logo/index');
@@ -23,6 +34,7 @@ Route::get('header/index', function () {
     return view('header/index');
 });
 
-Route::get('footer/index', function () {
-    return view('footer/index');
+Route::get('body/landingpage', function(){
+    return view('body/landingpage');
 });
+
