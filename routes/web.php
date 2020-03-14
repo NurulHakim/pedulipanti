@@ -11,6 +11,8 @@
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,4 +27,8 @@ Route::get('header/index', function () {
 
 Route::get('footer/index', function () {
     return view('footer/index');
+});
+
+Route::get('/listpanti', function(){
+    return view('listpanti');
 });
