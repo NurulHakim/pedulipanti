@@ -32,3 +32,11 @@ Route::get('footer/index', function () {
 Route::get('/listpanti', function(){
     return view('listpanti');
 });
+
+Route::get('/dashboard', function(){
+    return view('dashpanti');
+});
+
+Route::get('/profile_panti', function(){
+    return view('isiprofile');
+});

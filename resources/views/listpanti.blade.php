@@ -22,36 +22,44 @@
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#"><b>pedulipanti</b></a>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#" style="margin-left: 1em"><b>pedulipanti</b></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+            <div class="navbar-collapse collapse " id="navbarSupportedContent" style="margin-right: 2em">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active" style="margin-right: 1em">
                         <a class="nav-link" href="/listpanti">Cari Panti<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" style="margin-right: 1em">
                         <a class="nav-link" href="#">Tentang Kami</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
+                    <li class="nav-item" style="margin-right: 1em">
+                        <a class="btn btn-outline-primary" href="#" role="button" style="color: white; border-color: rgb(245, 121, 12)">Login</a>
                     </li>
+                    <li class="nav-item" style="margin-right: 1em">
+                        <a class="btn btn-primary" href="#" role="button" style="background-color: rgb(245, 121, 12); border-color: rgb(245, 121, 12)">Sign Up</a>
+                    </li>
+
                 </ul>
             </div>
         </nav>
     </header>
+    <section class="jumbotron text-center" style="background-image:url('img/img1.jpg');">
+        <div class="container" style="padding-top: 2em;">
+            <h1 class="jumbotron-heading" style="color:white">Cari Panti</h1>
+            <p style="color:white">Mari Sumbangkan Sedikit Harta Kekayaan kita <br> Kepada Panti-Panti Yang Membutuhkan.</p>
+        </div>
+    </section>
 
     <main role="main">
-
-
         <div class="album py-5 bg-light">
             <div class="container">
 
                 <div class="row">
-                    <div class="col-md-4" >
+                    <div class="col-md-4">
                         <div class="card mb-4 box-shadow" style="min-height: 200px">
                             <img class="card-img-top" src="{{asset('img/panti1.jpg')}}" alt="Card image cap">
                             <div class="card-body">
@@ -192,11 +200,21 @@
 
     <footer class="text-muted">
         <div class="container">
-            <p class="float-right">
-                <a href="#">Back to top</a>
-            </p>
-            <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-            <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+            <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+            <div class="row">
+                <div class="col-6 col-md-4">
+                    <h5 class="card-title">Berdayakan panti bersama pedulipanti</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                </div>
+                <div class="col-6 col-md-4">
+                    <h5 class="card-title">Media Sosial</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                </div>
+                <div class="col-6 col-md-4">
+                    <h5 class="card-title">Hubungi Kami</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -207,9 +225,9 @@
     <script>
         window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')
     </script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script src="{{asset('js/popper.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/holder.min.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
