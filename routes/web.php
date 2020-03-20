@@ -13,9 +13,21 @@
 
 
 
-Route::get('/', function () {
+
+ use Illuminate\Support\Facades\Route;
+
+Route::get('/', function(){
     return view('welcome');
 });
+Route::get('body/login', function(){
+    return view('body/login');
+});
+
+
+Route::get('footer/index', function () {
+    return view('footer/index');
+});
+
 
 Route::get('logo/index', function () {
     return view('logo/index');
@@ -23,6 +35,10 @@ Route::get('logo/index', function () {
 
 Route::get('header/index', function () {
     return view('header/index');
+});
+
+Route::get('body/landingpage', function() {
+    return view('body/landingpage');
 });
 
 Route::get('footer/index', function () {
@@ -40,3 +56,6 @@ Route::get('/dashboard', function(){
 Route::get('/profile_panti', function(){
     return view('isiprofile');
 });
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->name('home');
