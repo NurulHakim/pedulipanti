@@ -131,6 +131,7 @@
                         <div class="col-sm-10">
                             <select class="form-control" id="exampleFormControlSelect1">
                                 <option>--------- Pilih Provinsi ----------</option>
+                                <option >Jakarta</option>
                             </select>
                         </div>
                     </div>
@@ -139,6 +140,7 @@
                         <div class="col-sm-10">
                             <select class="form-control" id="exampleFormControlSelect1">
                                 <option>--------- Pilih Kabupaten/Kota ----------</option>
+                                <option value="">Jakarta Utara</option>
                             </select>
                         </div>
                     </div>
@@ -148,6 +150,7 @@
                         <div class="col-sm-10">
                             <select class="form-control" id="exampleFormControlSelect1">
                                 <option>--------- Pilih Kecamatan ----------</option>
+                                <option value="">Cilincing</option>
                             </select>
                         </div>
                     </div>
@@ -157,6 +160,7 @@
                         <div class="col-sm-10">
                             <select class="form-control" id="exampleFormControlSelect1">
                                 <option>--------- Pilih Kelurahan ----------</option>
+                                <option value="">Sukapura</option>
                             </select>
                         </div>
                     </div>
