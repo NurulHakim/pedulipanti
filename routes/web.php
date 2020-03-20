@@ -34,7 +34,13 @@ Route::get('header/index', function () {
     return view('header/index');
 });
 
-Route::get('body/landingpage', function(){
+Route::get('body/landingpage', function() {
     return view('body/landingpage');
 });
 
+Route::get('footer/index', function () {
+    return view('footer/index');
+});
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->name('home');
