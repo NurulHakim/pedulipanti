@@ -70,11 +70,12 @@
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <h1 class="h2">Isi Profile</h1>
                 </div>
-                <form action="" method="POST">
+                <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Tipe Panti</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select name='tipe_panti' class="form-control" id="exampleFormControlSelect1">
                                 <option>LKSA</option>
                             </select>
                         </div>
@@ -83,7 +84,7 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Jenis Yayasan</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select name='jenis_yayasan' class="form-control" id="exampleFormControlSelect1">
                                 <option>PSAA</option>
                                 <option>TAS</option>
                                 <option>Pusaka</option>
@@ -96,51 +97,51 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Nama Panti</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="namapanti" placeholder="">
+                            <input name='nama_panti' type="text" class="form-control" id="namapanti" placeholder="">
                         </div>
                     </div>
 
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Nomor Telepon Panti</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="notelp" placeholder="">
+                            <input name='no_telepon' type="text" class="form-control" id="notelp" placeholder="">
                         </div>
                     </div>
 
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Nama Pemilik Panti</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="namapempanti" placeholder="">
+                            <input name='nama_pemilik' type="text" class="form-control" id="namapempanti" placeholder="">
                         </div>
                     </div>
 
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Nomor Telepon Pemilik Panti</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="notelppem" placeholder="">
+                            <input name='no_telepon_pemilik' type="text" class="form-control" id="notelppem" placeholder="">
                         </div>
                     </div>
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Alamat Panti</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control " name="alamat" id="alamat" rows="6" style="resize: none"></textarea>
+                            <textarea name='alamat_panti' class="form-control " id="alamat" rows="6" style="resize: none"></textarea>
                         </div>
                     </div>
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Provinsi</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select name='provinsi' class="form-control" id="exampleFormControlSelect1">
                                 <option>--------- Pilih Provinsi ----------</option>
-                                <option >Jakarta</option>
+                                <option value='jakarta'>Jakarta</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Kabupaten/Kota</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select name='kabupaten_kota' class="form-control" id="exampleFormControlSelect1">
                                 <option>--------- Pilih Kabupaten/Kota ----------</option>
-                                <option value="">Jakarta Utara</option>
+                                <option value='jakarta utara'>Jakarta Utara</option>
                             </select>
                         </div>
                     </div>
@@ -148,9 +149,9 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Kecamatan</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select name='kecamatan' class="form-control" id="exampleFormControlSelect1">
                                 <option>--------- Pilih Kecamatan ----------</option>
-                                <option value="">Cilincing</option>
+                                <option value='cilincing'>Cilincing</option>
                             </select>
                         </div>
                     </div>
@@ -158,9 +159,9 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Kelurahan</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select name='kelurahan' class="form-control" id="exampleFormControlSelect1">
                                 <option>--------- Pilih Kelurahan ----------</option>
-                                <option value="">Sukapura</option>
+                                <option value='sukapura'>Sukapura</option>
                             </select>
                         </div>
                     </div>
@@ -168,7 +169,7 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Tag Kebutuhan Panti</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select name='kebutuhan_panti' class="form-control" id="exampleFormControlSelect1">
                                 <option>Pakaian</option>
                                 <option>Makanan</option>
                                 <option>Uang</option>
@@ -180,25 +181,25 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Deskripsi Kebutuhan Panti</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control " name="alamat" id="alamat" rows="6" style="resize: none"></textarea>
+                            <textarea name='deskripsi_kebutuhan' class="form-control " name="alamat" id="alamat" rows="6" style="resize: none"></textarea>
                         </div>
                     </div>
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Jumlah Pengurus Panti</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="notelppem" placeholder="">
+                            <input name='jumlah_pengurus' type="number" class="form-control" id="notelppem" placeholder="">
                         </div>
                     </div>
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Jumlah Anak Laki-laki</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="notelppem" placeholder="">
+                            <input name='jumlah_anak_laki' type="number" class="form-control" id="notelppem" placeholder="">
                         </div>
                     </div>
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Jumlah Perempuan</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="notelppem" placeholder="">
+                            <input name='jumlah_anak_perempuan' type="number" class="form-control" id="notelppem" placeholder="">
                         </div>
                     </div>
                     <div class="form-grup row" style="margin-bottom: 1em">
@@ -207,7 +208,7 @@
                             <div class="col-sm-2 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary">
-                                    Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                    Upload<input name='logo_panti' type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
                                 </label>
                             </div>
                         </div>
@@ -219,7 +220,7 @@
                             <div class="col-sm-2 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary">
-                                    Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                    Upload<input name='foto_panti' type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
                                 </label>
                             </div>
                         </div>
@@ -231,7 +232,7 @@
                             <div class="col-sm-2 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary">
-                                    Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                    Upload<input name='sertifikat_panti' type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
                                 </label>
                             </div>
                         </div>
@@ -239,7 +240,7 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary" style="background-color: rgb(245, 121, 12); border-color: rgb(245, 121, 12)">Submit</button>
+                            <button name='submit' type="submit" class="btn btn-primary" style="background-color: rgb(245, 121, 12); border-color: rgb(245, 121, 12)">Save Data</button>
                         </div>
                     </div>
 

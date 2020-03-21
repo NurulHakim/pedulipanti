@@ -33,15 +33,28 @@
                     <li class="nav-item active" style="margin-right: 1em">
                         <a class="nav-link" href="/listpanti">Cari Panti<span class="sr-only">(current)</span></a>
                     </li>
+
                     <li class="nav-item" style="margin-right: 1em">
                         <a class="nav-link" href="#">Tentang Kami</a>
                     </li>
-                    <li class="nav-item" style="margin-right: 1em">
-                        <a class="btn btn-outline-primary" href="#" role="button" style="color: white; border-color: rgb(245, 121, 12)">Login</a>
-                    </li>
-                    <li class="nav-item" style="margin-right: 1em">
-                        <a class="btn btn-primary" href="#" role="button" style="background-color: rgb(245, 121, 12); border-color: rgb(245, 121, 12)">Sign Up</a>
-                    </li>
+
+                    @if (Route::has('login'))
+                        @auth
+                            <a href="{{ url('/home') }}">Home</a>
+                        @else
+                            <li class="nav-item" style="margin-right: 1em">
+                                <a class="btn btn-outline-primary" role="button" style="color: white; border-color: rgb(245, 121, 12)" href="{{ route('login') }}">Login</a>
+                            </li>
+
+                            @if (Route::has('register'))
+                                <li class="nav-item" style="margin-right: 1em">
+                                    <a class="btn btn-primary" href="{{ route('register') }}" role="button" style="background-color: rgb(245, 121, 12); border-color: rgb(245, 121, 12)">Sign Up</a>
+                                </li>
+                            @endif
+                        @endauth
+                    @endif
+                    
+                    
 
                 </ul>
             </div>
@@ -59,8 +72,26 @@
             <div class="container">
 
                 <div class="row">
+                    @foreach ($listpanti as $listpanti)
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow" style="min-height: 200px">
+                            <img class="card-img-top" src="{{ asset('upload/panti/foto/' . $listpanti->foto_panti) }}" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 style="margin-bottom: 1em">{{ $listpanti->nama_panti }}</h4>
+                            <p class="card-text">{{ $listpanti->deskripsi_kebutuhan }}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+
+
+                    {{-- <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
                             <img class="card-img-top" src="{{asset('img/panti1.jpg')}}" alt="Card image cap">
                             <div class="card-body">
                                 <h4 style="margin-bottom: 1em">Panti Asuhan Tiara Putri</h4>
@@ -163,7 +194,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             <img class="card-img-top" src="{{asset('img/panti1.jpg')}}" alt="Card image cap">
@@ -177,21 +207,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{asset('img/panti1.jpg')}}" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 style="margin-bottom: 1em">Panti Asuhan Tiara Putri</h4>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
