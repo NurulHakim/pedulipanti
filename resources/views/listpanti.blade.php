@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title>Album example for Bootstrap</title>
+    <title>Cari Panti</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
 
@@ -30,32 +30,42 @@
 
             <div class="navbar-collapse collapse " id="navbarSupportedContent" style="margin-right: 2em">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active" style="margin-right: 1em">
-                        <a class="nav-link" href="/listpanti">Cari Panti<span class="sr-only">(current)</span></a>
-                    </li>
 
+                    <li class="nav-item" style="margin-right: 1em">
+                        <a class="nav-link" href="/listpanti">Cari Panti<span class="sr-only"></span></a>
+                    </li>
                     <li class="nav-item" style="margin-right: 1em">
                         <a class="nav-link" href="#">Tentang Kami</a>
                     </li>
-
-                    @if (Route::has('login'))
-                        @auth
-                            <a href="{{ url('/home') }}">Home</a>
-                        @else
-                            <li class="nav-item" style="margin-right: 1em">
-                                <a class="btn btn-outline-primary" role="button" style="color: white; border-color: rgb(245, 121, 12)" href="{{ route('login') }}">Login</a>
-                            </li>
-
-                            @if (Route::has('register'))
-                                <li class="nav-item" style="margin-right: 1em">
-                                    <a class="btn btn-primary" href="{{ route('register') }}" role="button" style="background-color: rgb(245, 121, 12); border-color: rgb(245, 121, 12)">Sign Up</a>
-                                </li>
-                            @endif
-                        @endauth
+                    @guest
+                    <li class="nav-item" style="margin-right: 1em">
+                        <a class="btn btn-outline-primary" href="{{route('login')}}" role="button" style="color: white; border-color: rgb(245, 121, 12)">Login</a>
+                    </li>
+                    @if (Route::has('register'))
+                    <li class="nav-item" style="margin-right: 1em">
+                        <a class="btn btn-primary" href="{{route('register')}}" role="button" style="background-color: rgb(245, 121, 12); border-color: rgb(245, 121, 12)">Sign Up</a>
+                    </li>
                     @endif
-                    
-                    
+                    @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/dashboard">
+                                Dashboard
+                            </a>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
 
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endguest
                 </ul>
             </div>
         </nav>
@@ -74,11 +84,11 @@
                 <div class="row">
                     @foreach ($listpanti as $listpanti)
                     <div class="col-md-4">
-                        <div class="card mb-4 box-shadow" style="min-height: 200px">
-                            <img class="card-img-top" src="{{ asset('upload/panti/foto/' . $listpanti->foto_panti) }}" alt="Card image cap">
+                        <div class="card mb-4 box-shadow" style="min-height: 400px; max-height: 400px;">
+                            <img class="card-img-top" src="{{ asset('upload/panti/foto/' . $listpanti->foto_panti) }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
                             <div class="card-body">
                                 <h4 style="margin-bottom: 1em">{{ $listpanti->nama_panti }}</h4>
-                            <p class="card-text">{{ $listpanti->deskripsi_kebutuhan }}</p>
+                                <p class="card-text">{{ $listpanti->deskripsi_kebutuhan }}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
@@ -88,126 +98,6 @@
                         </div>
                     </div>
                     @endforeach
-
-
-                    {{-- <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{asset('img/panti1.jpg')}}" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 style="margin-bottom: 1em">Panti Asuhan Tiara Putri</h4>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{asset('img/panti1.jpg')}}" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 style="margin-bottom: 1em">Panti Asuhan Tiara Putri</h4>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{asset('img/panti1.jpg')}}" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 style="margin-bottom: 1em">Panti Asuhan Tiara Putri</h4>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{asset('img/panti1.jpg')}}" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 style="margin-bottom: 1em">Panti Asuhan Tiara Putri</h4>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{asset('img/panti1.jpg')}}" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 style="margin-bottom: 1em">Panti Asuhan Tiara Putri</h4>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{asset('img/panti1.jpg')}}" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 style="margin-bottom: 1em">Panti Asuhan Tiara Putri</h4>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{asset('img/panti1.jpg')}}" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 style="margin-bottom: 1em">Panti Asuhan Tiara Putri</h4>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{asset('img/panti1.jpg')}}" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 style="margin-bottom: 1em">Panti Asuhan Tiara Putri</h4>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>

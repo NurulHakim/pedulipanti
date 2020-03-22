@@ -4,18 +4,38 @@ namespace App\Http\Controllers;
 
 use App\Panti;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\AuthController;
+use App\User;
 
 class PantiController extends Controller
 {
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    
     public function index()
     {
-        return view('isiprofile');
+        $emails = \Auth::user()->email;
+        $datass = DB::table('panti')->where('email_user', '=', $emails )->get();
+        $data['data'] = $datass;
+        if (!$datass->isEmpty()){
+            return view('editprofile', $data);   
+        }
+        else{
+            return view('isiprofile');
+        }
     }
 
     public function store(Request $request)
     {
         $panti = new Panti();
 
+        $emails = \Auth::user()->email;
         $panti->tipe_panti = $request->input('tipe_panti');
         $panti->jenis_yayasan = $request->input('jenis_yayasan');
         $panti->nama_panti = $request->input('nama_panti');
@@ -32,6 +52,7 @@ class PantiController extends Controller
         $panti->jumlah_pengurus = $request->input('jumlah_pengurus');
         $panti->jumlah_anak_laki = $request->input('jumlah_anak_laki');
         $panti->jumlah_anak_perempuan = $request->input('jumlah_anak_perempuan');
+        $panti->email_user = $emails;
 
         if ($request->hasfile('logo_panti')) {
             $file = $request->file('logo_panti');
@@ -67,7 +88,7 @@ class PantiController extends Controller
         }
         $panti->save();
 
-        return view('isiprofile')->with('isiprofile', $panti);
+        return redirect()->route('profile.view');
     }
 
     public function listview()
@@ -75,4 +96,30 @@ class PantiController extends Controller
         $panti = Panti::all();
         return view('listpanti')->with('listpanti', $panti);
     }
-}
+
+    public function edit(Request $request){
+        $emails = \Auth::user()->email;
+        
+        DB::table('panti')->where('email_user', $emails)->update([
+           'tipe_panti'=>$request->tipe_panti,
+           'jenis_yayasan' => $request->jenis_yayasan,
+            'nama_panti' =>$request->nama_panti,
+            'no_telepon' => $request->no_telepon,
+            'nama_pemilik' => $request->nama_pemilik,
+            'no_telepon_pemilik' => $request->no_telepon_pemilik,
+            'alamat_panti' => $request->alamat_panti,
+            'provinsi' => $request->provinsi,
+            'kabupaten_kota' => $request->kabupaten_kota,
+            'kecamatan' => $request->kecamatan,
+            'kelurahan' => $request->kelurahan,
+            'kebutuhan_panti' => $request->kebutuhan_panti,
+           'deskripsi_kebutuhan' => $request->deskripsi_kebutuhan,
+            'jumlah_pengurus' => $request->jumlah_pengurus,
+            'jumlah_anak_laki'=>$request->jumlah_anak_laki,
+            'jumlah_anak_perempuan'=>$request->jumlah_anak_perempuan
+            ]);
+            
+          return redirect('/profile_panti');
+         }
+    }
+
