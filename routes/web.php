@@ -11,10 +11,19 @@
 |
 */
 
+ use Illuminate\Support\Facades\Route;
+
+Route::get('/', function(){
+    return view('welcome');
+});
+Route::get('body/login', function(){
+    return view('body/login');
+});
 
 
-
-use Illuminate\Support\Facades\Route;
+Route::get('footer/index', function () {
+    return view('footer/index');
+});
 
 
 Route::get('logo/index', function () {
@@ -33,17 +42,11 @@ Route::get('footer/index', function () {
     return view('footer/index');
 });
 
-Route::get('/dashboard/{id?}', function () {
-    return view('dashpanti');
+//kim
+Route::get('detailpanti', function () {
+    return view('detailpanti');
 });
 
-Route::get('profile_panti/{id?}', 'PantiController@index')->middleware('auth')->name('profile.view');
-
-Route::post('profiles_panti/{id?}', 'PantiController@store')->name('upload');
-Route::post('profile_panti/{id?}', 'PantiController@edit')->name('edit');
-Route::get('/listpanti', 'PantiController@listview');
-
- Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'HomeController@index')->name('home');
