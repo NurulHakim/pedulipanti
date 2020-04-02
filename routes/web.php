@@ -25,9 +25,6 @@ Route::get('header/index', function () {
     return view('header/index');
 });
 
-Route::get('body/landingpage', function() {
-    return view('body/landingpage');
-});
 
 Route::get('footer/index', function () {
     return view('footer/index');
