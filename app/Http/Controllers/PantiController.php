@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\AuthController;
 use App\User;
-
+use App\galeri;
+use Intervention\Image\ImageManagerStatic as Image;
 class PantiController extends Controller
 {
     /**
@@ -17,16 +18,15 @@ class PantiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
     public function index()
     {
         $emails = \Auth::user()->email;
-        $datass = DB::table('panti')->where('email_user', '=', $emails )->get();
+        $datass = DB::table('panti')->where('email_user', '=', $emails)->get();
         $data['data'] = $datass;
-        if (!$datass->isEmpty()){
-            return view('editprofile', $data);   
-        }
-        else{
+        if (!$datass->isEmpty()) {
+            return view('editprofile', $data);
+        } else {
             return view('isiprofile');
         }
     }
@@ -97,13 +97,38 @@ class PantiController extends Controller
         return view('listpanti')->with('listpanti', $panti);
     }
 
-    public function edit(Request $request){
+    public function upload_photo(Request $request)
+    {
+        $galeri = new galeri();
         $emails = \Auth::user()->email;
-        
+        $galeri->email_user =  $emails;
+        if ($request->hasfile('photo')) {
+            $file = $request->file('photo');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('upload/panti/images', $filename);
+            $galeri->path = $filename;
+            $resize_image = Image::make('upload/panti/images/' .  $filename);
+
+            $resize_image->resize(250, 250, function ($constraint) {
+            $constraint->aspectRatio();
+            })->save('upload/panti/images/thumbnail/' . $filename);
+        } else {
+            return $request;
+            $galeri->path = '';
+        }
+        $galeri->save();
+        return view('dashpanti');
+    }
+       
+    public function edit(Request $request)
+    {
+        $emails = \Auth::user()->email;
+
         DB::table('panti')->where('email_user', $emails)->update([
-           'tipe_panti'=>$request->tipe_panti,
-           'jenis_yayasan' => $request->jenis_yayasan,
-            'nama_panti' =>$request->nama_panti,
+            'tipe_panti' => $request->tipe_panti,
+            'jenis_yayasan' => $request->jenis_yayasan,
+            'nama_panti' => $request->nama_panti,
             'no_telepon' => $request->no_telepon,
             'nama_pemilik' => $request->nama_pemilik,
             'no_telepon_pemilik' => $request->no_telepon_pemilik,
@@ -113,13 +138,12 @@ class PantiController extends Controller
             'kecamatan' => $request->kecamatan,
             'kelurahan' => $request->kelurahan,
             'kebutuhan_panti' => $request->kebutuhan_panti,
-           'deskripsi_kebutuhan' => $request->deskripsi_kebutuhan,
+            'deskripsi_kebutuhan' => $request->deskripsi_kebutuhan,
             'jumlah_pengurus' => $request->jumlah_pengurus,
-            'jumlah_anak_laki'=>$request->jumlah_anak_laki,
-            'jumlah_anak_perempuan'=>$request->jumlah_anak_perempuan
-            ]);
-            
-          return redirect('/profile_panti');
-         }
-    }
+            'jumlah_anak_laki' => $request->jumlah_anak_laki,
+            'jumlah_anak_perempuan' => $request->jumlah_anak_perempuan
+        ]);
 
+        return redirect('/profile_panti');
+    }
+}

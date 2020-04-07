@@ -45,6 +45,7 @@ Route::get('galerypanti', function () {
 
 
 Route::get('profile_panti/{id?}', 'PantiController@index')->middleware('auth')->name('profile.view');
+Route::post('dashboard', 'PantiController@upload_photo')->middleware('auth')->name('upload_photo');
 
 Route::post('profiles_panti/{id?}', 'PantiController@store')->name('upload');
 Route::post('profile_panti/{id?}', 'PantiController@edit')->name('edit');
