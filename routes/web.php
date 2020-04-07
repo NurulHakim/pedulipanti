@@ -38,6 +38,10 @@ Route::get('detailpanti', function () {
     return view('detailpanti');
 });
 
+Route::get('galerypanti', function () {
+    return view('galerypanti');
+});
+
 
 
 Route::get('profile_panti/{id?}', 'PantiController@index')->middleware('auth')->name('profile.view');

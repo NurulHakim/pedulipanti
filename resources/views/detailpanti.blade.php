@@ -9,6 +9,7 @@
     <!-- Bootstrap core CSS -->
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+   
 
 
 </head>
@@ -87,9 +88,15 @@
             <img src="{{ asset('img/slidekesatu.png') }}" class="mx-auto d-block" style="width:50%" />
         </div>
 
+
+       
         <div class="container-xl mt-3 border-0">
-            <h6>Hubungi Kami</h6>
-            <p class='fa fa-phone'> 082281490501</p>
+            <h6>
+                Hubungi Kami
+            </h6>
+            <p class='fa fa-phone'>
+                082281490501
+            </p>
         </div>
 
 
@@ -150,7 +157,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-
+    
 </body>
 
 </html>
