@@ -10,21 +10,34 @@
 
     <title>Galery Panti</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
 
     <!-- Bootstrap core CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/favicon.ico')}}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{asset('css/slicknav.css')}}">
+    <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{asset('css/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('css/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link href="{{ asset('css/album.css') }}" rel="stylesheet">
 
 
 </head>
 
 <body>
+  
 
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="/" style="margin-left: 1em"><b>pedulipanti</b></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="/" style="margin-left: 1em"><b style="color: white">pedulipanti</b></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -39,19 +52,16 @@
                     </li>
                     @guest
                     <li class="nav-item" style="margin-right: 1em">
-                        <a class="btn btn-outline-primary" href="{{route('login')}}" role="button"
-                            style="color: white; border-color: rgb(245, 121, 12)">Login</a>
+                        <a class="btn btn-outline-primary" href="{{route('login')}}" role="button" style="color: white; border-color: rgb(245, 121, 12)">Login</a>
                     </li>
                     @if (Route::has('register'))
                     <li class="nav-item" style="margin-right: 1em">
-                        <a class="btn btn-primary" href="{{route('register')}}" role="button"
-                            style="background-color: rgb(245, 121, 12); border-color: rgb(245, 121, 12)">Sign Up</a>
+                        <a class="btn btn-primary" href="{{route('register')}}" role="button" style="background-color: rgb(245, 121, 12); border-color: rgb(245, 121, 12)">Sign Up</a>
                     </li>
                     @endif
                     @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -76,8 +86,8 @@
 
     <main role="main">
 
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
+        <div class="jumbotron jumbotron-fluid" >
+            <div class="container" style="margin-top: 2em">
                 <h1 class="jumbotron-heading">Panti Bina Remaja Mandiri</h1>
                 <p class="lead text-muted">(Deskripsi Panti) Something short and leading about the collection below—its contents, the
                     creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it
@@ -195,11 +205,11 @@
 
     </main>
     <div class="container">
-            <p class="float-right">
-                <a href="#">Back to top</a>
-            </p>
-            
-        </div> <br>
+        <p class="float-right">
+            <a href="#">Back to top</a>
+        </p>
+
+    </div> <br>
     <footer class="text-muted">
         <div class="container">
             <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
@@ -223,12 +233,10 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
     <script>
         window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')
-
     </script>
     <script src="../../assets/js/vendor/popper.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>

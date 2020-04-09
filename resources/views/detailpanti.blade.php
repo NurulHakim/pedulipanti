@@ -8,18 +8,33 @@
 
     <!-- Bootstrap core CSS -->
 
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-   
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/favicon.ico')}}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{asset('css/slicknav.css')}}">
+    <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{asset('css/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('css/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link href="{{ asset('css/album.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 
 </head>
 
 <body>
+
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" style="position: relative">
-            <a class="navbar-brand" href="/" style="margin-left: 1em"><b>pedulipanti</b></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="/" style="margin-left: 1em;"><b style="color: white">pedulipanti</b></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -34,19 +49,16 @@
                     </li>
                     @guest
                     <li class="nav-item" style="margin-right: 1em">
-                        <a class="btn btn-outline-primary" href="{{route('login')}}" role="button"
-                            style="color: white; border-color: rgb(245, 121, 12)">Login</a>
+                        <a class="btn btn-outline-primary" href="{{route('login')}}" role="button" style="color: white; border-color: rgb(245, 121, 12)">Login</a>
                     </li>
                     @if (Route::has('register'))
                     <li class="nav-item" style="margin-right: 1em">
-                        <a class="btn btn-primary" href="{{route('register')}}" role="button"
-                            style="background-color: rgb(245, 121, 12); border-color: rgb(245, 121, 12)">Sign Up</a>
+                        <a class="btn btn-primary" href="{{route('register')}}" role="button" style="background-color: rgb(245, 121, 12); border-color: rgb(245, 121, 12)">Sign Up</a>
                     </li>
                     @endif
                     @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -70,94 +82,130 @@
     </header>
 
 
+    <!-- slider Area End-->
+    <!--================Blog Area =================-->
+    <section class="blog_area single-post-area section-padding" style="padding-top: 1em">
+        <div class="container">
+            <div class="row">
+                @foreach($panti as $panti)
+                <div class="col-lg-8 posts-list">
+                    <div class="single-post" ">
+                        <h1>{{$panti->nama_panti}}</h1>
+                        <div class=" feature-img">
+                        <img class="img-fluid" src="{{asset('upload/panti/foto/'. $panti->foto_panti)}}" alt="">
+                    </div>
+                    <div class="blog_details">
+                        <h3>Detail Panti</h3>
 
+                        <p class="excert" style="font-size: 13pt">
+                            <h2 style="margin-bottom: 0"><i class="fas fa-map-pin"></i>Alamat</h2>
+                            {{$panti->alamat_panti}}
+                        </p>
+                        <p>
+                            <h2 style="margin-bottom: 0">Nomor Telepon Panti</h2>
+                            {{$panti->no_telepon}}
+                        </p>
+                        <p>
+                            <h2 style="margin-bottom: 0">Nama Pemilik Panti</h2>
+                            {{$panti->nama_pemilik}}
+                        </p>
+                        <p>
+                            <h2 style="margin-bottom: 0">Nomor Telepon Pemilik Panti</h2>
+                            {{$panti->no_telepon_pemilik}}
+                        </p>
+                        <p>
+                            <h2 style="margin-bottom: 0">Deskripsi Panti</h2>
+                            {{$panti->deskripsi_panti}}
+                        </p>
+                        <p>
+                            <h2 style="margin-bottom: 0">Deskripsi Kebutuhan Panti</h2>
+                            {{$panti->deskripsi_kebutuhan}}
+                        </p>
+                        <p>
+                            <h2 style="margin-bottom: 0">Deskripsi Program Panti</h2>
+                            - Sekolah - Sholat berjamaah - Pengajian ashar - Pengajian ba'da magrib - Belajar bersama
+                        </p>
+                        <div class="quote-wrapper">
+                            <div class="quotes">
+                                "Jangan pernah lupa untuk selalu bersyukur. Dan berbagi adalah salah satu cara untuk bersyukur atas nikmatNya."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-top-border">
+                    <h3>Galeri Kegiatan Panti</h3>
+                    <div class="row gallery-item">
+                        @foreach($galeri as $galeri)
+                        <div class="col-md-4">
+                            <a href="{{asset('upload/panti/images/' . $galeri->path )}}" class="img-pop-up">
+                                <div class="single-gallery-image" style="background: url({{asset('upload/panti/images/thumbnail/'.$galeri->path)}});"></div>
+                            </a>
+                        </div>
+                        @endforeach
+                    </div>
+                    <div class="btn-group">
+                        <a href="{{route('galeri_panti')}}"><button type="button" class="btn btn-sm btn-outline-secondary" style="margin-top: 1em">Lihat Semua</button></a>
+                    </div>
+                </div>
+                @endforeach
+                <div class="navigation-top">
+                    <div class="d-sm-flex justify-content-between text-center">
 
-    <div class="container" style="position: absolute">
-        <!-- nama panti dari db -->
-        <div class="container-xl mt-3 border-0">
-            <h1>Panti Bina Remaja Mandiri</h1>
+                        <div class="col-sm-4 text-center my-2 my-sm-0">
+                            <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
+                        </div>
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                            <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-
-        <!-- pemilik panti dari db -->
-        <div class="container-xl mt-3 border-0">
-            <h6>Pemilik : Ibu Ferlina </h6>
         </div>
-
-        <!-- gambar panti dari db -->
-        <div class="container-xl mt-3 border-0">
-            <img src="{{ asset('img/slidekesatu.png') }}" class="mx-auto d-block" style="width:50%" />
-        </div>
-
-
-       
-        <div class="container-xl mt-3 border-0">
-            <h6>
-                Hubungi Kami
-            </h6>
-            <p class='fa fa-phone'>
-                082281490501
-            </p>
-        </div>
+    </section>
 
 
 
-        <div class="container-xl mt-3 border-0">
-            <h6>Alamat</h6>
-            <p class='fas fa-map-marker-alt'> Jl. banjaran pucung gang Masjid jami al ikhlas, kel cilangkap, kec tapus
-                kota depok</p>
-
-        </div>
-
-        <div class="container-xl mt-3 border-0">
-            <h6>Deskripsi </h6>
-            <p> loream Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh
-                ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent
-                commodo cursus magna.</p>
-        </div>
-
-        <div class="container-xl mt-3 border-0">
-            <h6>Tag Kebutuhan</h6>
-            <p class='fas fa-box'> Makanan</p>
-            <p class='fas fa-money-bill-wave'> Uang</p>
-            <p class='fas fa-tshirt'> Pakaian</p>
-        </div>
-
-        <div class="container-xl mt-3 border-0">
-            <h6>Total Anak </h6>
-            <p> Laki-laki : 23 </p>
-            <p> Perempuan : 23 </p>
-            <p> Jumlah : 46 </p>
-        </div>
-
-        <div class="container-xl mt-3 border-0">
-            <h6>Akte Panti</h6>
-            <img src="{{ asset('img/slidekesatu.png') }}" class="mx-auto d-block float-left" style="width:20%" />
-        </div>
-    </div>
-
-
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    <script src="{{asset('js/modernizr-3.5.0.min.js')}}">
     </script>
-    <script>
-        window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')
 
-    </script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="{{asset('js/vendor/jquery-1.12.4.min.js')}}"></script>
+    <script src="{{asset('js/poppers.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="{{asset('js/jquery.slicknav.min.js')}}"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="{{asset('js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('js/slick.min.js')}}"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="{{asset('js/wow.min.js')}}"></script>
+    <script src="{{asset('js/animated.headline.js')}}"></script>
+    <script src="{{asset('js/jquery.magnific-popup.js')}}"></script>
+
+    <!-- Scrollup, nice-select, sticky -->
+    <script src="{{asset('js/jquery.scrollUp.min.js')}}"></script>
+    <script src="{{asset('js/jquery.nice-select.min.js')}}"></script>
+    <script src="{{asset('js/jquery.sticky.js')}}"></script>
+
+    <!-- contact js -->
+    <script src="{{asset('js/contact.js')}}"></script>
+    <script src="{{asset('js/jquery.form.js')}}"></script>
+    <script src="{{asset('js/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('js/mail-script.js')}}"></script>
+    <script src="{{asset('js/jquery.ajaxchimp.min.js')}}"></script>
+
+    <!-- Jquery Plugins, main Jquery -->
+    <script src="{{asset('js/plugins.js')}}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
+
 </body>
 
 </html>

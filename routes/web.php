@@ -40,15 +40,16 @@ Route::get('detailpanti', function () {
 
 Route::get('galerypanti', function () {
     return view('galerypanti');
-});
+})->name('galeri_panti');
 
 
 
 Route::get('profile_panti/{id?}', 'PantiController@index')->middleware('auth')->name('profile.view');
 Route::post('dashboard', 'PantiController@upload_photo')->middleware('auth')->name('upload_photo');
 
-Route::post('profiles_panti/{id?}', 'PantiController@store')->name('upload');
-Route::post('profile_panti/{id?}', 'PantiController@edit')->name('edit');
+Route::post('profiles_panti/{id?}', 'PantiController@store')->middleware('auth')->name('upload');
+Route::post('profile_panti/{id?}', 'PantiController@edit')->middleware('auth')->name('edit');
+Route::get('panti/{id?}', 'PantiController@view_detail')->middleware('auth')->name('tampil_panti');
 Route::get('/listpanti', 'PantiController@listview');
 
  Auth::routes(['verify' => true]);

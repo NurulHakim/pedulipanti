@@ -176,7 +176,12 @@
                             </select>
                         </div>
                     </div>
-
+                    <div class="form-grup row" style="margin-bottom: 1em">
+                        <label for="typePanti" class="col-sm-2 col-form-label">Deskripsi Panti</label>
+                        <div class="col-sm-10">
+                            <textarea name='deskripsi_panti' class="form-control " name="alamat" id="alamat" rows="6" style="resize: none"></textarea>
+                        </div>
+                    </div>
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Tag Kebutuhan Panti</label>
                         <div class="col-sm-10">

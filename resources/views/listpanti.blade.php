@@ -35,7 +35,7 @@
 
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="/" style="margin-left: 1em"><b>pedulipanti</b></a>
+            <a class="navbar-brand" href="/" style="margin-left: 1em"><b style="color: white">pedulipanti</b></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -96,14 +96,14 @@
                 <div class="row">
                     @foreach ($listpanti as $listpanti)
                     <div class="col-md-4">
-                        <div class="card mb-4 box-shadow" style="min-height: 400px; max-height: 400px;">
+                        <div class="card mb-4 box-shadow" style="min-height: 380px; width: 380px;">
                             <img class="card-img-top" src="{{ asset('upload/panti/foto/' . $listpanti->foto_panti) }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
                             <div class="card-body">
                                 <h4 style="margin-bottom: 1em">{{ $listpanti->nama_panti }}</h4>
-                                <p class="card-text">{{ $listpanti->deskripsi_kebutuhan }}</p>
+                                <p class="card-text">{{ substr($listpanti->deskripsi_panti,0, 100)}}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                        <a href="{{route('tampil_panti', $listpanti->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
                                     </div>
                                 </div>
                             </div>

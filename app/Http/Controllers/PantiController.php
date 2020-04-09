@@ -52,6 +52,7 @@ class PantiController extends Controller
         $panti->jumlah_pengurus = $request->input('jumlah_pengurus');
         $panti->jumlah_anak_laki = $request->input('jumlah_anak_laki');
         $panti->jumlah_anak_perempuan = $request->input('jumlah_anak_perempuan');
+        $panti->deskripsi_panti= $request->input('deskripsi_panti');
         $panti->email_user = $emails;
 
         if ($request->hasfile('logo_panti')) {
@@ -95,6 +96,13 @@ class PantiController extends Controller
     {
         $panti = Panti::all();
         return view('listpanti')->with('listpanti', $panti);
+    }
+    public function view_detail($id)
+    {
+        $emails = \Auth::user()->email;
+        $panti = DB::table('panti')->where('id', '=', $id)->get();
+        $galeri = DB::table('galeris')->where('email_user', '=', $emails)->take(3)->get();
+        return view('detailpanti')->with('panti', $panti)->with('galeri', $galeri);
     }
 
     public function upload_photo(Request $request)
@@ -141,7 +149,8 @@ class PantiController extends Controller
             'deskripsi_kebutuhan' => $request->deskripsi_kebutuhan,
             'jumlah_pengurus' => $request->jumlah_pengurus,
             'jumlah_anak_laki' => $request->jumlah_anak_laki,
-            'jumlah_anak_perempuan' => $request->jumlah_anak_perempuan
+            'jumlah_anak_perempuan' => $request->jumlah_anak_perempuan,
+            'deskripsi_panti'=> $request->deskripsi_panti
         ]);
 
         return redirect('/profile_panti');
