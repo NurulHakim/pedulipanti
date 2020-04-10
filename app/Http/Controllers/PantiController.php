@@ -101,8 +101,14 @@ class PantiController extends Controller
     {
         $emails = \Auth::user()->email;
         $panti = DB::table('panti')->where('id', '=', $id)->get();
+        
         $galeri = DB::table('galeris')->where('email_user', '=', $emails)->take(3)->get();
         return view('detailpanti')->with('panti', $panti)->with('galeri', $galeri);
+    }
+    public function galeri()
+    {
+        
+        return view('galerypanti');
     }
 
     public function upload_photo(Request $request)

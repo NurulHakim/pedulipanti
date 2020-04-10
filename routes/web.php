@@ -38,9 +38,7 @@ Route::get('detailpanti', function () {
     return view('detailpanti');
 });
 
-Route::get('galerypanti', function () {
-    return view('galerypanti');
-})->name('galeri_panti');
+Route::get('galerypanti', 'PantiController@galeri')->name('galeri_panti');
 
 
 
@@ -49,7 +47,7 @@ Route::post('dashboard', 'PantiController@upload_photo')->middleware('auth')->na
 
 Route::post('profiles_panti/{id?}', 'PantiController@store')->middleware('auth')->name('upload');
 Route::post('profile_panti/{id?}', 'PantiController@edit')->middleware('auth')->name('edit');
-Route::get('panti/{id?}', 'PantiController@view_detail')->middleware('auth')->name('tampil_panti');
+Route::get('panti/{id?}', 'PantiController@view_detail')->name('tampil_panti');
 Route::get('/listpanti', 'PantiController@listview');
 
  Auth::routes(['verify' => true]);

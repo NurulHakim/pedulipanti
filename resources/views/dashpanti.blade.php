@@ -20,7 +20,7 @@
     <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
 </head>
 
-<body>
+<body style="height: 100%;">
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">PeduliPanti</a>
 
@@ -54,7 +54,7 @@
                 </div>
             </nav>
 
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" style=" ">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <h1 class="h2">Dashboard</h1>
 
@@ -66,6 +66,7 @@
             </main>
         </div>
     </div>
+    
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -88,6 +89,7 @@
             </form>
         </div>
     </div>
+    
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

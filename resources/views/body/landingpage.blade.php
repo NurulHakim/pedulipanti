@@ -180,7 +180,7 @@
         </div>
         <!-- Our Services End -->
         <!-- Favourite Places Start -->
-        <div class="favourite-place place-padding">
+        <div class="favourite-place place-padding" style="padding-bottom: 1em">
             <div class="container">
                 <!-- Section Tittle -->
                 <div class="row">
@@ -297,24 +297,13 @@
 
     </main>
 
-    <footer class="text-muted">
-        <div class="container">
-            <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-            <div class="row">
-                <div class="col-6 col-md-4">
-                    <h5 class="card-title">Berdayakan panti bersama pedulipanti</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-                <div class="col-6 col-md-4">
-                    <h5 class="card-title">Media Sosial</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-                <div class="col-6 col-md-4">
-                    <h5 class="card-title">Hubungi Kami</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-            </div>
+    <footer class="page-footer font-small blue" style="padding-top: 1em; padding-bottom: 1em">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2020 Copyright: v09042929
         </div>
+        <!-- Copyright -->
+
     </footer>
 
     <!-- JS here -->

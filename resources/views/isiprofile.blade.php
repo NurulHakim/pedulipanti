@@ -74,14 +74,14 @@
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <h1 class="h2">Isi Profile</h1>
                 </div>
-                
+
                 <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Tipe Panti</label>
                         <div class="col-sm-10">
                             <select name='tipe_panti' class="form-control" id="exampleFormControlSelect1">
-                             
+
                                 <option>LKSA</option>
                             </select>
                         </div>
@@ -91,7 +91,7 @@
                         <label for="typePanti" class="col-sm-2 col-form-label">Jenis Yayasan</label>
                         <div class="col-sm-10">
                             <select name='jenis_yayasan' class="form-control" id="exampleFormControlSelect1">
-                               
+
                                 <option>PSAA</option>
                                 <option>TAS</option>
                                 <option>Pusaka</option>
@@ -104,21 +104,21 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Nama Panti</label>
                         <div class="col-sm-10">
-                            <input name='nama_panti' type="text" class="form-control" id="namapanti" placeholder="" >
+                            <input name='nama_panti' type="text" class="form-control" id="namapanti" placeholder="">
                         </div>
                     </div>
 
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Nomor Telepon Panti</label>
                         <div class="col-sm-10">
-                            <input name='no_telepon' type="text" class="form-control" id="notelp" placeholder="" >
+                            <input name='no_telepon' type="text" class="form-control" id="notelp" placeholder="">
                         </div>
                     </div>
 
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Nama Pemilik Panti</label>
                         <div class="col-sm-10">
-                            <input name='nama_pemilik' type="text" class="form-control" id="namapempanti" placeholder="" >
+                            <input name='nama_pemilik' type="text" class="form-control" id="namapempanti" placeholder="">
                         </div>
                     </div>
 
@@ -138,7 +138,7 @@
                         <label for="typePanti" class="col-sm-2 col-form-label">Provinsi</label>
                         <div class="col-sm-10">
                             <select name='provinsi' class="form-control" id="exampleFormControlSelect1">
-                               
+
                                 <option>--------- Pilih Provinsi ----------</option>
                                 <option value='jakarta'>Jakarta</option>
                             </select>
@@ -148,7 +148,7 @@
                         <label for="typePanti" class="col-sm-2 col-form-label">Kabupaten/Kota</label>
                         <div class="col-sm-10">
                             <select name='kabupaten_kota' class="form-control" id="exampleFormControlSelect1">
-                                
+
                                 <option>--------- Pilih Kabupaten/Kota ----------</option>
                                 <option value='jakarta utara'>Jakarta Utara</option>
                             </select>
@@ -159,7 +159,7 @@
                         <label for="typePanti" class="col-sm-2 col-form-label">Kecamatan</label>
                         <div class="col-sm-10">
                             <select name='kecamatan' class="form-control" id="exampleFormControlSelect1">
-                              
+
                                 <option>--------- Pilih Kecamatan ----------</option>
                                 <option value='cilincing'>Cilincing</option>
                             </select>
@@ -170,7 +170,7 @@
                         <label for="typePanti" class="col-sm-2 col-form-label">Kelurahan</label>
                         <div class="col-sm-10">
                             <select name='kelurahan' class="form-control" id="exampleFormControlSelect1">
-                                
+
                                 <option>--------- Pilih Kelurahan ----------</option>
                                 <option value='sukapura'>Sukapura</option>
                             </select>
@@ -186,7 +186,7 @@
                         <label for="typePanti" class="col-sm-2 col-form-label">Tag Kebutuhan Panti</label>
                         <div class="col-sm-10">
                             <select name='kebutuhan_panti' class="form-control" id="exampleFormControlSelect1">
-                            
+
                                 <option>Pakaian</option>
                                 <option>Makanan</option>
                                 <option>Uang</option>
@@ -204,22 +204,22 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Jumlah Pengurus Panti</label>
                         <div class="col-sm-10">
-                            <input name='jumlah_pengurus' type="number" class="form-control" id="notelppem" placeholder="" >
+                            <input name='jumlah_pengurus' type="number" class="form-control" id="notelppem" placeholder="">
                         </div>
                     </div>
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Jumlah Anak Laki-laki</label>
                         <div class="col-sm-10">
-                            <input name='jumlah_anak_laki' type="number" class="form-control" id="notelppem" placeholder="" >
+                            <input name='jumlah_anak_laki' type="number" class="form-control" id="notelppem" placeholder="">
                         </div>
                     </div>
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Jumlah Perempuan</label>
                         <div class="col-sm-10">
-                            <input name='jumlah_anak_perempuan' type="number" class="form-control" id="notelppem" placeholder="" >
+                            <input name='jumlah_anak_perempuan' type="number" class="form-control" id="notelppem" placeholder="">
                         </div>
                     </div>
-                   
+
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Logo Panti Asuhan</label>
                         <div class="col-sm-10">
@@ -264,24 +264,13 @@
 
                 </form>
 
-                <footer class="text-muted border-top">
-                    <div class="container " style="border-top: 1pt red">
-                        <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-                        <div class="row">
-                            <div class="col-6 col-md-4">
-                                <h5 class="card-title">Berdayakan panti bersama pedulipanti</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            </div>
-                            <div class="col-6 col-md-4">
-                                <h5 class="card-title">Media Sosial</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            </div>
-                            <div class="col-6 col-md-4">
-                                <h5 class="card-title">Hubungi Kami</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            </div>
-                        </div>
+                <footer class="page-footer font-small blue" style="padding-top: 1em; padding-bottom: 1em">
+
+                    <!-- Copyright -->
+                    <div class="footer-copyright text-center py-3">© 2020 Copyright: v09042929
                     </div>
+                    <!-- Copyright -->
+
                 </footer>
             </main>
 

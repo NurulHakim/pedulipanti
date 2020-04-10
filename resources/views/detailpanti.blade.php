@@ -144,7 +144,7 @@
                         @endforeach
                     </div>
                     <div class="btn-group">
-                        <a href="{{route('galeri_panti')}}"><button type="button" class="btn btn-sm btn-outline-secondary" style="margin-top: 1em">Lihat Semua</button></a>
+                        <a href="{{route('galeri_panti', $panti->email_user)}}"><button type="button" class="btn btn-sm btn-outline-secondary" style="margin-top: 1em">Lihat Semua</button></a>
                     </div>
                 </div>
                 @endforeach
@@ -169,6 +169,14 @@
         </div>
         </div>
     </section>
+    <footer class="page-footer font-small blue" style="padding-top: 1em; padding-bottom: 1em">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2020 Copyright: v09042929
+        </div>
+        <!-- Copyright -->
+
+    </footer>
 
 
 

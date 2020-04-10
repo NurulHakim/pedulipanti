@@ -86,116 +86,44 @@
 
     <main role="main">
 
-        <div class="jumbotron jumbotron-fluid" >
-            <div class="container" style="margin-top: 2em">
-                <h1 class="jumbotron-heading">Panti Bina Remaja Mandiri</h1>
-                <p class="lead text-muted">(Deskripsi Panti) Something short and leading about the collection below—its contents, the
-                    creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it
-                    entirely.</p>
-            </div>
-        </div>
-
-        <div class="album py-5 bg-light">
+      
+        <div class="album py-5 bg-light" style="margin-top: 3em">
             <div class="container">
 
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-text">Deskripsi Foto.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">9 mins</small>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-text">Deskripsi Foto.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">9 mins</small>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-text">Deskripsi Foto.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">9 mins</small>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-text">Deskripsi Foto.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">9 mins</small>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-text">Deskripsi Foto.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">9 mins</small>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-text">Deskripsi Foto.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">9 mins</small>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-text">Deskripsi Foto.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">9 mins</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-text">Deskripsi Foto.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">9 mins</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-text">Deskripsi Foto.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">9 mins</small>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -210,24 +138,13 @@
         </p>
 
     </div> <br>
-    <footer class="text-muted">
-        <div class="container">
-            <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-            <div class="row">
-                <div class="col-6 col-md-4">
-                    <h5 class="card-title">Berdayakan panti bersama pedulipanti</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-                <div class="col-6 col-md-4">
-                    <h5 class="card-title">Media Sosial</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-                <div class="col-6 col-md-4">
-                    <h5 class="card-title">Hubungi Kami</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-            </div>
+    <footer class="page-footer font-small blue" style="padding-top: 1em; padding-bottom: 1em">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2020 Copyright: v09042929
         </div>
+        <!-- Copyright -->
+
     </footer>
 
     <!-- Bootstrap core JavaScript
