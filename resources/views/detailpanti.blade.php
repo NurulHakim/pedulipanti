@@ -1,19 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
-
-    <title>Cari Panti</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detailpanti</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/favicon.ico')}}">
+
+    <!-- CSS here -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
@@ -26,16 +23,17 @@
     <link rel="stylesheet" href="{{asset('css/nice-select.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link href="{{ asset('css/album.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('css/album.css') }}" rel="stylesheet">
+
+
 </head>
 
 <body>
 
     <header>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="/" style="margin-left: 1em"><b style="color: white">pedulipanti</b></a>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" style="position: relative">
+            <a class="navbar-brand" href="/" style="margin-left: 1em;"><b style="color: white">pedulipanti</b></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -82,65 +80,108 @@
             </div>
         </nav>
     </header>
-    <section class="jumbotron text-center" style="background-image:url('img/img1.jpg');">
-        <div class="container" style="padding-top: 2em;">
-            <h1 class="jumbotron-heading" style="color:white">Cari Panti</h1>
-            <p style="color:white">Mari Sumbangkan Sedikit Harta Kekayaan kita <br> Kepada Panti-Panti Yang Membutuhkan.</p>
-        </div>
-    </section>
 
-    <main role="main">
-        <div class="album py-5 bg-light">
-            <div class="container">
 
-                <div class="row">
-                    @foreach ($listpanti as $listpanti)
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow" style="min-height: 380px; width: 380px;">
-                            <img class="card-img-top" src="{{ asset('upload/panti/foto/' . $listpanti->foto_panti) }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
-                            <div class="card-body">
-                                <h4 style="margin-bottom: 1em">{{ $listpanti->nama_panti }}</h4>
-                                <p class="card-text">{{ substr($listpanti->deskripsi_panti,0, 100)}}</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="{{route('tampil_panti', $listpanti->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
-                                    </div>
-                                </div>
+    <!-- slider Area End-->
+    <!--================Blog Area =================-->
+    <section class="blog_area single-post-area section-padding" style="padding-top: 1em">
+        <div class="container">
+            <div class="row">
+                @foreach($panti as $panti)
+                <div class="col-lg-8 posts-list">
+                    <div class="single-post" ">
+                        <h1>{{$panti->nama_panti}}</h1>
+                        <div class=" feature-img">
+                        <img class="img-fluid" src="{{asset('upload/panti/foto/'. $panti->foto_panti)}}" alt="">
+                    </div>
+                    <div class="blog_details">
+                        <h3>Detail Panti</h3>
+
+                        <p class="excert" style="font-size: 13pt">
+                            <h2 style="margin-bottom: 0"><i class="fas fa-map-pin"></i>Alamat</h2>
+                            {{$panti->alamat_panti}}
+                        </p>
+                        <p>
+                            <h2 style="margin-bottom: 0">Nomor Telepon Panti</h2>
+                            {{$panti->no_telepon}}
+                        </p>
+                        <p>
+                            <h2 style="margin-bottom: 0">Nama Pemilik Panti</h2>
+                            {{$panti->nama_pemilik}}
+                        </p>
+                        <p>
+                            <h2 style="margin-bottom: 0">Nomor Telepon Pemilik Panti</h2>
+                            {{$panti->no_telepon_pemilik}}
+                        </p>
+                        <p>
+                            <h2 style="margin-bottom: 0">Deskripsi Panti</h2>
+                            {{$panti->deskripsi_panti}}
+                        </p>
+                        <p>
+                            <h2 style="margin-bottom: 0">Deskripsi Kebutuhan Panti</h2>
+                            {{$panti->deskripsi_kebutuhan}}
+                        </p>
+                        <p>
+                            <h2 style="margin-bottom: 0">Deskripsi Program Panti</h2>
+                            - Sekolah - Sholat berjamaah - Pengajian ashar - Pengajian ba'da magrib - Belajar bersama
+                        </p>
+                        <div class="quote-wrapper">
+                            <div class="quotes">
+                                "Jangan pernah lupa untuk selalu bersyukur. Dan berbagi adalah salah satu cara untuk bersyukur atas nikmatNya."
                             </div>
                         </div>
                     </div>
-                    @endforeach
                 </div>
+                <div class="section-top-border">
+                    <h3>Galeri Kegiatan Panti</h3>
+                    <div class="row gallery-item">
+                        @foreach($galeri as $galeri)
+                        <div class="col-md-4">
+                            <a href="{{asset('upload/panti/images/' . $galeri->path )}}" class="img-pop-up">
+                                <div class="single-gallery-image" style="background: url({{asset('upload/panti/images/thumbnail/'.$galeri->path)}});"></div>
+                            </a>
+                        </div>
+                        @endforeach
+                    </div>
+                    <div class="btn-group">
+                        <a href="{{route('galeri_panti', $panti->email_user)}}"><button type="button" class="btn btn-sm btn-outline-secondary" style="margin-top: 1em">Lihat Semua</button></a>
+                    </div>
+                </div>
+                @endforeach
+                <div class="navigation-top">
+                    <div class="d-sm-flex justify-content-between text-center">
+
+                        <div class="col-sm-4 text-center my-2 my-sm-0">
+                            <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
+                        </div>
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                            <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
-
-    </main>
-
+        </div>
+    </section>
     <footer class="page-footer font-small blue" style="padding-top: 1em; padding-bottom: 1em">
 
         <!-- Copyright -->
-        <div class="footer-copyright text-center py-3" >© 2020 Copyright: v09042929
+        <div class="footer-copyright text-center py-3">© 2020 Copyright: v09042929
         </div>
         <!-- Copyright -->
 
     </footer>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>
-        window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+
+
+
+    <script src="{{asset('js/modernizr-3.5.0.min.js')}}">
     </script>
-    <script src="{{asset('js/popper.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/holder.min.js')}}"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
-    <script src="{{asset('js/modernizr-3.5.0.min.js')}}"></script>
 
     <!-- Jquery, Popper, Bootstrap -->
     <script src="{{asset('js/vendor/jquery-1.12.4.min.js')}}"></script>
@@ -172,6 +213,7 @@
     <!-- Jquery Plugins, main Jquery -->
     <script src="{{asset('js/plugins.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
+
 </body>
 
 </html>
