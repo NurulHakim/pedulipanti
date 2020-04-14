@@ -195,90 +195,22 @@
                     <div class="container">
 
                         <div class="row">
+                        @foreach ($listpanti as $listpanti)
                             <div class="col-md-4">
                                 <div class="card mb-4 box-shadow" style="min-height: 400px; max-height: 400px;">
                                     <img class="card-img-top" src="{{ asset('img/mahmudah.jpg') }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
                                     <div class="card-body">
-                                        <h4 style="margin-bottom: 1em">Panti Mahmudah</h4>
-                                        <p class="card-text">Panti Butuh Pakaian</p>
+                                        <h4 style="margin-bottom: 1em">{{ $listpanti->nama_panti }}</h4>
+                                        <p class="card-text">{{ substr($listpanti->deskripsi_panti,0, 100)}}</p>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                                <a href="{{route('tampil_panti', $listpanti->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="card mb-4 box-shadow" style="min-height: 400px; max-height: 400px;">
-                                    <img class="card-img-top" src="{{ asset('img/mahmudah.jpg') }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
-                                    <div class="card-body">
-                                        <h4 style="margin-bottom: 1em">Panti Mahmudah</h4>
-                                        <p class="card-text">Panti Butuh Pakaian</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card mb-4 box-shadow" style="min-height: 400px; max-height: 400px;">
-                                    <img class="card-img-top" src="{{ asset('img/mahmudah.jpg') }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
-                                    <div class="card-body">
-                                        <h4 style="margin-bottom: 1em">Panti Mahmudah</h4>
-                                        <p class="card-text">Panti Butuh Pakaian</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card mb-4 box-shadow" style="min-height: 400px; max-height: 400px;">
-                                    <img class="card-img-top" src="{{ asset('img/mahmudah.jpg') }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
-                                    <div class="card-body">
-                                        <h4 style="margin-bottom: 1em">Panti Mahmudah</h4>
-                                        <p class="card-text">Panti Butuh Pakaian</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card mb-4 box-shadow" style="min-height: 400px; max-height: 400px;">
-                                    <img class="card-img-top" src="{{ asset('img/mahmudah.jpg') }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
-                                    <div class="card-body">
-                                        <h4 style="margin-bottom: 1em">Panti Mahmudah</h4>
-                                        <p class="card-text">Panti Butuh Pakaian</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card mb-4 box-shadow" style="min-height: 400px; max-height: 400px;">
-                                    <img class="card-img-top" src="{{ asset('img/mahmudah.jpg') }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
-                                    <div class="card-body">
-                                        <h4 style="margin-bottom: 1em">Panti Mahmudah</h4>
-                                        <p class="card-text">Panti Butuh Pakaian</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                             <div style=" float: right; display: block;">
                                 <a href="/listpanti"><button type="button" class="btn btn-sm btn-outline-secondary">Lihat Semua</button></a>
                             </div>
