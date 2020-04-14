@@ -11,11 +11,7 @@
 |
 */
 
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
+use Illuminate\Support\Facades\Route;
 
 Route::get('logo/index', function () {
     return view('logo/index');
@@ -29,23 +25,28 @@ Route::get('footer/index', function () {
     return view('footer/index');
 });
 
-// Route::get('/listpanti', function () {
-//     return view('listpanti');
-// });
-
-Route::get('/dashboard', function () {
+Route::get('/dashboard/{id?}', function () {
     return view('dashpanti');
 });
 
-// Route::get('/profile_panti', function(){
-//     return view('isiprofile');
-// });
+Route::get('detailpanti', function () {
+    return view('detailpanti');
+});
 
-Route::get('/profile_panti', 'PantiController@index');
+Route::get('galerypanti', 'PantiController@galeri')->name('galeri_panti');
 
-Route::post('/profile_panti', 'PantiController@store')->name('upload');
+Route::get('profile_panti/{id?}', 'PantiController@index')->middleware('auth')->name('profile.view');
+Route::post('dashboard', 'PantiController@upload_photo')->middleware('auth')->name('upload_photo');
+
+Route::post('profiles_panti/{id?}', 'PantiController@store')->middleware('auth')->name('upload');
+Route::post('profile_panti/{id?}', 'PantiController@edit')->middleware('auth')->name('edit');
+Route::get('panti/{id?}', 'PantiController@view_detail')->name('tampil_panti');
 Route::get('/listpanti', 'PantiController@listview');
 
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', function () {
+    return view('body/landingpage');
+});
