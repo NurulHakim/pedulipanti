@@ -15,6 +15,8 @@ class CreatePantiTable extends Migration
     {
         Schema::create('panti', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('email_user')->unique();
+            $table->foreign('email_user')->references('email')->on('users');
             $table->string('tipe_panti');
             $table->string('jenis_yayasan');
             $table->string('nama_panti');
@@ -28,6 +30,7 @@ class CreatePantiTable extends Migration
             $table->string('kelurahan');
             $table->string('kebutuhan_panti');
             $table->string('deskripsi_kebutuhan');
+            $table->string('deskripsi_panti');
             $table->integer('jumlah_pengurus');
             $table->integer('jumlah_anak_laki');
             $table->integer('jumlah_anak_perempuan');
