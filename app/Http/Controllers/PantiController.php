@@ -140,7 +140,7 @@ class PantiController extends Controller
 
             $resize_image->resize(250, 250, function ($constraint) {
             $constraint->aspectRatio();
-            })->save('upload/panti/images/thumbnail/' . $filename);
+            })->save('upload/panti/images/' . $filename);
         } else {
             return $request;
             $galeri->path = '';
