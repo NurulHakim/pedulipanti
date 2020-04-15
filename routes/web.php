@@ -47,6 +47,10 @@ Route::get('galerypanti', function () {
 });
 
 Route::get('dashlembaga', function () {
+    return view('lembaga/dashperusahaan');
+});
+
+Route::get('detaillembaga', function () {
     return view('lembaga/detaillembaga');
 });
 

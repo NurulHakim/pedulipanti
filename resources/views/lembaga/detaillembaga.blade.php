@@ -8,16 +8,32 @@
 
     <!-- Bootstrap core CSS -->
 
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-   
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/favicon.ico')}}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{asset('css/slicknav.css')}}">
+    <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{asset('css/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('css/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link href="{{ asset('css/album.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 
 </head>
 
 <body>
+
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" style="position: relative">
-            <a class="navbar-brand" href="/" style="margin-left: 1em"><b>pedulipanti</b></a>
+            <a class="navbar-brand" href="/" style="margin-left: 1em;"><b style="color: white">pedulipanti</b></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -34,11 +50,13 @@
                     </li>
                     @guest
                     <li class="nav-item" style="margin-right: 1em">
+                    <!--  -->
                         <a class="btn btn-outline-primary" href="{{route('login')}}" role="button"
                             style="color: white; border-color: rgb(245, 121, 12)">Login</a>
                     </li>
                     @if (Route::has('register'))
                     <li class="nav-item" style="margin-right: 1em">
+                    <!--  -->
                         <a class="btn btn-primary" href="{{route('register')}}" role="button"
                             style="background-color: rgb(245, 121, 12); border-color: rgb(245, 121, 12)">Sign Up</a>
                     </li>
@@ -53,12 +71,14 @@
                             <a class="dropdown-item" href="/dashboard">
                                 Dashboard
                             </a>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                             <a class="dropdown-item" href="{{route('register')}}" 
+                            onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();"
+                                                    >
+                                 {{ __('Logout') }}
                             </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            <!--  -->
+                            <form id="logout-form" action="{{route('register')}}" method="POST" style="display: none;">
                                 @csrf
                             </form>
                         </div>
@@ -70,79 +90,89 @@
     </header>
 
 
+    <!-- slider Area End-->
+    <!--================Blog Area =================-->
+    <section class="blog_area single-post-area section-padding" style="padding-top: 1em">
+        <div class="container">
+            <div class="row">
 
+                <div class="col-lg-8 posts-list">
+                    <div class="single-post" ">
+                        <h1>Nama lembaga</h1>
+                        <div class=" feature-img">
+                        <img class="img-fluid" src="{{ asset('img/slidekesatu.png') }}" alt="">
+                    </div>
+                    <div class="blog_details">
+                        <h3>Deskripsi Lembaga</h3>
+                        <p>
+                            bla bla
+                        </p>
+                        <p class="excert" style="font-size: 13pt">
+                            <h2 style="margin-bottom: 0">Alamat</h2>
+                            bla bla
+                        </p>
+                        <p>
+                            <h2 style="margin-bottom: 0">Nomor Telepon Lembaga</h2>
+                            082281490501
+                        </p>
+                        <p>
+                            <h2 style="margin-bottom: 0">Sektor Lembaga</h2>
+                            Tambang
+                        </p>
 
-    <div class="container" style="position: absolute">
-        <!-- nama panti dari db -->
-        <div class="container-xl mt-3 border-0">
-            <h1>Nama perusahaan/organisasi</h1>
-        </div>
+                    </div>
+                </div>
 
-
-        <!-- gambar lembaga dari db -->
-        <div class="container-xl mt-3 border-0">
-            <img src="{{ asset('img/slidekesatu.png') }}" class="mx-auto d-block" style="width:50%" />
-        </div>
-
-
-       
-        <div class="container-xl mt-3 border-0">
-            <h6>
-                Hubungi Kami
-            </h6>
-            <p class='fa fa-phone'>
-                082281490501
-            </p>
-        </div>
-
-
-
-        <div class="container-xl mt-3 border-0">
-            <h6>Alamat</h6>
-            <p class='fas fa-map-marker-alt'> Jl. banjaran pucung gang Masjid jami al ikhlas, kel cilangkap, kec tapus
-                kota depok</p>
-
-        </div>
-
-        <div class="container-xl mt-3 border-0">
-            <h6>Deskripsi perusahaan/organisasi </h6>
-            <p> loream Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh
-                ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent
-                commodo cursus magna.</p>
-        </div>
-
-        <div class="container-xl mt-3 border-0">
-            <h6>Sektor perusahaan/organisasi</h6>
-            <p> Pertambangan</p>
+            </div>
 
         </div>
+        </div>
+    </section>
+    <footer class="page-footer font-small blue" style="padding-top: 1em; padding-bottom: 1em">
 
-       
-    </div>
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2020 Copyright: v09042929
+        </div>
+        <!-- Copyright -->
+
+    </footer>
 
 
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    <script src="{{asset('js/modernizr-3.5.0.min.js')}}">
     </script>
-    <script>
-        window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')
 
-    </script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="{{asset('js/vendor/jquery-1.12.4.min.js')}}"></script>
+    <script src="{{asset('js/poppers.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="{{asset('js/jquery.slicknav.min.js')}}"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="{{asset('js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('js/slick.min.js')}}"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="{{asset('js/wow.min.js')}}"></script>
+    <script src="{{asset('js/animated.headline.js')}}"></script>
+    <script src="{{asset('js/jquery.magnific-popup.js')}}"></script>
+
+    <!-- Scrollup, nice-select, sticky -->
+    <script src="{{asset('js/jquery.scrollUp.min.js')}}"></script>
+    <script src="{{asset('js/jquery.nice-select.min.js')}}"></script>
+    <script src="{{asset('js/jquery.sticky.js')}}"></script>
+
+    <!-- contact js -->
+    <script src="{{asset('js/contact.js')}}"></script>
+    <script src="{{asset('js/jquery.form.js')}}"></script>
+    <script src="{{asset('js/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('js/mail-script.js')}}"></script>
+    <script src="{{asset('js/jquery.ajaxchimp.min.js')}}"></script>
+
+    <!-- Jquery Plugins, main Jquery -->
+    <script src="{{asset('js/plugins.js')}}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
+
 </body>
 
 </html>
