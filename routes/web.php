@@ -38,8 +38,16 @@ Route::get('detailpanti', function () {
     return view('detailpanti');
 });
 
+Route::get('tambahpotopanti', function () {
+    return view('tambahpotopanti');
+});
+
 Route::get('galerypanti', function () {
     return view('galerypanti');
+});
+
+Route::get('dashlembaga', function () {
+    return view('lembaga/detaillembaga');
 });
 
 
