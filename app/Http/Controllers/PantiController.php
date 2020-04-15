@@ -113,7 +113,6 @@ class PantiController extends Controller
         }
         // echo($panti);
         $new_panti = DB::table('panti')->where('id', $id)->get();
-
         $galeri = DB::table('galeris')->where('email_user', '=', $emails)->take(3)->get();
         
         return view('detailpanti')->with('panti', $new_panti)->with('galeri', $galeri);
