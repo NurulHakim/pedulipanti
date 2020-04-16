@@ -35,6 +35,18 @@ Route::get('detailpanti', function () {
 });
 
 Route::get('galerypanti', 'PantiController@galeri')->name('galeri_panti');
+Route::get('tambahpotopanti', function () {
+    return view('tambahpotopanti');
+});
+
+
+Route::get('dashlembaga', function () {
+    return view('lembaga/dashperusahaan');
+});
+
+Route::get('detaillembaga', function () {
+    return view('lembaga/detaillembaga');
+});
 
 
 
