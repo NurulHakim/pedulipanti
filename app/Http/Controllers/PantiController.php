@@ -108,7 +108,7 @@ class PantiController extends Controller
 
     public function viewpanti()
     {
-        $panti = Panti::all();
+        $panti = Panti::all()->take(4);
         return view('body/landingpage')->with('listpanti', $panti);
     }
 
