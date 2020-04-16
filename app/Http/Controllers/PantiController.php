@@ -97,14 +97,36 @@ class PantiController extends Controller
         $panti = Panti::all();
         return view('listpanti')->with('listpanti', $panti);
     }
+    // public function view_detail($id)
+    // {
+    //     $emails = \Auth::user()->email;
+    //     $panti = DB::table('panti')->where('id', '=', $id)->get();
+        
+    //     $galeri = DB::table('galeris')->where('email_user', '=', $emails)->take(3)->get();
+    //     return view('detailpanti')->with('panti', $panti)->with('galeri', $galeri);
+    // }
+
+    public function viewpanti()
+    {
+        $panti = Panti::all();
+        return view('body/landingpage')->with('listpanti', $panti);
+    }
+
     public function view_detail($id)
     {
-        $emails = \Auth::user()->email;
-        $panti = DB::table('panti')->where('id', '=', $id)->get();
-        
+        // $emails = \Auth::user()->email;
+        $panti = DB::table('panti')->where('id', $id)->get();
+        foreach($panti as $panti){
+            $emails =  $panti->email_user;
+        }
+        // echo($panti);
+        $new_panti = DB::table('panti')->where('id', $id)->get();
+
         $galeri = DB::table('galeris')->where('email_user', '=', $emails)->take(3)->get();
-        return view('detailpanti')->with('panti', $panti)->with('galeri', $galeri);
+        
+        return view('detailpanti')->with('panti', $new_panti)->with('galeri', $galeri);
     }
+
     public function galeri()
     {
         
@@ -135,6 +157,7 @@ class PantiController extends Controller
         return view('dashpanti');
     }
        
+
     public function edit(Request $request)
     {
         $emails = \Auth::user()->email;
@@ -162,3 +185,4 @@ class PantiController extends Controller
         return redirect('/profile_panti');
     }
 }
+

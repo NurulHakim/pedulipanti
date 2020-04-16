@@ -11,11 +11,7 @@
 |
 */
 
-
-
-
 use Illuminate\Support\Facades\Route;
-
 
 Route::get('logo/index', function () {
     return view('logo/index');
@@ -53,4 +49,8 @@ Route::get('/listpanti', 'PantiController@listview');
  Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'HomeController@index')->name('home');
+// Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'PantiController@viewpanti');
+// Route::get('/', function () {
+//     return view('body/landingpage');
+// });

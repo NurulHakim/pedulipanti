@@ -140,7 +140,7 @@
                             <select name='provinsi' class="form-control" id="exampleFormControlSelect1">
 
                                 <option>--------- Pilih Provinsi ----------</option>
-                                <option value='jakarta'>Jakarta</option>
+                                <option value='Lampung'>Lampung</option>
                             </select>
                         </div>
                     </div>
@@ -150,7 +150,22 @@
                             <select name='kabupaten_kota' class="form-control" id="exampleFormControlSelect1">
 
                                 <option>--------- Pilih Kabupaten/Kota ----------</option>
-                                <option value='jakarta utara'>Jakarta Utara</option>
+                                <option value='Bandar Lampung'>Bandar Lampung</option>
+                                <option value='Lampung Barat'>Lampung Barat</option>
+                                <option value='Lampung Selatan'>Lampung Lampung Selatan</option>
+                                <option value='Lampung Tengah '>Lampung Tengah </option>
+                                <option value='Lampung Utara '>Lampung Utara </option>
+                                <option value='Lampung Timur '>Lampung Timur </option>
+                                <option value='Metro'>Metro</option>
+                                <option value='Mesuji'>Mesuji</option>
+                                <option value='Pesawaran'>Pesawaran</option>
+                                <option value='Pesisir Barat'>Pesisir Barat</option>
+                                <option value='Metro'>Metro</option>
+                                <option value='Pringsewu'>Pringsewu</option>
+                                <option value='Tulang Bawang'>Tulang Bawang</option>
+                                <option value='Tulang Bawang Barat'>Tulang Bawang Barat</option>
+                                <option value='Tanggamus'>Tanggamus</option>
+                                <option value='Way Kanan'>Way Kanan</option>
                             </select>
                         </div>
                     </div>

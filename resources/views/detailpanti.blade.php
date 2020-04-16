@@ -97,8 +97,12 @@
                     <div class="blog_details">
                         <h3>Detail Panti</h3>
 
+                        <p>
+                            <h2 style="margin-bottom: 0">Deskripsi Panti</h2>
+                            {{$panti->deskripsi_panti}}
+                        </p>
                         <p class="excert" style="font-size: 13pt">
-                            <h2 style="margin-bottom: 0"><i class="fas fa-map-pin"></i>Alamat</h2>
+                            <h2 style="margin-bottom: 0">Alamat</h2>
                             {{$panti->alamat_panti}}
                         </p>
                         <p>
