@@ -28,19 +28,21 @@ Route::get('footer/index', function () {
 
 Route::get('/dashboard/{id?}', function () {
     return view('dashpanti');
-});
+})->middleware('auth');
 
 Route::get('detailpanti', function () {
     return view('detailpanti');
 });
 
-Route::get('galerypanti', 'PantiController@galeri')->name('galeri_panti');
+Route::get('galerypanti/{email_user?}', 'PantiController@galeri')->name('galeri_panti');
+
 Route::get('tambahpotopanti', function () {
     return view('tambahpotopanti');
 });
 
 
-Route::get('dashlembaga', function () {
+
+Route::get('dashboards', function () {
     return view('lembaga/dashperusahaan');
 });
 
@@ -48,6 +50,9 @@ Route::get('detaillembaga', function () {
     return view('lembaga/detaillembaga');
 });
 
+Route::get('profile_lembaga', function () {
+    return view('lembaga/isiprofilelembaga');
+});
 
 
 Route::get('profile_panti/{id?}', 'PantiController@index')->middleware('auth')->name('profile.view');

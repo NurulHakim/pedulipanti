@@ -32,7 +32,7 @@
 </head>
 
 <body>
-  
+
 
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -86,47 +86,18 @@
 
     <main role="main">
 
-      
+
         <div class="album py-5 bg-light" style="margin-top: 3em">
             <div class="container">
-
+                @foreach($galeri as $galeri)
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
+                            <img class="card-img-top" src="{{ asset('upload/panti/images/thumbnail/' . $galeri->path) }}" alt="Card image cap">
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
         </div>

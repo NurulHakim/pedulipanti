@@ -127,10 +127,10 @@ class PantiController extends Controller
         return view('detailpanti')->with('panti', $new_panti)->with('galeri', $galeri);
     }
 
-    public function galeri()
+    public function galeri($email_user)
     {
-        
-        return view('galerypanti');
+        $galeri = DB::table('galeris')->where('email_user', '=', $email_user)->get();
+        return view('galerypanti')->with('galeri', $galeri);
     }
 
     public function upload_photo(Request $request)
