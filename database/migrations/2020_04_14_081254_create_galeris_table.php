@@ -15,7 +15,7 @@ class CreateGalerisTable extends Migration
     {
         Schema::create('galeris', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('email_user')->unique();
+            $table->string('email_user');
             $table->foreign('email_user')->references('email')->on('users');
             $table->mediumText('path');
             $table->timestamps();
