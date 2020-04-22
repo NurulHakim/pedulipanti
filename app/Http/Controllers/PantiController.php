@@ -104,6 +104,12 @@ class PantiController extends Controller
         return view('body/landingpage')->with('listpanti', $panti);
     }
 
+    public function viewpic()
+    {
+        $panti = Panti::all();
+        return view('/galerypanti')->with('listpanti', $panti);
+    }
+
     public function view_detail($id)
     {
         // $emails = \Auth::user()->email;
