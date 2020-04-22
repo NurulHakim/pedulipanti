@@ -29,8 +29,8 @@ class CreatePantiTable extends Migration
             $table->string('kecamatan');
             $table->string('kelurahan');
             $table->string('kebutuhan_panti');
-            $table->string('deskripsi_kebutuhan');
-            $table->string('deskripsi_panti');
+            $table->text('deskripsi_kebutuhan');
+            $table->text('deskripsi_panti');
             $table->integer('jumlah_pengurus');
             $table->integer('jumlah_anak_laki');
             $table->integer('jumlah_anak_perempuan');
