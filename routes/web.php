@@ -27,7 +27,7 @@ Route::get('footer/index', function () {
 
 Route::get('/dashboard/{id?}', function () {
     return view('dashpanti');
-});
+})->middleware('auth');
 
 Route::get('detailpanti', function () {
     return view('detailpanti');
