@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{asset('css/slick.css')}}">
     <link rel="stylesheet" href="{{asset('css/nice-select.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/galeri.css')}}">
     <link href="{{ asset('css/album.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -140,11 +141,13 @@
                     <h3>Galeri Kegiatan Panti</h3>
                     <div class="row gallery-item">
                         @foreach($galeri as $galeri)
-                        <div class="col-md-4">
-                            <a href="{{asset('upload/panti/images/' . $galeri->path )}}" class="img-pop-up">
-                                <div class="single-gallery-image" style="background: url({{asset('upload/panti/images/thumbnail/'.$galeri->path)}});"></div>
-                            </a>
-                        </div>
+                            <div class="con-gallery">
+                                <div class="box-pic">
+                                    <div class="imgBox">
+                                        <img src="{{asset('upload/panti/images/'. $galeri->path)}}" alt="">
+                                    </div>
+                                </div>
+                            </div>
                         @endforeach
                     </div>
                     <div class="btn-group">

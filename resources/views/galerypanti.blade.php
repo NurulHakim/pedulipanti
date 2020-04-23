@@ -89,15 +89,16 @@
 
         <div class="album py-5 bg-light" style="margin-top: 3em">
             <div class="container">
-                @foreach($galeri as $galeri)
+               
                 <div class="row">
+                    @foreach ($listpanti as $listpanti)
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ asset('upload/panti/images/thumbnail/' . $galeri->path) }}" alt="Card image cap">
+                            <img class="card-img-top" src="{{ asset('upload/panti/images/' . $listpanti->foto_panti) }}" alt="Card image cap">
                         </div>
                     </div>
-                </div>
-                @endforeach
+                    @endforeach
+              
             </div>
         </div>
         </div>

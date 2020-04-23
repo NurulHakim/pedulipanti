@@ -33,7 +33,8 @@ class HomeController extends Controller
         // return view('body/landingpage');
         // return view('body/landingpageafterlogin');
         $panti = Panti::all();
-        return view('body/landingpageafterlogin')->with('listpanti', $panti);
+        // return view('body/landingpageafterlogin')->with('listpanti', $panti);
+        return view('dashpanti');
     }
 
 

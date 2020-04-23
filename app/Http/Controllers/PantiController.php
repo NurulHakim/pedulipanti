@@ -112,6 +112,12 @@ class PantiController extends Controller
         return view('body/landingpage')->with('listpanti', $panti);
     }
 
+    public function viewpic()
+    {
+        $panti = Panti::all();
+        return view('/galerypanti')->with('listpanti', $panti);
+    }
+
     public function view_detail($id)
     {
         // $emails = \Auth::user()->email;
@@ -121,8 +127,7 @@ class PantiController extends Controller
         }
         // echo($panti);
         $new_panti = DB::table('panti')->where('id', $id)->get();
-
-        $galeri = DB::table('galeris')->where('email_user', '=', $emails)->take(3)->get();
+        $galeri = DB::table('galeris')->where('email_user', '=', $emails)->take(4)->get();
         
         return view('detailpanti')->with('panti', $new_panti)->with('galeri', $galeri);
     }
@@ -148,7 +153,7 @@ class PantiController extends Controller
 
             $resize_image->resize(250, 250, function ($constraint) {
             $constraint->aspectRatio();
-            })->save('upload/panti/images/thumbnail/' . $filename);
+            })->save('upload/panti/images/' . $filename);
         } else {
             return $request;
             $galeri->path = '';
