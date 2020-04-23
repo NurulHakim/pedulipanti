@@ -151,7 +151,7 @@
                         @endforeach
                     </div>
                     <div class="btn-group">
-                        <a href="{{route('galeri_panti', $panti->email_user)}}"><button type="button" class="btn btn-sm btn-outline-secondary" style="margin-top: 1em">Lihat Semua</button></a>
+                        <a href="{{route('galeri_panti', $panti->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary" style="margin-top: 1em">Lihat Semua</button></a>
                     </div>
                 </div>
                 @endforeach

@@ -34,7 +34,7 @@ Route::get('detailpanti', function () {
     return view('detailpanti');
 });
 
-Route::get('galerypanti/{email_user?}', 'PantiController@galeri')->name('galeri_panti');
+// Route::get('galerypanti/{email_user?}', 'PantiController@galeri')->name('galeri_panti');
 
 Route::get('tambahpotopanti', function () {
     return view('tambahpotopanti');
@@ -54,6 +54,7 @@ Route::get('profile_lembaga', function () {
     return view('lembaga/isiprofilelembaga');
 });
 
+Route::get('galerypanti/{id?}', 'PantiController@galeri')->name('galeri_panti');
 
 Route::get('profile_panti/{id?}', 'PantiController@index')->middleware('auth')->name('profile.view');
 Route::post('dashboard', 'PantiController@upload_photo')->middleware('auth')->name('upload_photo');
@@ -71,3 +72,7 @@ Route::get('/', 'PantiController@viewpanti');
 // Route::get('/', function () {
 //     return view('body/landingpage');
 // });
+
+
+// menghapus akun
+Route::get('delete/{id?}', 'PantiController@deleteAccount')->name('deleteAccount');
