@@ -104,30 +104,26 @@ class PantiController extends Controller
         return view('body/landingpage')->with('listpanti', $panti);
     }
 
-    public function viewpic()
-    {
-        $panti = Panti::all();
-        return view('/galerypanti')->with('listpanti', $panti);
-    }
-
     public function view_detail($id)
     {
-        // $emails = \Auth::user()->email;
         $panti = DB::table('panti')->where('id', $id)->get();
         foreach($panti as $panti){
             $emails =  $panti->email_user;
         }
-        // echo($panti);
         $new_panti = DB::table('panti')->where('id', $id)->get();
         $galeri = DB::table('galeris')->where('email_user', '=', $emails)->take(4)->get();
         
         return view('detailpanti')->with('panti', $new_panti)->with('galeri', $galeri);
     }
 
-    public function galeri()
+    public function galeri($id)
     {
-        
-        return view('galerypanti');
+        $panti = DB::table('panti')->where('id', $id)->get();
+        foreach($panti as $panti){
+            $emails =  $panti->email_user;
+        }
+        $galeri = DB::table('galeris')->where('email_user', '=', $emails)->get();
+        return view('/galerypanti')->with('galeri', $galeri);
     }
 
     public function upload_photo(Request $request)
@@ -179,6 +175,20 @@ class PantiController extends Controller
         ]);
 
         return redirect('/profile_panti');
+    }
+
+    // Menghapus Akun
+    public function deleteAccount($id){
+        $panti = DB::table('panti')->where('id', $id)->get();
+        foreach($panti as $panti){
+            $emails =  $panti->email_user;
+        }
+
+        $new_panti = DB::table('panti')->where('id', $id)->delete();
+        $new_panti = DB::table('galeris')->where('email_user', $emails)->delete();
+        $new_panti = DB::table('users')->where('id', $id)->delete();
+
+        return redirect('/');
     }
 }
 
