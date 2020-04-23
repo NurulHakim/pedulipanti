@@ -46,13 +46,6 @@ Route::get('dashboards', function () {
     return view('lembaga/dashperusahaan');
 });
 
-Route::get('detaillembaga', function () {
-    return view('lembaga/detaillembaga');
-});
-
-Route::get('profile_lembaga', function () {
-    return view('lembaga/isiprofilelembaga');
-});
 
 Route::get('galerypanti/{id?}', 'PantiController@galeri')->name('galeri_panti');
 
@@ -76,3 +69,14 @@ Route::get('/', 'PantiController@viewpanti');
 
 // menghapus akun
 Route::get('delete/{id?}', 'PantiController@deleteAccount')->name('deleteAccount');
+
+
+// perusahaan
+Route::get('detaillembaga', function () {
+    return view('lembaga/detaillembaga');
+});
+
+Route::get('profile_lembaga', function () {
+    return view('lembaga/isiprofilelembaga');
+});
+Route::post('profile_lembaga', 'PerusahaanController@data')->name('upload.lembaga');
