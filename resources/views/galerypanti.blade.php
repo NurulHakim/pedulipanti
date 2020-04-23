@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{asset('css/slick.css')}}">
     <link rel="stylesheet" href="{{asset('css/nice-select.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/galeri.css')}}">
     <link href="{{ asset('css/album.css') }}" rel="stylesheet">
 
 
@@ -86,48 +87,19 @@
 
     <main role="main">
 
-      
         <div class="album py-5 bg-light" style="margin-top: 3em">
             <div class="container">
 
-                <div class="row">
-                    @foreach ($listpanti as $listpanti)
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ asset('upload/panti/images/' . $listpanti->foto_panti) }}" alt="Card image cap">
+                <div class="row gallery-itemw">
+                    @foreach ($galeri as $galeri)
+                    <div class="con-gallery">
+                        <div class="box-pic">
+                                <div class="imgBox">
+                                    <img src="{{asset('upload/panti/images/'. $galeri->path)}}" alt="">
+                                </div>
+                            </div>
                         </div>
-                    </div>
                     @endforeach
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ asset('img/slidekesatu.png') }}" alt="Card image cap">
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
