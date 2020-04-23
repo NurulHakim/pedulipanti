@@ -54,3 +54,14 @@ Route::get('/', 'PantiController@viewpanti');
 
 // menghapus akun
 Route::get('delete/{id?}', 'PantiController@deleteAccount')->name('deleteAccount');
+
+
+// perusahaan
+Route::get('detaillembaga', function () {
+    return view('lembaga/detaillembaga');
+});
+
+Route::get('profile_lembaga', function () {
+    return view('lembaga/isiprofilelembaga');
+});
+Route::post('profile_lembaga', 'PerusahaanController@data')->name('upload');
