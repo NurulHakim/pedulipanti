@@ -61,7 +61,7 @@ class PantiController extends Controller
         $panti->jumlah_anak_perempuan = $request->input('jumlah_anak_perempuan');
         $panti->deskripsi_panti= $request->input('deskripsi_panti');
         $panti->email_user = $emails;
-
+        
         if ($request->hasfile('logo_panti')) {
             $file = $request->file('logo_panti');
             $extension = $file->getClientOriginalExtension();
@@ -69,8 +69,8 @@ class PantiController extends Controller
             $file->move('upload/panti/logo', $filename);
             $panti->logo_panti = $filename;
         } else {
-            return $request;
-            $panti->logo_panti = '';
+            // return $request;
+            $panti->logo_panti = $request->input('');
         }
 
         if ($request->hasfile('foto_panti')) {
@@ -80,8 +80,8 @@ class PantiController extends Controller
             $file->move('upload/panti/foto', $filename);
             $panti->foto_panti = $filename;
         } else {
-            return $request;
-            $panti->foto_panti = '';
+            // return $request;
+            $panti->foto_panti = $request->input('');
         }
 
         if ($request->hasfile('sertifikat_panti')) {
@@ -91,8 +91,8 @@ class PantiController extends Controller
             $file->move('upload/panti/sertifikat', $filename);
             $panti->sertifikat_panti = $filename;
         } else {
-            return $request;
-            $panti->sertifikat_panti = '';
+            // return $request;
+            $panti->sertifikat_panti = $request->input('');
         }
         $panti->save();
 
