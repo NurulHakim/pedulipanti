@@ -2,50 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
-
-    <title>Dashboard Template for Bootstrap</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
-
-    <!-- Bootstrap core CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <!-- Custom styles for this template -->
-    <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
-        <!-- CSS here -->
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
-    <link rel="stylesheet" href="{{asset('css/slicknav.css')}}">
-    <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
-    <link rel="stylesheet" href="{{asset('css/fontawesome-all.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('css/slick.css')}}">
-    <link rel="stylesheet" href="{{asset('css/nice-select.css')}}">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <link href="{{ asset('css/album.css') }}" rel="stylesheet">
+    <title>dashboard</title>
+    @include('header.headDashboard')
 </head>
 
 <body style="height: 100%;">
-<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/"> PeduliPanti</a>
-        <ul class="navbar-nav px-3">
-            <li class="nav-item text-nowrap">
-                <a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">Sign out</a>
-            </li>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-        </ul>
-    </nav>
+    @include('header.headerDashboard')
 
     <div class="container-fluid">
         <div class="row">
