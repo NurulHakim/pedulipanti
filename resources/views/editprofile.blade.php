@@ -2,44 +2,16 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
-
-    <title>Profile</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
-
-    <!-- Bootstrap core CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css">
-    <link href="{{ asset('css/album.css') }}" rel="stylesheet">
-
-
-    <!-- Custom styles for this template -->
-    <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
+    <title>Dashboard</title>
+    @include('header.headDashboard')
 </head>
 
-<body>
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/"> PeduliPanti</a>
-        <ul class="navbar-nav px-3">
-            <li class="nav-item text-nowrap">
-                <a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">Sign out</a>
-            </li>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-        </ul>
-    </nav>
+<body style="height: 100%;">
+    @include('header.headerDashboard')
 
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
@@ -49,21 +21,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link active" href="/profile_panti">
                                 <span data-feather="users"></span>
                                 Profile <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="bar-chart-2"></span>
-                                Reports
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="layers"></span>
-                                Integrations
                             </a>
                         </li>
                     </ul>
@@ -264,15 +224,6 @@
                     </div>
 
                 </form>
-
-                <footer class="page-footer font-small blue" style="padding-top: 1em; padding-bottom: 1em">
-
-                    <!-- Copyright -->
-                    <div class="footer-copyright text-center py-3">© 2020 Copyright: v09042929
-                    </div>
-                    <!-- Copyright -->
-
-                </footer>
             </main>
 
 
