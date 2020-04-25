@@ -34,7 +34,7 @@
 
 <body>  
     <!-- HEADER -->
-    @include('header.index')
+    @include('header.headerWebsite')
     <!-- END OF HEADER -->
 
     <main role="main">
@@ -66,7 +66,7 @@
     <br>
 
     <!-- FOOTER -->
-    @include('footer.index')
+    @include('footer.footerWebsite')
     <!-- END OF FOOTER -->
 
     <!-- Bootstrap core JavaScript
