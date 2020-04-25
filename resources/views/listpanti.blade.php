@@ -33,7 +33,7 @@
 
 <body>
     <!-- HEADER -->
-    @include('header.index')
+    @include('header.headerWebsite')
     <!-- END OF HEADER -->
 
     <section class="jumbotron text-center" style="background-image:url('img/img1.jpg');">
@@ -69,9 +69,9 @@
     </main>
 
     <!-- FOOTER -->
-    @include('footer.index')
+    @include('footer.footerWebsite')
     <!-- END OF FOOTER -->
-    
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
