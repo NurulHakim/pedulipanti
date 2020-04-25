@@ -31,57 +31,9 @@
 </head>
 
 <body>
-
-    <header>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" style="position: relative">
-            <a class="navbar-brand" href="/" style="margin-left: 1em;"><b style="color: white">pedulipanti</b></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="navbar-collapse collapse " id="navbarSupportedContent" style="margin-right: 2em">
-                <ul class="navbar-nav ml-auto">
-
-                    <li class="nav-item" style="margin-right: 1em">
-                        <a class="nav-link" href="/listpanti">Cari Panti<span class="sr-only"></span></a>
-                    </li>
-                    <li class="nav-item" style="margin-right: 1em">
-                        <a class="nav-link" href="#">Tentang Kami</a>
-                    </li>
-                    @guest
-                    <li class="nav-item" style="margin-right: 1em">
-                        <a class="btn btn-outline-primary" href="{{route('login')}}" role="button" style="color: white; border-color: rgb(245, 121, 12)">Login</a>
-                    </li>
-                    @if (Route::has('register'))
-                    <li class="nav-item" style="margin-right: 1em">
-                        <a class="btn btn-primary" href="{{route('register')}}" role="button" style="background-color: rgb(245, 121, 12); border-color: rgb(245, 121, 12)">Sign Up</a>
-                    </li>
-                    @endif
-                    @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/dashboard">
-                                Dashboard
-                            </a>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                    @endguest
-                </ul>
-            </div>
-        </nav>
-    </header>
-
+    <!-- HEADER -->
+    @include('header.index')
+    <!-- END OF HEADER -->
 
     <!-- slider Area End-->
     <!--================Blog Area =================-->
@@ -90,101 +42,100 @@
             <div class="row">
                 @foreach($panti as $panti)
                 <div class="col-lg-8 posts-list">
-                    <div class="single-post" ">
-                        <h1>{{$panti->nama_panti}}</h1>
+                    <div class="single-post">
+                        <br><br><br>
+                        <center>
+                            <h1>{{$panti->nama_panti}}</h1>
+                        </center>
+                        <br>
                         <div class=" feature-img">
-                        <img class="img-fluid" src="{{asset('upload/panti/foto/'. $panti->foto_panti)}}" alt="">
-                    </div>
-                    <div class="blog_details">
-                        <h3>Detail Panti</h3>
-
-                        <p>
-                            <h2 style="margin-bottom: 0">Deskripsi Panti</h2>
-                            {{$panti->deskripsi_panti}}
-                        </p>
-                        <p class="excert" style="font-size: 13pt">
-                            <h2 style="margin-bottom: 0">Alamat</h2>
-                            {{$panti->alamat_panti}}
-                        </p>
-                        <p>
-                            <h2 style="margin-bottom: 0">Nomor Telepon Panti</h2>
-                            {{$panti->no_telepon}}
-                        </p>
-                        <p>
-                            <h2 style="margin-bottom: 0">Nama Pemilik Panti</h2>
-                            {{$panti->nama_pemilik}}
-                        </p>
-                        <p>
-                            <h2 style="margin-bottom: 0">Nomor Telepon Pemilik Panti</h2>
-                            {{$panti->no_telepon_pemilik}}
-                        </p>
-                        <p>
-                            <h2 style="margin-bottom: 0">Deskripsi Kebutuhan Panti</h2>
-                            {{$panti->deskripsi_kebutuhan}}
-                        </p>
-                        <p>
-                            <h2 style="margin-bottom: 0">Deskripsi Program Panti</h2>
-                            - Sekolah - Sholat berjamaah - Pengajian ashar - Pengajian ba'da magrib - Belajar bersama
-                        </p>
-                        <div class="quote-wrapper">
-                            <div class="quotes">
-                                "Jangan pernah lupa untuk selalu bersyukur. Dan berbagi adalah salah satu cara untuk bersyukur atas nikmatNya."
+                            <img class="img-fluid" src="{{asset('upload/panti/foto/'. $panti->foto_panti)}}" alt="">
+                        </div>
+                        <div class="blog_details">
+                            <center>
+                                <h3>Detail Panti</h3>
+                            </center>
+                            <p>
+                                <h2 style="margin-bottom: 0">Deskripsi Panti</h2>
+                                {{$panti->deskripsi_panti}}
+                            </p>
+                            <p class="excert" style="font-size: 13pt">
+                                <h2 style="margin-bottom: 0">Alamat</h2>
+                                {{$panti->alamat_panti}}
+                            </p>
+                            <p>
+                                <h2 style="margin-bottom: 0">Nomor Telepon Panti</h2>
+                                {{$panti->no_telepon}}
+                            </p>
+                            <p>
+                                <h2 style="margin-bottom: 0">Nama Pemilik Panti</h2>
+                                {{$panti->nama_pemilik}}
+                            </p>
+                            <p>
+                                <h2 style="margin-bottom: 0">Nomor Telepon Pemilik Panti</h2>
+                                {{$panti->no_telepon_pemilik}}
+                            </p>
+                            <p>
+                                <h2 style="margin-bottom: 0">Deskripsi Kebutuhan Panti</h2>
+                                {{$panti->deskripsi_kebutuhan}}
+                            </p>
+                            <p>
+                                <h2 style="margin-bottom: 0">Deskripsi Program Panti</h2>
+                                - Sekolah - Sholat berjamaah - Pengajian ashar - Pengajian ba'da magrib - Belajar bersama
+                            </p>
+                            <div class="quote-wrapper">
+                                <div class="quotes">
+                                    "Jangan pernah lupa untuk selalu bersyukur. Dan berbagi adalah salah satu cara untuk bersyukur atas nikmatNya."
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="section-top-border">
-                    <h3>Galeri Kegiatan Panti</h3>
-                    <div class="row gallery-item">
-                        @foreach($galeri as $galeri)
-                            <div class="con-gallery">
-                                <div class="box-pic">
-                                    <div class="imgBox">
-                                        <img src="{{asset('upload/panti/images/'. $galeri->path)}}" alt="">
+                    <div class="section-top-border">
+                        <h3>Galeri Kegiatan Panti</h3>
+                        <div class="row gallery-item">
+                            @foreach($galeri as $galeri)
+                                <div class="con-gallery">
+                                    <div class="box-pic">
+                                        <div class="imgBox">
+                                            <img src="{{asset('upload/panti/images/'. $galeri->path)}}" alt="">
+                                        </div>
                                     </div>
                                 </div>
+                            @endforeach
+                        </div>
+                        <center>
+                            <div class="btn-group">
+                                <a href="{{route('galeri_panti', $panti->email_user)}}"><button type="button" class="btn btn-sm btn-outline-secondary">Lihat Semua</button></a>
                             </div>
-                        @endforeach
-                    </div>
-                    <div class="btn-group">
-                        <a href="{{route('galeri_panti', $panti->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary" style="margin-top: 1em">Lihat Semua</button></a>
+                        </center>
                     </div>
                 </div>
                 @endforeach
-                <div class="navigation-top">
-                    <div class="d-sm-flex justify-content-between text-center">
-
-                        <div class="col-sm-4 text-center my-2 my-sm-0">
-                            <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
+                <div class="col-lg-8 posts-list">
+                    <div class="navigation-top">
+                        <div class="d-sm-flex justify-content-between text-center">
+                            <div class="col-sm-4 text-center my-2 my-sm-0">
+                                <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
+                            </div>
+                            <ul class="social-icons">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                            </ul>
                         </div>
-                        <ul class="social-icons">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fab fa-behance"></i></a></li>
-                        </ul>
                     </div>
-
                 </div>
-
             </div>
-
-        </div>
         </div>
     </section>
-    <footer class="page-footer font-small blue" style="padding-top: 1em; padding-bottom: 1em">
 
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© 2020 Copyright: v09042929
-        </div>
-        <!-- Copyright -->
+    <!-- FOOTER -->
+    @include('footer.index')
+    <!-- END OF FOOTER -->
 
-    </footer>
-
-
-
-    <script src="{{asset('js/modernizr-3.5.0.min.js')}}">
-    </script>
+    <!-- All JS Custom Plugins Link Here here -->
+    <script src="{{asset('js/modernizr-3.5.0.min.js')}}"></script>
 
     <!-- Jquery, Popper, Bootstrap -->
     <script src="{{asset('js/vendor/jquery-1.12.4.min.js')}}"></script>
