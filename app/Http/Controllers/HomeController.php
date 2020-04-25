@@ -31,9 +31,11 @@ class HomeController extends Controller
     public function index()
     {
         // return view('body/landingpageafterlogin');
-        $panti = Panti::all();
+        // $panti = Panti::all();
+        $email = \Auth::user()->email;
         // return view('body/landingpageafterlogin')->with('listpanti', $panti);
-        return view('dashpanti');
+        $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
+        return view('dashpanti')->with('galeri', $galeri);
     }
 
 
