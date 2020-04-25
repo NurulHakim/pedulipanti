@@ -40,7 +40,7 @@
     <!-- Preloader Start -->
 
     <!-- HEADER -->
-    @include('header.index')
+    @include('header.headerWebsite')
     <!-- END OF HEADER -->
     
     <main>
@@ -191,7 +191,7 @@
     </main>
 
     <!-- FOOTER -->
-    @include('footer.index')
+    @include('footer.footerWebsite')
     <!-- END OF FOOTER -->
 
     <!-- All JS Custom Plugins Link Here here -->
