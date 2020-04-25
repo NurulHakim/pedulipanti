@@ -18,16 +18,32 @@
 
     <!-- Custom styles for this template -->
     <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
+        <!-- CSS here -->
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{asset('css/slicknav.css')}}">
+    <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{asset('css/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('css/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link href="{{ asset('css/album.css') }}" rel="stylesheet">
 </head>
 
 <body style="height: 100%;">
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">PeduliPanti</a>
-
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/"> PeduliPanti</a>
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#">Sign out</a>
+                <a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">Sign out</a>
             </li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
         </ul>
     </nav>
 
@@ -35,22 +51,20 @@
         <div class="row">
             <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
-                    <ul class="nav flex-column">
+                    <ul class="nav flex-column">    
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link active" href="/dashboard">
                                 <span data-feather="home"></span>
-                                Dashboard <span class="sr-only">(current)</span>
+                                Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('profile.view')}}">
+                            <a class="nav-link" href="/profile_panti">
                                 <span data-feather="users"></span>
-                                Isi Profile
+                                Profile <span class="sr-only">(current)</span>
                             </a>
                         </li>
-
                     </ul>
-
                 </div>
             </nav>
 
@@ -61,8 +75,31 @@
                 </div>
                 <a href="" data-toggle="modal" data-target="#exampleModal"><button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#exampleModal"> Tambah Photo di Galeri </button></a>
 
+                <main role="main">
 
+                    <div class="album py-5 bg-light" style="margin-top: 3em">
+                        <div class="container">
 
+                            <div class="row gallery-itemw">
+                                @foreach ($galeri as $galeri)
+                                <div class="con-gallery">
+                                    <div class="box-pic">
+                                            <div class="imgBox">
+                                                <img src="{{asset('upload/panti/images/'. $galeri->path)}}" alt="">
+                                            </div>
+                                            <center>
+                                                <div class="btn-group">
+                                                    <a href="{{ route('deletePhoto', $galeri->id )}}"><button type="button" class="btn btn-sm btn-outline-secondary">Hapus</button></a>
+                                            </center> 
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                </main>
             </main>
         </div>
     </div>
@@ -85,8 +122,8 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Upload</button>
                     </div>
+                </form>
             </div>
-            </form>
         </div>
     </div>
     
