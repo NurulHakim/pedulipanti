@@ -24,7 +24,7 @@ class PantiController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
+    // MENAMPILKAN PROFILE PANTI
     public function index()
     {
         $email = \Auth::user()->email;
@@ -37,6 +37,7 @@ class PantiController extends Controller
         }
     }
 
+    // MENGINPUT DATA PANTI KE DATABASE
     public function store(Request $request)
     {
         $panti = new Panti();
@@ -98,6 +99,7 @@ class PantiController extends Controller
         return redirect()->route('profile.view');
     }
 
+    // MENGEDIT PROFILE PANTI
     public function edit(Request $request)
     {
         $emails = \Auth::user()->email;
@@ -125,6 +127,7 @@ class PantiController extends Controller
         return redirect('/profile_panti');
     }
 
+    // MENAMPILKAN DASHBOARD
     public function indexDash(){
         $email = \Auth::user()->email;
 
@@ -136,8 +139,8 @@ class PantiController extends Controller
     public function upload_photo(Request $request)
     {
         $galeri = new galeri();
-        $emails = \Auth::user()->email;
-        $galeri->email_user =  $emails;
+        $email = \Auth::user()->email;
+        $galeri->email_user =  $email;
         if ($request->hasfile('photo')) {
             $file = $request->file('photo');
             $extension = $file->getClientOriginalExtension();
@@ -155,7 +158,7 @@ class PantiController extends Controller
         }
         $galeri->save();
 
-        $galeri = DB::table('galeris')->where('email_user', '=', $emails)->get();
+        $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
         return view('dashpanti')->with('galeri', $galeri);
     }
 
@@ -165,7 +168,7 @@ class PantiController extends Controller
         foreach($galeri as $galeri){
             $path =  $galeri->path;
         }
-        File::delete('upload/panti/images'.$path);
+        File::delete('upload/panti/images/'.$path);
 
         DB::table('galeris')->where('path', $path)->delete();
 		return redirect('dashboard'); 
