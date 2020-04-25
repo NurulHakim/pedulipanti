@@ -15,13 +15,13 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">    
                         <li class="nav-item">
-                            <a class="nav-link active" href="/dashboard">
+                            <a class="nav-link" href="/dashboard">
                                 <span data-feather="home"></span>
-                                Dashboard
+                                Dashboard <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/profile_panti">
+                            <a class="nav-link active" href="/profile_panti">
                                 <span data-feather="users"></span>
                                 Profile <span class="sr-only">(current)</span>
                             </a>
@@ -304,6 +304,7 @@
             <script>
                 feather.replace()
             </script>
+
             <!-- Graphs -->
 </body>
 </html>
