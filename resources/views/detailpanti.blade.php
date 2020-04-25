@@ -32,7 +32,7 @@
 
 <body>
     <!-- HEADER -->
-    @include('header.index')
+    @include('header.headerWebsite')
     <!-- END OF HEADER -->
 
     <!-- slider Area End-->
@@ -131,7 +131,7 @@
     </section>
 
     <!-- FOOTER -->
-    @include('footer.index')
+    @include('footer.footerWebsite')
     <!-- END OF FOOTER -->
 
     <!-- All JS Custom Plugins Link Here here -->
