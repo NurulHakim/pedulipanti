@@ -32,56 +32,10 @@
 </head>
 
 <body>
+    <!-- HEADER -->
+    @include('header.index')
+    <!-- END OF HEADER -->
 
-    <header>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="/" style="margin-left: 1em"><b style="color: white">pedulipanti</b></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="navbar-collapse collapse " id="navbarSupportedContent" style="margin-right: 2em">
-                <ul class="navbar-nav ml-auto">
-
-                    <li class="nav-item" style="margin-right: 1em">
-                        <a class="nav-link" href="/listpanti">Cari Panti<span class="sr-only"></span></a>
-                    </li>
-                    <li class="nav-item" style="margin-right: 1em">
-                        <a class="nav-link" href="#">Tentang Kami</a>
-                    </li>
-                    @guest
-                    <li class="nav-item" style="margin-right: 1em">
-                        <a class="btn btn-outline-primary" href="{{route('login')}}" role="button" style="color: white; border-color: rgb(245, 121, 12)">Login</a>
-                    </li>
-                    @if (Route::has('register'))
-                    <li class="nav-item" style="margin-right: 1em">
-                        <a class="btn btn-primary" href="{{route('register')}}" role="button" style="background-color: rgb(245, 121, 12); border-color: rgb(245, 121, 12)">Sign Up</a>
-                    </li>
-                    @endif
-                    @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/dashboard">
-                                Dashboard
-                            </a>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                    @endguest
-                </ul>
-            </div>
-        </nav>
-    </header>
     <section class="jumbotron text-center" style="background-image:url('img/img1.jpg');">
         <div class="container" style="padding-top: 2em;">
             <h1 class="jumbotron-heading" style="color:white">Cari Panti</h1>
@@ -92,7 +46,6 @@
     <main role="main">
         <div class="album py-5 bg-light">
             <div class="container">
-
                 <div class="row">
                     @foreach ($listpanti as $listpanti)
                     <div class="col-md-4">
@@ -103,7 +56,7 @@
                                 <p class="card-text">{{ substr($listpanti->deskripsi_panti,0, 100)}}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="{{route('tampil_panti', $listpanti->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                                        <a href="{{route('tampil_panti', $listpanti->email_user)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>                                        
                                     </div>
                                 </div>
                             </div>
@@ -113,17 +66,12 @@
                 </div>
             </div>
         </div>
-
     </main>
 
-    <footer class="page-footer font-small blue" style="padding-top: 1em; padding-bottom: 1em">
-
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3" >© 2020 Copyright: v09042929
-        </div>
-        <!-- Copyright -->
-
-    </footer>
+    <!-- FOOTER -->
+    @include('footer.index')
+    <!-- END OF FOOTER -->
+    
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
