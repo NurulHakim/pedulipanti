@@ -13,6 +13,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/tentangkami', function () {
+    return view('tentangkami');
+});
 
 Route::get('/landingpage', function () {
     return view('body/landingpage');
