@@ -94,6 +94,11 @@
             <div class="container">
 
                 <div class="row">
+                    <!-- <div class="col-md-2">
+                        <div class="card mb-4 box-shadow" style="min-height: 380px; width: 380px;">
+
+                        </div>
+                    </div> -->
                     @foreach ($listpanti as $listpanti)
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow" style="min-height: 380px; width: 380px;">
@@ -119,7 +124,7 @@
     <footer class="page-footer font-small blue" style="padding-top: 1em; padding-bottom: 1em">
 
         <!-- Copyright -->
-        <div class="footer-copyright text-center py-3" >© 2020 Copyright: v09042929
+        <div class="footer-copyright text-center py-3">© 2020 Copyright: v09042929
         </div>
         <!-- Copyright -->
 

@@ -25,7 +25,27 @@
     <link rel="stylesheet" href="{{asset('css/galeri.css')}}">
     <link href="{{ asset('css/album.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
 
+            /* Should be removed. Only for demonstration */
+        }
+
+        @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+            }
+        }
+
+        .rows:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
 
 
 </head>
@@ -89,58 +109,87 @@
         <div class="container">
             <div class="row">
                 @foreach($panti as $panti)
-                <div class="col-lg-8 posts-list">
-                    <div class="single-post" ">
-                        <h1>{{$panti->nama_panti}}</h1>
-                        <div class=" feature-img">
-                        <img class="img-fluid" src="{{asset('upload/panti/foto/'. $panti->foto_panti)}}" alt="">
-                    </div>
-                    <div class="blog_details">
-                        <h3>Detail Panti</h3>
+                <div class="col-lg-12 posts-list">
+                    <div class="single-post">
+                        <h1 style="color: rgb(0, 178, 242)">{{$panti->nama_panti}}</h1>
+                       
+                        <div class=" feature-img" style="width: 100%; height: 50%">
+                            <img class="img-fluid" src="{{asset('upload/panti/foto/'. $panti->foto_panti)}}" style="" alt="">
+                        </div>
+                        <div class="section-top-border" style="padding: 0; margin-top: 1em"></div>
+                        <div class="navigation-top" style="padding-top: 0">
+                            <div class="d-sm-flex justify-content-between text-center">
+                                <div class="text-center my-2 my-sm-0">
+                                   <a href="" style=""><button class="btn btn-sm btn-primary" style="background-color: orange">Hubungi</button></a>
+                                </div>
+                                <ul class="social-icons">
+                                    <li>
+                                        <p>as</p>
+                                    </li>
+                                    <li>
+                                        <p>as</p>
+                                    </li>
+                                    <li>
+                                        <p>as</p>
+                                    </li>
+                                    <li>
+                                        <p>as</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="section-top-border"  style="padding-top: 0"></div>
+                        <div class="blog_details">
+                            <h3>Detail Panti</h3>
+                            <div class="rows">
+                                <div class="column" style="padding: 0em">
+                                    <p>
+                                        <h2 style="margin-bottom: 0">Deskripsi Panti</h2>
+                                        {{$panti->deskripsi_panti}}
+                                    </p>
+                                    <p class="excert" style="font-size: 13pt">
+                                        <h2 style="margin-bottom: 0">Alamat</h2>
+                                        {{$panti->alamat_panti}}
+                                    </p>
+                                    <p>
+                                        <h2 style="margin-bottom: 0">Nomor Telepon Panti</h2>
+                                        {{$panti->no_telepon}}
+                                    </p>
+                                    <p>
+                                        <h2 style="margin-bottom: 0">Nama Pemilik Panti</h2>
+                                        {{$panti->nama_pemilik}}
+                                    </p>
+                                    <p>
+                                        <h2 style="margin-bottom: 0">Nomor Telepon Pemilik Panti</h2>
+                                        {{$panti->no_telepon_pemilik}}
+                                    </p>
+                                </div>
+                                <div class="column" style="padding: 0em">
+                                    <p>
+                                        <h2 style="margin-bottom: 0">Deskripsi Panti</h2>
+                                        {{$panti->deskripsi_panti}}
+                                    </p>
+                                    <p>
+                                        <h2 style="margin-bottom: 0">Deskripsi Kebutuhan Panti</h2>
+                                        {{$panti->deskripsi_kebutuhan}}
+                                    </p>
+                                    <p>
+                                        <h2 style="margin-bottom: 0">Deskripsi Program Panti</h2>
+                                        - Sekolah - Sholat berjamaah - Pengajian ashar - Pengajian ba'da magrib - Belajar bersama
+                                    </p>
+                                </div>
+                            </div>
 
-                        <p>
-                            <h2 style="margin-bottom: 0">Deskripsi Panti</h2>
-                            {{$panti->deskripsi_panti}}
-                        </p>
-                        <p class="excert" style="font-size: 13pt">
-                            <h2 style="margin-bottom: 0">Alamat</h2>
-                            {{$panti->alamat_panti}}
-                        </p>
-                        <p>
-                            <h2 style="margin-bottom: 0">Nomor Telepon Panti</h2>
-                            {{$panti->no_telepon}}
-                        </p>
-                        <p>
-                            <h2 style="margin-bottom: 0">Nama Pemilik Panti</h2>
-                            {{$panti->nama_pemilik}}
-                        </p>
-                        <p>
-                            <h2 style="margin-bottom: 0">Nomor Telepon Pemilik Panti</h2>
-                            {{$panti->no_telepon_pemilik}}
-                        </p>
-                        <p>
-                            <h2 style="margin-bottom: 0">Deskripsi Panti</h2>
-                            {{$panti->deskripsi_panti}}
-                        </p>
-                        <p>
-                            <h2 style="margin-bottom: 0">Deskripsi Kebutuhan Panti</h2>
-                            {{$panti->deskripsi_kebutuhan}}
-                        </p>
-                        <p>
-                            <h2 style="margin-bottom: 0">Deskripsi Program Panti</h2>
-                            - Sekolah - Sholat berjamaah - Pengajian ashar - Pengajian ba'da magrib - Belajar bersama
-                        </p>
-                        <div class="quote-wrapper">
-                            <div class="quotes">
-                                "Jangan pernah lupa untuk selalu bersyukur. Dan berbagi adalah salah satu cara untuk bersyukur atas nikmatNya."
+                            <div class="quote-wrapper">
+                                <div class="quotes">
+                                    "Jangan pernah lupa untuk selalu bersyukur. Dan berbagi adalah salah satu cara untuk bersyukur atas nikmatNya."
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="section-top-border">
                     <h3>Galeri Kegiatan Panti</h3>
-                    <div class="row gallery-item">
-                        @foreach($galeri as $galeri)
+                        <div class="row gallery-item">
+                            @foreach($galeri as $galeri)
                             <div class="con-gallery">
                                 <div class="box-pic">
                                     <div class="imgBox">
@@ -148,32 +197,22 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
-                    <div class="btn-group">
-                        <a href="{{route('galeri_panti', $panti->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary" style="margin-top: 1em">Lihat Semua</button></a>
-                    </div>
-                </div>
-                @endforeach
-                <div class="navigation-top">
-                    <div class="d-sm-flex justify-content-between text-center">
-
-                        <div class="col-sm-4 text-center my-2 my-sm-0">
-                            <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
+                            @endforeach
                         </div>
-                        <ul class="social-icons">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fab fa-behance"></i></a></li>
-                        </ul>
+                        <div class="btn-group" style="margin-bottom: 1em">
+                            <a href="{{route('galeri_panti', $panti->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary" style="margin-top: 1em">Lihat Semua</button></a>
+                        </div>
+                    <div class="section-top-border">
+                       
                     </div>
+                    @endforeach
+
+
+
 
                 </div>
 
             </div>
-
-        </div>
         </div>
     </section>
     <footer class="page-footer font-small blue" style="padding-top: 1em; padding-bottom: 1em">

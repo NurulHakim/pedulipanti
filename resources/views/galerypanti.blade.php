@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en"  style="height: 100%">
 
 <head>
     <meta charset="utf-8">
@@ -32,7 +32,7 @@
 
 </head>
 
-<body>
+<body style="min-height: 100%">
 
 
     <header>
@@ -85,9 +85,9 @@
         </nav>
     </header>
 
-    <main role="main">
+    <main role="main" style="height: 100%">
 
-        <div class="album py-5 bg-light" style="margin-top: 3em">
+        <div class="album py-5 bg-light" style="margin-top: 3em; height: 100%">
             <div class="container">
 
                 <div class="row gallery-itemw">

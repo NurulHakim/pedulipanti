@@ -63,7 +63,7 @@
                     <h1 class="h2">Isi Profile</h1>
                 </div>
 
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{route('upload.lembaga')}}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typelembaga" class="col-sm-2 col-form-label">Tipe Lembaga</label>
