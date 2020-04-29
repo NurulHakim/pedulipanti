@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card border-0">
                 <!-- <div class="card-header">{{ __('Reset Password') }}</div> -->
                 <div class="card-header text-center" style="background-color: white">
                     <img class="mb-4" src="{{asset('upload/panti/pedulipanti.png')}}" alt="" width="72" height="72">
