@@ -94,8 +94,11 @@
         </nav>
     </header>
 
+    <!-- HEADER -->
+    <!-- @include('header.headerWebsite') -->
+    <!-- END OF HEADER -->
+    
     <main>
-
         <!-- slider Area Start-->
         <div class="slider-area ">
             <!-- Mobile Menu -->
@@ -138,6 +141,8 @@
         </div>
         <!-- slider Area End-->
         <!-- Our Services Start -->
+
+        
         <div class="our-services servic-padding">
             <div class="container">
                 <div class="row d-flex justify-contnet-center">
@@ -209,9 +214,11 @@
                                         <h4 style="margin-bottom: 1em">{{ $listpanti->nama_panti }}</h4>
                                         <p class="card-text">{{ substr($listpanti->deskripsi_panti,0, 100)}}</p>
                                         <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <a href="{{route('tampil_panti', $listpanti->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
-                                            </div>
+                                            <center>
+                                                <div class="btn-group">
+                                                    <a href="{{route('tampil_panti', $listpanti->email_user)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                                                </div>
+                                            </center>                                            
                                         </div>
                                     </div>
                                 </div>
@@ -235,16 +242,9 @@
 
     </main>
 
-    <footer class="page-footer font-small blue" style="padding-top: 1em; padding-bottom: 1em">
-
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© 2020 Copyright: v09042929
-        </div>
-        <!-- Copyright -->
-
-    </footer>
-
-    <!-- JS here -->
+    <!-- FOOTER -->
+    @include('footer.footerWebsite')
+    <!-- END OF FOOTER -->
 
     <!-- All JS Custom Plugins Link Here here -->
     <script src="{{asset('js/modernizr-3.5.0.min.js')}}"></script>
@@ -279,6 +279,10 @@
     <!-- Jquery Plugins, main Jquery -->
     <script src="{{asset('js/plugins.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
 
 </body>
 

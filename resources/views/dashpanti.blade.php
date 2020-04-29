@@ -2,55 +2,31 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
-
-    <title>Dashboard Template for Bootstrap</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
-
-    <!-- Bootstrap core CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <!-- Custom styles for this template -->
-    <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
+    <title>Dashboard</title>
+    @include('header.headDashboard')
 </head>
 
 <body style="height: 100%;">
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">PeduliPanti</a>
-
-        <ul class="navbar-nav px-3">
-            <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#">Sign out</a>
-            </li>
-        </ul>
-    </nav>
+    @include('header.headerDashboard')
 
     <div class="container-fluid">
         <div class="row">
             <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
-                    <ul class="nav flex-column">
+                    <ul class="nav flex-column">    
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link active" href="/dashboard">
                                 <span data-feather="home"></span>
-                                Dashboard <span class="sr-only">(current)</span>
+                                Dashboard  <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('profile.view')}}">
+                            <a class="nav-link" href="/profile_panti">
                                 <span data-feather="users"></span>
-                                Isi Profile
+                                Profile <span class="sr-only">(current)</span>
                             </a>
                         </li>
-
                     </ul>
-
                 </div>
             </nav>
 
@@ -61,8 +37,31 @@
                 </div>
                 <a href="" data-toggle="modal" data-target="#exampleModal"><button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#exampleModal"> Tambah Photo di Galeri </button></a>
 
+                <main role="main">
 
+                    <div class="album py-5 bg-light" style="margin-top: 3em">
+                        <div class="container">
 
+                            <div class="row gallery-itemw">
+                                @foreach ($galeri as $galeri)
+                                <div class="con-gallery">
+                                    <div class="box-pic">
+                                            <div class="imgBox">
+                                                <img src="{{asset('upload/panti/images/'. $galeri->path)}}" alt="">
+                                            </div>
+                                            <center>
+                                                <div class="btn-group">
+                                                    <a href="{{ route('deletePhoto', $galeri->id )}}"><button type="button" class="btn btn-sm btn-outline-secondary">Hapus</button></a>
+                                            </center> 
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                </main>
             </main>
         </div>
     </div>
@@ -85,60 +84,68 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Upload</button>
                     </div>
+                </form>
             </div>
-            </form>
         </div>
     </div>
     
 
-    <!-- Bootstrap core JavaScript
+            <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
-    <script src="{{asset('js/popper.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/holder.min.js')}}"></script>
+            <!-- Placed at the end of the document so the pages load faster -->
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+            </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.full.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+            <script src="{{asset('js/popper.min.js')}}"></script>
+            <script src="{{asset('js/bootstrap.min.js')}}"></script>
+            <script src="{{asset('js/holder.min.js')}}"></script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#sidebar").mCustomScrollbar({
+                        theme: "minimal"
+                    });
 
+                    $('#sidebarCollapse').on('click', function() {
+                        $('#sidebar, #content').toggleClass('active');
+                        $('.collapse.in').toggleClass('in');
+                        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                    });
+                });
+            </script>
+            <script text="text/javascript">
+                $(function() {
+                    $(document).on("change", ".uploadFile", function() {
+                        var uploadFile = $(this);
+                        var files = !!this.files ? this.files : [];
+                        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
 
-    <!-- Icons -->
-    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-    <script>
-        feather.replace()
-    </script>
+                        if (/^image/.test(files[0].type)) {
+                            // only image file
+                            var reader = new FileReader(); // instance of the FileReader
+                            reader.readAsDataURL(files[0]); // read the local file
 
-    <!-- Graphs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-    <script>
-        var ctx = document.getElementById("myChart");
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-                datasets: [{
-                    data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-                    lineTension: 0,
-                    backgroundColor: 'transparent',
-                    borderColor: '#007bff',
-                    borderWidth: 4,
-                    pointBackgroundColor: '#007bff'
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: false
+                            reader.onloadend = function() {
+                                // set image data as background of div
+                                //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+                                uploadFile
+                                    .closest(".imgUp")
+                                    .find(".imagePreview")
+                                    .css("background-image", "url(" + this.result + ")");
+                            };
                         }
-                    }]
-                },
-                legend: {
-                    display: false,
-                }
-            }
-        });
-    </script>
+                    });
+                });
+            </script>
+
+            <!-- Icons -->
+            <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+            <script>
+                feather.replace()
+            </script>
+
+            <!-- Graphs -->
 </body>
 
 </html>
