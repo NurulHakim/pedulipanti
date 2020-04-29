@@ -213,20 +213,14 @@
                             @endforeach
                         </div>
                         <div style=" float: right; display: block;">
-                            <a href="/listpanti"><button type="button" class="btn btn-sm btn-outline-secondary">Lihat Semua</button></a>
+                            <a href="/listpanti"><button type="button" class="btn btn-sm btn-outline-secondary left">Lihat Semua</button></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         </div>
-        <!-- Favourite Places End -->
-        <!-- Video Start Arera -->
-
-        <!-- Video Start End -->
-        <!-- Support Company Start-->
-
-        <!-- Blog Area End -->
+      
 
     </main>
 

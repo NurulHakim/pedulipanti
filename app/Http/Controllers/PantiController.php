@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\AuthController;
 use App\User;
+use App\program;
+
 use File;
 use App\galeri;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -126,18 +128,37 @@ class PantiController extends Controller
 
         return redirect('/profile_panti');
     }
-    }
-    // public function view_detail($id)
-    // {
-    //     $emails = \Auth::user()->email;
-    //     $panti = DB::table('panti')->where('id', '=', $id)->get();
-        
-    //     $galeri = DB::table('galeris')->where('email_user', '=', $emails)->take(3)->get();
-    //     return view('detailpanti')->with('panti', $panti)->with('galeri', $galeri);
-    // }
-
-    public function viewpanti()
+    //MENAMBAH PROGRAMM PANTI
+    public function tambah_program(Request $request)
     {
+        $program = new program();
+        $email = \Auth::user()->email;
+        $ids = Panti::select('id')->where('email_user', '=', $email)->get();
+        foreach($ids as $ids){
+            $program->id_panti = $ids->id;
+        }
+        $program->judul = $request->input('judul_program');
+        $program->biaya = $request->input('biaya_program');
+        $program->deskripsi_program = $request->input('deskripsi_program');
+        if ($request->hasfile('photo_prog')) {
+            $file = $request->file('photo_prog');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('upload/panti/program', $filename);
+            $program->photo_program = $filename;
+        } else {
+            // return $request;
+            $program->photo_program = $request->input('');
+        }
+        $program->save();
+
+        $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
+        return view('dashpanti')->with('galeri', $galeri);
+    }
+    
+   
+
+    public function viewpanti(){
         $panti = Panti::all()->take(6);
         return view('body/landingpage')->with('listpanti', $panti);
     }
@@ -156,6 +177,11 @@ class PantiController extends Controller
     {
         $galeri = new galeri();
         $email = \Auth::user()->email;
+        $ids = Panti::select('id')->where('email_user', '=', $email)->get();
+        foreach($ids as $ids){
+            $galeri->id_panti = $ids->id;
+        }
+        
         $galeri->email_user =  $email;
         if ($request->hasfile('photo')) {
             $file = $request->file('photo');
@@ -173,17 +199,15 @@ class PantiController extends Controller
             $galeri->path = '';
         }
         $galeri->save();
-        return view('dashpanti');
-    }
-       
-
         $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
         return view('dashpanti')->with('galeri', $galeri);
     }
+       
+
 
     // MENGHAPUS FOTO GALLERY
     public function deletePhoto($id){
-        $galeri = DB::table('galeris')->where('id', $id)->get();
+        $galeri = DB::table('galeris')->where('id', '=', $id)->get();
         foreach($galeri as $galeri){
             $path =  $galeri->path;
         }

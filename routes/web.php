@@ -44,13 +44,14 @@ Route::get('dashboards', function () {
 });
 
 
-Route::get('galerypanti/{id?}', 'PantiController@galeri')->name('galeri_panti');
+// Route::get('galerypanti/{id?}', 'PantiController@galeri')->name('galeri_panti');
 // ROTE HALAMAN LANDING PAGE
 Route::get('/', 'LandingPageController@viewpanti');
 
 // ROUTE HALAMAN DASHBOARD
 Route::get('dashboard', 'PantiController@indexDash')->middleware('auth');
 Route::post('dashboard/{id?}', 'PantiController@upload_photo')->middleware('auth')->name('upload_photo');
+Route::post('tambah_program', 'PantiController@tambah_program')->middleware('auth')->name('tambah_program');
 
 // HAPUS FOTO GALLERY
 Route::get('dashboard/{id?}', 'PantiController@deletePhoto')->name('deletePhoto');
@@ -64,18 +65,18 @@ Route::post('profile_panti/{id?}', 'PantiController@edit')->middleware('auth')->
 
 Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/', 'HomeController@index')->name('home');
-Route::get('/', 'PantiController@viewpanti');
+
 // Route::get('/', function () {
 //     return view('body/landingpage');
 // });
 // ROUTE HALAMAN DETAIL PANTI
-Route::get('panti/{email_user?}', 'UserController@view_detail')->name('tampil_panti');
+Route::get('panti/{id?}', 'UserController@view_detail')->name('tampil_panti');
 
 // ROUTE HALAMAN LIST PANTI
 Route::get('/listpanti', 'UserController@listview');
 
 // ROUTE HALAMAN GALLERY PANTI
-Route::get('galerypanti/{email_user?}', 'UserController@galeri')->name('galeri_panti');
+Route::get('galerypanti/{id?}', 'UserController@galeri')->name('galeri_panti');
 
 // menghapus akun
 Route::get('delete/{id?}', 'PantiController@deleteAccount')->name('deleteAccount');
@@ -91,4 +92,4 @@ Route::get('profile_lembaga', function () {
 });
 Route::post('profile_lembaga', 'PerusahaanController@data')->name('upload.lembaga');
 // ROUTE UNTUK MENGHAPUS AKUN
-Route::get('delete}', 'PantiController@deleteAccount')->name('deleteAccount');
+Route::get('delete', 'PantiController@deleteAccount')->name('deleteAccount');

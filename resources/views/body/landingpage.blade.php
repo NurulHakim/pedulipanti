@@ -216,7 +216,7 @@
                                         <div class="d-flex justify-content-between align-items-center">
                                             <center>
                                                 <div class="btn-group">
-                                                    <a href="{{route('tampil_panti', $listpanti->email_user)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                                                    <a href="{{route('tampil_panti', $listpanti->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
                                                 </div>
                                             </center>                                            
                                         </div>

@@ -57,11 +57,12 @@
                         <div class="card mb-4 box-shadow" style="min-height: 380px; width: 380px;">
                             <img class="card-img-top" src="{{ asset('upload/panti/foto/' . $listpanti->foto_panti) }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
                             <div class="card-body">
-                                <h4 style="margin-bottom: 1em">{{ $listpanti->nama_panti }}</h4>
+                                <h4 style="margin-bottom: 0em">{{ $listpanti->nama_panti }}</h4>
+                                <p class="card-text" style="color: orange"><img src="https://img.icons8.com/pastel-glyph/20/ffa200/worldwide-location--v2.png"/> {{$listpanti->kecamatan}}, {{$listpanti->kabupaten_kota}}</p>
                                 <p class="card-text">{{ substr($listpanti->deskripsi_panti,0, 100)}}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="{{route('tampil_panti', $listpanti->email_user)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>                                        
+                                        <a href="{{route('tampil_panti', $listpanti->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>                                        
                                     </div>
                                 </div>
                             </div>
