@@ -15,6 +15,8 @@ class CreatePantiTable extends Migration
     {
         Schema::create('panti', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('email_user', 100)->unique();
+            $table->foreign('email_user')->references('email')->on('users');
             $table->string('tipe_panti');
             $table->string('jenis_yayasan');
             $table->string('nama_panti');
@@ -27,13 +29,14 @@ class CreatePantiTable extends Migration
             $table->string('kecamatan');
             $table->string('kelurahan');
             $table->string('kebutuhan_panti');
-            $table->string('deskripsi_kebutuhan');
+            $table->text('deskripsi_kebutuhan');
+            $table->text('deskripsi_panti');
             $table->integer('jumlah_pengurus');
             $table->integer('jumlah_anak_laki');
             $table->integer('jumlah_anak_perempuan');
-            $table->mediumText('logo_panti');
-            $table->mediumText('foto_panti');
-            $table->mediumText('sertifikat_panti');
+            $table->mediumText('logo_panti')->nullable($value = true);
+            $table->mediumText('foto_panti')->nullable($value = true);
+            $table->mediumText('sertifikat_panti')->nullable($value = true);
             $table->timestamps();
         });
     }

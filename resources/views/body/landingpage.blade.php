@@ -40,7 +40,7 @@
     <!-- Preloader Start -->
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="/" style="margin-left: 1em"><b>pedulipanti</b></a>
+            <a class="navbar-brand" href="/" style="margin-left: 1em"><b style="color: white">pedulipanti</b></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -73,13 +73,19 @@
                                 Dashboard
                             </a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
+                                document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
+
+
+                            <a class="dropdown-item" href="{{ route('deleteAccount', Auth::user()->id)}}">
+                                Hapus Akun
+                            </a>
+
                         </div>
                     </li>
                     @endguest
@@ -88,8 +94,11 @@
         </nav>
     </header>
 
+    <!-- HEADER -->
+    <!-- @include('header.headerWebsite') -->
+    <!-- END OF HEADER -->
+    
     <main>
-
         <!-- slider Area Start-->
         <div class="slider-area ">
             <!-- Mobile Menu -->
@@ -109,7 +118,7 @@
                                 <!-- form -->
                                 <form action="#" class="search-box">
                                     <div class="input-form mb-30">
-                                        <input type="text" placeholder="When Would you like to go ?">
+                                        <input type="text" placeholder="Ayo cari Panti Sekarang!">
                                     </div>
                                     <div class="select-form mb-30">
                                         <div class="select-itms">
@@ -132,6 +141,8 @@
         </div>
         <!-- slider Area End-->
         <!-- Our Services Start -->
+
+        
         <div class="our-services servic-padding">
             <div class="container">
                 <div class="row d-flex justify-contnet-center">
@@ -180,7 +191,7 @@
         </div>
         <!-- Our Services End -->
         <!-- Favourite Places Start -->
-        <div class="favourite-place place-padding">
+        <div class="favourite-place place-padding" style="padding-bottom: 1em">
             <div class="container">
                 <!-- Section Tittle -->
                 <div class="row">
@@ -195,93 +206,27 @@
                     <div class="container">
 
                         <div class="row">
+                            @foreach ($listpanti as $listpanti)
                             <div class="col-md-4">
-                                <div class="card mb-4 box-shadow" style="min-height: 400px; max-height: 400px;">
-                                    <img class="card-img-top" src="{{ asset('img/mahmudah.jpg') }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
+                                <div class="card mb-4 box-shadow" style="min-height: 380px; width: 380px;">
+                                    <img class="card-img-top" src="{{ asset('upload/panti/foto/' . $listpanti->foto_panti) }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
                                     <div class="card-body">
-                                        <h4 style="margin-bottom: 1em">Panti Mahmudah</h4>
-                                        <p class="card-text">Panti Butuh Pakaian</p>
+                                        <h4 style="margin-bottom: 1em">{{ $listpanti->nama_panti }}</h4>
+                                        <p class="card-text">{{ substr($listpanti->deskripsi_panti,0, 100)}}</p>
                                         <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                            </div>
+                                            <center>
+                                                <div class="btn-group">
+                                                    <a href="{{route('tampil_panti', $listpanti->email_user)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                                                </div>
+                                            </center>                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="card mb-4 box-shadow" style="min-height: 400px; max-height: 400px;">
-                                    <img class="card-img-top" src="{{ asset('img/mahmudah.jpg') }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
-                                    <div class="card-body">
-                                        <h4 style="margin-bottom: 1em">Panti Mahmudah</h4>
-                                        <p class="card-text">Panti Butuh Pakaian</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card mb-4 box-shadow" style="min-height: 400px; max-height: 400px;">
-                                    <img class="card-img-top" src="{{ asset('img/mahmudah.jpg') }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
-                                    <div class="card-body">
-                                        <h4 style="margin-bottom: 1em">Panti Mahmudah</h4>
-                                        <p class="card-text">Panti Butuh Pakaian</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card mb-4 box-shadow" style="min-height: 400px; max-height: 400px;">
-                                    <img class="card-img-top" src="{{ asset('img/mahmudah.jpg') }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
-                                    <div class="card-body">
-                                        <h4 style="margin-bottom: 1em">Panti Mahmudah</h4>
-                                        <p class="card-text">Panti Butuh Pakaian</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card mb-4 box-shadow" style="min-height: 400px; max-height: 400px;">
-                                    <img class="card-img-top" src="{{ asset('img/mahmudah.jpg') }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
-                                    <div class="card-body">
-                                        <h4 style="margin-bottom: 1em">Panti Mahmudah</h4>
-                                        <p class="card-text">Panti Butuh Pakaian</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card mb-4 box-shadow" style="min-height: 400px; max-height: 400px;">
-                                    <img class="card-img-top" src="{{ asset('img/mahmudah.jpg') }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
-                                    <div class="card-body">
-                                        <h4 style="margin-bottom: 1em">Panti Mahmudah</h4>
-                                        <p class="card-text">Panti Butuh Pakaian</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style=" float: right; display: block;">
-                                <a href="/listpanti"><button type="button" class="btn btn-sm btn-outline-secondary">Lihat Semua</button></a>
-                            </div>
+                            @endforeach
+                        </div>
+                        <div style=" justify-content: center; display: flex;">
+                            <a href="/listpanti"><button type="button" class="btn btn-sm btn-outline-secondary">Lihat Semua</button></a>
                         </div>
                     </div>
                 </div>
@@ -297,27 +242,9 @@
 
     </main>
 
-    <footer class="text-muted">
-        <div class="container">
-            <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-            <div class="row">
-                <div class="col-6 col-md-4">
-                    <h5 class="card-title">Berdayakan panti bersama pedulipanti</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-                <div class="col-6 col-md-4">
-                    <h5 class="card-title">Media Sosial</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-                <div class="col-6 col-md-4">
-                    <h5 class="card-title">Hubungi Kami</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JS here -->
+    <!-- FOOTER -->
+    @include('footer.footerWebsite')
+    <!-- END OF FOOTER -->
 
     <!-- All JS Custom Plugins Link Here here -->
     <script src="{{asset('js/modernizr-3.5.0.min.js')}}"></script>
@@ -352,6 +279,10 @@
     <!-- Jquery Plugins, main Jquery -->
     <script src="{{asset('js/plugins.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
 
 </body>
 

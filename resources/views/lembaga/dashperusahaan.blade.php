@@ -43,7 +43,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('profile.view')}}">
+                            <a class="nav-link" href="/profile_lembaga">
                                 <span data-feather="users"></span>
                                 Isi Profile
                             </a>
@@ -54,40 +54,17 @@
                 </div>
             </nav>
 
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" style=" ">
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <h1 class="h2">Dashboard</h1>
 
                 </div>
-                <a href="" data-toggle="modal" data-target="#exampleModal"><button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#exampleModal"> Tambah Photo di Galeri </button></a>
-
-
-
             </main>
         </div>
     </div>
     
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Upload Photo</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="{{ route('upload_photo') }}" method="POST" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <div class="modal-body">
-                        <input name="photo"type="file" accept="image/png, image/jpeg">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Upload</button>
-                    </div>
-            </div>
-            </form>
-        </div>
+       
     </div>
     
 
