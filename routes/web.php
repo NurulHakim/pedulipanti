@@ -13,6 +13,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+Route::get('/landingpage', function () {
+    return view('body/landingpage');
+});
+
 Route::get('logo/index', function () {
     return view('logo/index');
 });
