@@ -104,6 +104,54 @@
         </div>
         <!-- slider Area End-->
 
+        <!-- Our Services Start -->
+        <div class="our-services servic-padding">
+            <div class="container">
+                <div class="row d-flex justify-contnet-center">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span><img src="https://img.icons8.com/material-rounded/40/000000/fast-browsing.png"/></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5>Cepat</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span><img src="https://img.icons8.com/carbon-copy/24/000000/easy.png"/></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5>Mudah</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-experience"></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5>Banyak Pilihan</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-good"></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5>Seluruh Bandar Lampung</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Our Services End -->
         <!-- Favourite Places Start -->
         <div class="favourite-place place-padding" style="padding-bottom: 1em">
             <div class="container">

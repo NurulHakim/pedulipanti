@@ -110,3 +110,6 @@ Route::post('/kabupaten', 'PantiController@getKabupaten')->middleware('auth')->n
 Route::post('/kecamatan', 'PantiController@getKecamatan')->middleware('auth')->name('getKecamatan');
 Route::post('/kelurahan', 'PantiController@getKelurahan')->middleware('auth')->name('getKelurahan');
 // Route::get('delete', 'PantiController@deleteAccount')->name('deleteAccount');
+Route::get('tentangkami', function(){
+    return view('tentangkami');
+});

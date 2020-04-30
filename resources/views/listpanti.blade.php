@@ -29,6 +29,20 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/album.css') }}" rel="stylesheet">
+    <style>
+        .sort-btn{
+            background: blue;
+            display: block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 12pt;
+            position: fixed;
+            right: 50%;
+            bottom: 30px;
+        }
+    </style>
 </head>
 
 <body>
@@ -70,6 +84,7 @@
                     </div>
                     @endforeach
                 </div>
+                <a href="" class="btn btn-outline-secondary" style="position: fixed;right: 46%; bottom: 40px; border-radius: 40px; background-color: orange">Sorting</a>
             </div>
         </div>
     </main>
@@ -112,7 +127,7 @@
     <script src="{{asset('js/jquery.magnific-popup.js')}}"></script>
 
     <!-- Scrollup, nice-select, sticky -->
-    <script src="{{asset('js/jquery.scrollUp.min.js')}}"></script>
+    
     <script src="{{asset('js/jquery.nice-select.min.js')}}"></script>
     <script src="{{asset('js/jquery.sticky.js')}}"></script>
 
