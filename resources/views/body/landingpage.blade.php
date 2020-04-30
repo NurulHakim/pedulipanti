@@ -38,7 +38,9 @@
         </div>
     </div>
     <!-- Preloader Start -->
-    <header>
+
+    <!-- HEADER -->
+    @include('heade    <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="/" style="margin-left: 1em"><b style="color: white">pedulipanti</b></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,10 +94,9 @@
                 </ul>
             </div>
         </nav>
-    </header>
+<!-- /header>
 
-    <!-- HEADER -->
-    <!-- @include('header.headerWebsite') -->
+    <!-- HEADER -->  --><!-- @include('header.headerWebsite') -->
     <!-- END OF HEADER -->
     
     <main>
@@ -242,20 +243,22 @@
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
-                        </div>
+                            @en <<<<<<< HEAD
+                        <br><br><br>
+                        <center>
+                            <div class="btn-group">
+                                <a href="/listpanti"><button type="button" class="btn btn-sm btn-outline-secondary">Lihat Semua</button></a>
+                            </div>
+                        </center>
+                        
+=======
                         <div style=" justify-content: center; display: flex;">
                             <a href="/listpanti"><button type="button" class="btn btn-sm btn-outline-secondary">Lihat Semua</button></a>
                         </div>
-                    </div>
-                </div>
+>>>>>>> origin/dino
             </div>
-        </div>
-        <!-- Favourite Places End -->
-        <!-- Video Start Arera -->
-
-        <!-- Video Start End -->
-        <!-- Support Company Start-->
+>>>>>>> origin/dino
+ <!-- Support Company Start-->
 
         <!-- Blog Area End -->
 
