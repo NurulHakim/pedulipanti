@@ -7,9 +7,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\AuthController;
+use Laravolt\Indonesia\Models\City;
+use Laravolt\Indonesia\Models\Province;
+use Laravolt\Indonesia\Models\District;
+use Laravolt\Indonesia\Models\Village;
+// use App\Http\Controllers\Province;
 use App\User;
+// use App\Province;
 use File;
 use App\galeri;
+use App\Wilayah;
 use Intervention\Image\ImageManagerStatic as Image;
 class PantiController extends Controller
 {
@@ -31,11 +38,66 @@ class PantiController extends Controller
         $datas = DB::table('panti')->where('email_user', '=', $email)->get();
         $data['data'] = $datas;
         if (!$datas->isEmpty()) {
-            return view('editprofile', $data);
+            $provinces = Province::pluck('name', 'id');
+            $panti = Panti::all();
+
+            foreach($panti as $panti){
+                $id_prov= $panti->provinsi;
+                $id_kab= $panti->kabupaten_kota;
+                $id_kec= $panti->kecamatan;
+                $id_kel= $panti->kelurahan;
+
+                // echo $id_prov;
+            }
+
+            $provinsi = Province::where('id', $id_prov)->get();
+            $kabupaten = City::where('id', $id_kab)->get();
+            $kecamatan = District::where('id', $id_kec)->get();
+            $kelurahan = Village::where('id', $id_kel)->get();
+            
+            return view('editprofile', $data)->with('nama_provinsi', $provinsi)->with('nama_kabupaten', $kabupaten)->with('nama_kecamatan', $kecamatan)->with('nama_kelurahan', $kelurahan)->with('provinces', $provinces);
         } else {
-            return view('isiprofile');
+            $provinces = Province::pluck('name', 'id');
+            // $provinces = Province::get();
+            // $provinces = Province::all();
+            // echo($provinces);
+            return view('isiprofile')->with('provinces', $provinces);
+            // return view('isiprofile');
         }
     }
+
+    public function getKabupaten(Request $request)
+    {
+        $cities = City::where('province_id', $request->get('id'))->pluck('name', 'id');
+    
+        return response()->json($cities);
+    }
+
+    public function getKecamatan(Request $request)
+    {
+        $cities = District::where('city_id', $request->get('id'))->pluck('name', 'id');
+    
+        return response()->json($cities);
+    }
+
+    public function getKelurahan(Request $request)
+    {
+        
+        $cities = Village::where('district_id', $request->get('id'))->pluck('name', 'id');
+    
+        return response()->json($cities);
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     // MENGINPUT DATA PANTI KE DATABASE
     public function store(Request $request)
@@ -51,7 +113,7 @@ class PantiController extends Controller
         $panti->no_telepon_pemilik = $request->input('no_telepon_pemilik');
         $panti->alamat_panti = $request->input('alamat_panti');
         $panti->provinsi = $request->input('provinsi');
-        $panti->kabupaten_kota = $request->input('kabupaten_kota');
+        $panti->kabupaten_kota = $request->input('kabupaten');
         $panti->kecamatan = $request->input('kecamatan');
         $panti->kelurahan = $request->input('kelurahan');
         $panti->kebutuhan_panti = $request->input('kebutuhan_panti');
@@ -61,7 +123,7 @@ class PantiController extends Controller
         $panti->jumlah_anak_perempuan = $request->input('jumlah_anak_perempuan');
         $panti->deskripsi_panti= $request->input('deskripsi_panti');
         $panti->email_user = $emails;
-        
+
         if ($request->hasfile('logo_panti')) {
             $file = $request->file('logo_panti');
             $extension = $file->getClientOriginalExtension();
@@ -70,7 +132,7 @@ class PantiController extends Controller
             $panti->logo_panti = $filename;
         } else {
             // return $request;
-            $panti->logo_panti = $request->input('');
+            $panti->logo_panti = '';
         }
 
         if ($request->hasfile('foto_panti')) {
@@ -81,7 +143,7 @@ class PantiController extends Controller
             $panti->foto_panti = $filename;
         } else {
             // return $request;
-            $panti->foto_panti = $request->input('');
+            $panti->foto_panti = '';
         }
 
         if ($request->hasfile('sertifikat_panti')) {
@@ -92,7 +154,7 @@ class PantiController extends Controller
             $panti->sertifikat_panti = $filename;
         } else {
             // return $request;
-            $panti->sertifikat_panti = $request->input('');
+            $panti->sertifikat_panti = '';
         }
         $panti->save();
 
@@ -102,7 +164,10 @@ class PantiController extends Controller
     // MENGEDIT PROFILE PANTI
     public function edit(Request $request)
     {
+        $panti = new Panti();
+
         $emails = \Auth::user()->email;
+        $provinces = Province::pluck('name', 'id');
 
         DB::table('panti')->where('email_user', $emails)->update([
             'tipe_panti' => $request->tipe_panti,
@@ -121,8 +186,42 @@ class PantiController extends Controller
             'jumlah_pengurus' => $request->jumlah_pengurus,
             'jumlah_anak_laki' => $request->jumlah_anak_laki,
             'jumlah_anak_perempuan' => $request->jumlah_anak_perempuan,
-            'deskripsi_panti'=> $request->deskripsi_panti
+            'deskripsi_panti'=> $request->deskripsi_panti,
         ]);
+        
+        // if ($request->hasfile('logo_panti')) {
+        //     $file = $request->file('logo_panti');
+        //     $extension = $file->getClientOriginalExtension();
+        //     $filename = time() . '.' . $extension;
+        //     $file->move('upload/panti/logo', $filename);
+        //     $panti->logo_panti = $filename;
+        // } else {
+        //     // return $request;
+        //     $panti->logo_panti = '';
+        // }
+
+        // if ($request->hasfile('foto_panti')) {
+        //     $file = $request->file('foto_panti');
+        //     $extension = $file->getClientOriginalExtension();
+        //     $filename = time() . '.' . $extension;
+        //     $file->move('upload/panti/foto', $filename);
+        //     $panti->foto_panti = $filename;
+        // } else {
+        //     // return $request;
+        //     $panti->foto_panti = '';
+        // }
+
+        // if ($request->hasfile('sertifikat_panti')) {
+        //     $file = $request->file('sertifikat_panti');
+        //     $extension = $file->getClientOriginalExtension();
+        //     $filename = time() . '.' . $extension;
+        //     $file->move('upload/panti/sertifikat', $filename);
+        //     $panti->sertifikat_panti = $filename;
+        // } else {
+        //     // return $request;
+        //     $panti->sertifikat_panti = '';
+        // }
+        $panti->save();
 
         return redirect('/profile_panti');
     }
@@ -182,5 +281,8 @@ class PantiController extends Controller
         DB::table('users')->where('email', $email)->delete();
         return redirect('/');
     }
+
+
+    // daerah indonesias
 }
 

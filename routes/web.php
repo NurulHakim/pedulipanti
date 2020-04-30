@@ -56,3 +56,11 @@ Route::get('galerypanti/{email_user?}', 'UserController@galeri')->name('galeri_p
 
 // ROUTE UNTUK MENGHAPUS AKUN
 Route::get('delete}', 'PantiController@deleteAccount')->name('deleteAccount');
+
+// ROUTE UNTUK SEARCH PANTI
+Route::get('search', 'UserController@searchPanti')->name('searchPanti');
+
+
+Route::post('/kabupaten', 'PantiController@getKabupaten')->middleware('auth')->name('getKabupaten');
+Route::post('/kecamatan', 'PantiController@getKecamatan')->middleware('auth')->name('getKecamatan');
+Route::post('/kelurahan', 'PantiController@getKelurahan')->middleware('auth')->name('getKelurahan');

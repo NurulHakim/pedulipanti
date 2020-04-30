@@ -103,56 +103,7 @@
             </div>
         </div>
         <!-- slider Area End-->
-        <!-- Our Services Start -->
 
-        
-        <div class="our-services servic-padding">
-            <div class="container">
-                <div class="row d-flex justify-contnet-center">
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-tour"></span>
-                            </div>
-                            <div class="services-cap">
-                                <h5>Cepat</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-pay"></span>
-                            </div>
-                            <div class="services-cap">
-                                <h5>Mudah</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-experience"></span>
-                            </div>
-                            <div class="services-cap">
-                                <h5>Banyak Pilihan</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-good"></span>
-                            </div>
-                            <div class="services-cap">
-                                <h5>Seluruh Bandar Lampung</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Our Services End -->
         <!-- Favourite Places Start -->
         <div class="favourite-place place-padding" style="padding-bottom: 1em">
             <div class="container">
@@ -161,7 +112,7 @@
                     <div class="col-lg-12">
                         <div class="section-tittle text-center">
 
-                            <h2>CARI PANTI</h2>
+                            <h2>Hasil Pencarian</h2>
                         </div>
                     </div>
                 </div>
@@ -169,7 +120,7 @@
                     <div class="container">
 
                         <div class="row">
-                            @foreach ($listpanti as $listpanti)
+                            @foreach ($hasil as $listpanti)
                             <div class="col-md-4">
                                 <div class="card mb-4 box-shadow" style="min-height: 400px; max-height: 400px;">
                                     <img class="card-img-top" src="{{ asset('upload/panti/foto/' . $listpanti->foto_panti) }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
@@ -177,7 +128,6 @@
                                         <h4 style="margin-bottom: 1em">{{ $listpanti->nama_panti }}</h4>
                                         <p class="card-text">{{ substr($listpanti->deskripsi_panti,0, 100)}}</p>
                                         <div class="d-flex justify-content-between align-items-center">
-                                            
                                             <center>
                                                 <div class="btn-group">
                                                     <a href="{{route('tampil_panti', $listpanti->email_user)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
@@ -189,7 +139,6 @@
                             </div>
                             @endforeach
                         </div>
-                        <br><br><br>
                         <center>
                             <div class="btn-group">
                                 <a href="/listpanti"><button type="button" class="btn btn-sm btn-outline-secondary">Lihat Semua</button></a>
