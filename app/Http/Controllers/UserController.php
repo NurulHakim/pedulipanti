@@ -15,18 +15,20 @@ class UserController extends Controller
         return view('listpanti')->with('listpanti', $panti);
     }
 
-    public function view_detail($email)
+    public function view_detail($id)
     {
-        $panti = DB::table('panti')->where('email_user', $email)->get();
-        $galeri = DB::table('galeris')->where('email_user', '=', $email)->take(4)->get();
-        
-        return view('detailpanti')->with('panti', $panti)->with('galeri', $galeri);
+        $panti = DB::table('panti')->where('id', '=', $id)->get();
+        $galeri = DB::table('galeris')->where('id_panti', '=', $id)->take(4)->get();
+        $program = DB::table('program_panti')->where('id_panti', '=', $id)->take(4)->get();
+        return view('detailpanti')->with('panti', $panti)->with('galeri', $galeri)->with('program', $program);
     }
 
-    public function galeri($email)
+    public function galeri($id)
     {
         $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
 
+        // $galeri = DB::table('galeris')->where('id_panti', '=', $id)->get();
+        
         return view('/galerypanti')->with('galeri', $galeri);
     }
 

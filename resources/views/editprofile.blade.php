@@ -26,6 +26,7 @@
                                 Profile <span class="sr-only">(current)</span>
                             </a>
                         </li>
+                       
                     </ul>
                 </div>
             </nav>
@@ -65,34 +66,34 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Nama Panti</label>
                         <div class="col-sm-10">
-                            <input name='nama_panti' type="text" class="form-control" id="namapanti" placeholder="" value="{{$datas->nama_panti}}">
+                            <input name='nama_panti' type="text" class="form-control" id="namapanti" placeholder="" value="{{$datas->nama_panti}}" required>
                         </div>
                     </div>
 
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Nomor Telepon Panti</label>
                         <div class="col-sm-10">
-                            <input name='no_telepon' type="text" class="form-control" id="notelp" placeholder="" value="{{$datas->no_telepon}}">
+                            <input name='no_telepon' type="text" class="form-control" id="notelp" placeholder="" value="{{$datas->no_telepon}}" required>
                         </div>
                     </div>
 
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Nama Pemilik Panti</label>
                         <div class="col-sm-10">
-                            <input name='nama_pemilik' type="text" class="form-control" id="namapempanti" placeholder="" value="{{$datas->nama_pemilik}}">
+                            <input name='nama_pemilik' type="text" class="form-control" id="namapempanti" placeholder="" value="{{$datas->nama_pemilik}}" required>
                         </div>
                     </div>
 
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Nomor Telepon Pemilik Panti</label>
                         <div class="col-sm-10">
-                            <input name='no_telepon_pemilik' type="text" class="form-control" id="notelppem" placeholder="" value="{{$datas->no_telepon_pemilik}}">
+                            <input name='no_telepon_pemilik' type="text" class="form-control" id="notelppem" placeholder="" value="{{$datas->no_telepon_pemilik}}" required>
                         </div>
                     </div>
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Alamat Panti</label>
                         <div class="col-sm-10">
-                            <textarea name='alamat_panti' class="form-control " id="alamat" rows="6" style="resize: none">{{$datas->alamat_panti}}</textarea>
+                            <textarea name='alamat_panti' class="form-control " id="alamat" rows="6" style="resize: none" required>{{$datas->alamat_panti}}</textarea>
                         </div>
                     </div>
                     <div class="form-grup row" style="margin-bottom: 1em">
@@ -155,25 +156,25 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Deskripsi Kebutuhan Panti</label>
                         <div class="col-sm-10">
-                            <textarea name='deskripsi_kebutuhan' class="form-control " name="alamat" id="alamat" rows="6" style="resize: none">{{$datas->deskripsi_kebutuhan}}</textarea>
+                            <textarea name='deskripsi_kebutuhan' class="form-control " name="alamat" id="alamat" rows="6" style="resize: none" required>{{$datas->deskripsi_kebutuhan}}</textarea>
                         </div>
                     </div>
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Jumlah Pengurus Panti</label>
                         <div class="col-sm-10">
-                            <input name='jumlah_pengurus' type="number" class="form-control" id="notelppem" placeholder="" value="{{$datas->jumlah_pengurus}}">
+                            <input name='jumlah_pengurus' type="number" class="form-control" id="notelppem" placeholder="" value="{{$datas->jumlah_pengurus}}" required>
                         </div>
                     </div>
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Jumlah Anak Laki-laki</label>
                         <div class="col-sm-10">
-                            <input name='jumlah_anak_laki' type="number" class="form-control" id="notelppem" placeholder="" value="{{$datas->jumlah_anak_laki}}">
+                            <input name='jumlah_anak_laki' type="number" class="form-control" id="notelppem" placeholder="" value="{{$datas->jumlah_anak_laki}}" required>
                         </div>
                     </div>
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Jumlah Perempuan</label>
                         <div class="col-sm-10">
-                            <input name='jumlah_anak_perempuan' type="number" class="form-control" id="notelppem" placeholder="" value="{{$datas->jumlah_anak_perempuan}}">
+                            <input name='jumlah_anak_perempuan' type="number" class="form-control" id="notelppem" placeholder="" value="{{$datas->jumlah_anak_perempuan}}" required>
                         </div>
                     </div>
                     @endforeach
@@ -207,7 +208,7 @@
                             <div class="col-sm-2 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary">
-                                    Upload<input name='sertifikat_panti' type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                    Upload<input name='sertifikat_panti' type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" >
                                 </label>
                             </div>
                         </div>

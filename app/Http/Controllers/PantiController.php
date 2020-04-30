@@ -14,6 +14,8 @@ use Laravolt\Indonesia\Models\Village;
 // use App\Http\Controllers\Province;
 use App\User;
 // use App\Province;
+use App\program;
+
 use File;
 use App\galeri;
 use App\Wilayah;
@@ -225,6 +227,41 @@ class PantiController extends Controller
 
         return redirect('/profile_panti');
     }
+    //MENAMBAH PROGRAMM PANTI
+    public function tambah_program(Request $request)
+    {
+        $program = new program();
+        $email = \Auth::user()->email;
+        $ids = Panti::select('id')->where('email_user', '=', $email)->get();
+        foreach($ids as $ids){
+            $program->id_panti = $ids->id;
+        }
+        $program->judul = $request->input('judul_program');
+        $program->biaya = $request->input('biaya_program');
+        $program->deskripsi_program = $request->input('deskripsi_program');
+        if ($request->hasfile('photo_prog')) {
+            $file = $request->file('photo_prog');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('upload/panti/program', $filename);
+            $program->photo_program = $filename;
+        } else {
+            // return $request;
+            $program->photo_program = $request->input('');
+        }
+        $program->save();
+
+        $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
+        return view('dashpanti')->with('galeri', $galeri);
+    }
+    
+   
+
+    public function viewpanti(){
+        $panti = Panti::all()->take(6);
+        return view('body/landingpage')->with('listpanti', $panti);
+    }
+       
 
     // MENAMPILKAN DASHBOARD
     public function indexDash(){
@@ -239,6 +276,11 @@ class PantiController extends Controller
     {
         $galeri = new galeri();
         $email = \Auth::user()->email;
+        $ids = Panti::select('id')->where('email_user', '=', $email)->get();
+        foreach($ids as $ids){
+            $galeri->id_panti = $ids->id;
+        }
+        
         $galeri->email_user =  $email;
         if ($request->hasfile('photo')) {
             $file = $request->file('photo');
@@ -256,14 +298,15 @@ class PantiController extends Controller
             $galeri->path = '';
         }
         $galeri->save();
-
         $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
         return view('dashpanti')->with('galeri', $galeri);
     }
+       
+
 
     // MENGHAPUS FOTO GALLERY
     public function deletePhoto($id){
-        $galeri = DB::table('galeris')->where('id', $id)->get();
+        $galeri = DB::table('galeris')->where('id', '=', $id)->get();
         foreach($galeri as $galeri){
             $path =  $galeri->path;
         }

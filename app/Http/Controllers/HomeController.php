@@ -30,6 +30,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // return view('body/landingpage');
         // return view('body/landingpageafterlogin');
         // $panti = Panti::all();
         $email = \Auth::user()->email;
