@@ -40,7 +40,7 @@
     <!-- Preloader Start -->
 
     <!-- HEADER -->
-    @include('heade    <header>
+    <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="/" style="margin-left: 1em"><b style="color: white">pedulipanti</b></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,9 +94,10 @@
                 </ul>
             </div>
         </nav>
-<!-- /header>
+    </header>
 
-    <!-- HEADER -->  --><!-- @include('header.headerWebsite') -->
+    <!-- HEADER -->  -->
+    <!-- @include('header.headerWebsite') -->
     <!-- END OF HEADER -->
     
     <main>
@@ -168,7 +169,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
                         <div class="single-services text-center mb-30">
                             <div class="services-ion" style="">
-                             <span> <img src="https://img.icons8.com/material-rounded/40/000000/fast-browsing.png"/></span>
+                                <span> <img src="https://img.icons8.com/material-rounded/40/000000/fast-browsing.png"/></span>
                             </div>
                             <div class="services-cap">
                                 <h4>Cepat</h4>
@@ -221,10 +222,15 @@
                                 <div class="card mb-4 box-shadow" style="min-height: 380px; width: 380px;">
                                     <img class="card-img-top" src="{{ asset('upload/panti/foto/' . $listpanti->foto_panti) }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
                                     <div class="card-body">
-                                        <h4 style="margin-bottom: 1em">{{ $listpanti->nama_panti }}</h4>
+                                        <center>
+                                            <h3 style="margin-bottom: 1em">{{ $listpanti->nama_panti }}</h3>
+                                        </center>
                                         <p class="card-text">{{ substr($listpanti->deskripsi_panti,0, 100)}}</p>
+                                        <p>
+                                            <h5 style="margin-bottom: 0">Tag Kebutuhan Utama Panti</h5>
+                                            <button class="btn btn-primary" style="border-radius: 50px; padding: 1.3em; margin-top: 1em" disabled>{{$listpanti->kebutuhan_panti}}</button>
+                                        </p>
                                         <div class="d-flex justify-content-between align-items-center">
-                                            
                                             <center>
                                                 <div class="btn-group">
                                                     <a href="{{route('tampil_panti', $listpanti->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
@@ -234,22 +240,20 @@
                                     </div>
                                 </div>
                             </div>
-                            @en <<<<<<< HEAD
-                        <br><br><br>
-                        <center>
-                            <div class="btn-group">
-                                <a href="/listpanti"><button type="button" class="btn btn-sm btn-outline-secondary">Lihat Semua</button></a>
-                            </div>
-                        </center>
-                        
-=======
+                            @endforeach
+                        </div>
                         <div style=" justify-content: center; display: flex;">
                             <a href="/listpanti"><button type="button" class="btn btn-sm btn-outline-secondary">Lihat Semua</button></a>
                         </div>
->>>>>>> origin/dino
+                    </div>
+                </div>
             </div>
->>>>>>> origin/dino
- <!-- Support Company Start-->
+        </div>
+        <!-- Favourite Places End -->
+        <!-- Video Start Arera -->
+
+        <!-- Video Start End -->
+        <!-- Support Company Start-->
 
         <!-- Blog Area End -->
 

@@ -104,54 +104,6 @@
         </div>
         <!-- slider Area End-->
 
-        <!-- Our Services Start -->
-        <div class="our-services servic-padding">
-            <div class="container">
-                <div class="row d-flex justify-contnet-center">
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span><img src="https://img.icons8.com/material-rounded/40/000000/fast-browsing.png"/></span>
-                            </div>
-                            <div class="services-cap">
-                                <h5>Cepat</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span><img src="https://img.icons8.com/carbon-copy/24/000000/easy.png"/></span>
-                            </div>
-                            <div class="services-cap">
-                                <h5>Mudah</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-experience"></span>
-                            </div>
-                            <div class="services-cap">
-                                <h5>Banyak Pilihan</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-good"></span>
-                            </div>
-                            <div class="services-cap">
-                                <h5>Seluruh Bandar Lampung</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Our Services End -->
         <!-- Favourite Places Start -->
         <div class="favourite-place place-padding" style="padding-bottom: 1em">
             <div class="container">
@@ -170,15 +122,21 @@
                         <div class="row">
                             @foreach ($hasil as $listpanti)
                             <div class="col-md-4">
-                                <div class="card mb-4 box-shadow" style="min-height: 400px; max-height: 400px;">
+                                <div class="card mb-4 box-shadow" style="min-height: 380px; width: 380px;">
                                     <img class="card-img-top" src="{{ asset('upload/panti/foto/' . $listpanti->foto_panti) }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
                                     <div class="card-body">
-                                        <h4 style="margin-bottom: 1em">{{ $listpanti->nama_panti }}</h4>
+                                        <center>
+                                            <h3 style="margin-bottom: 1em">{{ $listpanti->nama_panti }}</h3>
+                                        </center>
                                         <p class="card-text">{{ substr($listpanti->deskripsi_panti,0, 100)}}</p>
+                                        <p>
+                                            <h5 style="margin-bottom: 0">Tag Kebutuhan Utama Panti</h5>
+                                            <button class="btn btn-primary" style="border-radius: 50px; padding: 1.3em; margin-top: 1em" disabled>{{$listpanti->kebutuhan_panti}}</button>
+                                        </p>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <center>
                                                 <div class="btn-group">
-                                                    <a href="{{route('tampil_panti', $listpanti->email_user)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                                                    <a href="{{route('tampil_panti', $listpanti->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
                                                 </div>
                                             </center>                                            
                                         </div>
@@ -187,16 +145,11 @@
                             </div>
                             @endforeach
                         </div>
-                        <center>
-                            <div class="btn-group">
-                                <a href="/listpanti"><button type="button" class="btn btn-sm btn-outline-secondary">Lihat Semua</button></a>
-                            </div>
-                        </center>
-                        
+                        <div style=" justify-content: center; display: flex;">
+                            <a href="/listpanti"><button type="button" class="btn btn-sm btn-outline-secondary">Lihat Semua</button></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
         <!-- Favourite Places End -->
         <!-- Video Start Arera -->
 

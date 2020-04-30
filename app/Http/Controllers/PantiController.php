@@ -255,13 +255,13 @@ class PantiController extends Controller
         return view('dashpanti')->with('galeri', $galeri);
     }
     
-   
+
 
     public function viewpanti(){
         $panti = Panti::all()->take(6);
         return view('body/landingpage')->with('listpanti', $panti);
     }
-       
+
 
     // MENAMPILKAN DASHBOARD
     public function indexDash(){

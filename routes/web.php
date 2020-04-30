@@ -69,14 +69,11 @@ Route::get('profile_panti', 'PantiController@index')->middleware('auth')->name('
 Route::post('profiles_panti/{id?}', 'PantiController@store')->middleware('auth')->name('upload');
 Route::post('profile_panti/{id?}', 'PantiController@edit')->middleware('auth')->name('edit');
 
- Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/', 'HomeController@index')->name('home');
 
-// Route::get('/', function () {
-//     return view('body/landingpage');
-// });
 // ROUTE HALAMAN DETAIL PANTI
 Route::get('panti/{id?}', 'UserController@view_detail')->name('tampil_panti');
 
@@ -89,15 +86,6 @@ Route::get('galerypanti/{id?}', 'UserController@galeri')->name('galeri_panti');
 // menghapus akun
 Route::get('delete/{id?}', 'PantiController@deleteAccount')->name('deleteAccount');
 
-
-// perusahaan
-Route::get('detaillembaga', function () {
-    return view('lembaga/detaillembaga');
-});
-
-Route::get('profile_lembaga', function () {
-    return view('lembaga/isiprofilelembaga');
-});
 Route::post('profile_lembaga', 'PerusahaanController@data')->name('upload.lembaga');
 // ROUTE UNTUK MENGHAPUS AKUN
 Route::get('delete', 'PantiController@deleteAccount')->name('deleteAccount');
