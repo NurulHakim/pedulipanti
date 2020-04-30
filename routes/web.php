@@ -101,3 +101,7 @@ Route::get('profile_lembaga', function () {
 Route::post('profile_lembaga', 'PerusahaanController@data')->name('upload.lembaga');
 // ROUTE UNTUK MENGHAPUS AKUN
 Route::get('delete', 'PantiController@deleteAccount')->name('deleteAccount');
+
+Route::get('tentangkami', function(){
+    return view('tentangkami');
+});
