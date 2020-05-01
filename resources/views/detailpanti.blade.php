@@ -79,7 +79,7 @@
                             <div class="navigation-top" style="padding-top: 0">
                                 <div class="d-sm-flex justify-content-between text-center">
                                     <div class="text-center my-2 my-sm-0">
-                                        <a href="https://wa.me/62{{$panti->no_telepon}}"><button class="btn btn-sm btn-primary" style="border-radius: 50px;background-color: orange">Hubungi</button></a>
+                                        <a target="_blank" href="https://wa.me/62{{$panti->no_telepon}}"><button class="btn btn-sm btn-primary" style="border-radius: 50px;background-color: orange">Hubungi</button></a>
                                     </div>
                                     <ul class="social-icons">
                                         <li>
@@ -148,20 +148,21 @@
                             <div class="album py-5 bg-light">
                                 <h3>Galeri Kegiatan Panti</h3>
                                 <div class="row gallery-item">
-                                    @foreach($galeri as $galeri)
                                     <div class="con-gallery">
+                                        @foreach($galeri as $galeri)
                                         <div class="box-pic">
                                             <div class="imgBox">
                                                 <img src="{{asset('upload/panti/images/'. $galeri->path)}}" alt="">
                                             </div>
                                         </div>
                                         @endforeach
+                                        <center>
+                                            <div class="btn-group">
+                                                <a href="{{route('galeri_panti', $panti->id)}}" class="left"><button type="button" class="btn btn-sm btn-outline-secondary" style="float: left">Lihat Semua</button></a>
+                                            </div>
+                                        </center>
                                     </div>
-                                    <center>
-                                        <div class="btn-group">
-                                            <a href="{{route('galeri_panti', $panti->id)}}" class="left"><button type="button" class="btn btn-sm btn-outline-secondary" style="float: left">Lihat Semua</button></a>
-                                        </div>
-
+                                    
                                 </div>
                             </div>
                         </div>

@@ -40,64 +40,7 @@
     <!-- Preloader Start -->
 
     <!-- HEADER -->
-    <header>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="/" style="margin-left: 1em"><b style="color: white">pedulipanti</b></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="navbar-collapse collapse " id="navbarSupportedContent" style="margin-right: 2em">
-                <ul class="navbar-nav ml-auto">
-
-                    <li class="nav-item" style="margin-right: 1em">
-                        <a class="nav-link" href="/listpanti">Cari Panti<span class="sr-only"></span></a>
-                    </li>
-                    <li class="nav-item" style="margin-right: 1em">
-                        <a class="nav-link" href="#">Tentang Kami</a>
-                    </li>
-                    @guest
-                    <li class="nav-item" style="margin-right: 1em">
-                        <a class="btn btn-outline-primary" href="{{route('login')}}" role="button" style="color: white; border-color: rgb(245, 121, 12)">Login</a>
-                    </li>
-                    @if (Route::has('register'))
-                    <li class="nav-item" style="margin-right: 1em">
-                        <a class="btn btn-primary" href="{{route('register')}}" role="button" style="background-color: rgb(245, 121, 12); border-color: rgb(245, 121, 12)">Sign Up</a>
-                    </li>
-                    @endif
-                    @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/dashboard">
-                                Dashboard
-                            </a>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-
-
-                            <a class="dropdown-item" href="{{ route('deleteAccount', Auth::user()->id)}}">
-                                Hapus Akun
-                            </a>
-
-                        </div>
-                    </li>
-                    @endguest
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-    <!-- HEADER -->  -->
-    <!-- @include('header.headerWebsite') -->
+    @include('header.headerWebsite')
     <!-- END OF HEADER -->
     
     <main>
@@ -160,47 +103,7 @@
             </div>
         </div>
         <!-- slider Area End-->
-        <!-- Our Services Start -->
 
-        
-        <div class="our-services servic-padding">
-            <div class="container">
-                <div class="row d-flex justify-contnet-center">
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion" style="">
-                                <span> <img src="https://img.icons8.com/material-rounded/40/000000/fast-browsing.png"/></span>
-                            </div>
-                            <div class="services-cap">
-                                <h4>Cepat</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span ><img src="https://img.icons8.com/carbon-copy/40/000000/easy.png"/></span>
-                            </div>
-                            <div class="services-cap">
-                                <h4>Mudah</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span><img src="https://img.icons8.com/wired/40/000000/untested.png"/></span>
-                            </div>
-                            <div class="services-cap">
-                                <h4>Banyak Pilihan</h4>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        <!-- Our Services End -->
         <!-- Favourite Places Start -->
         <div class="favourite-place place-padding" style="padding-bottom: 1em">
             <div class="container">
@@ -209,7 +112,7 @@
                     <div class="col-lg-12">
                         <div class="section-tittle text-center">
 
-                            <h2>CARI PANTI</h2>
+                            <h2>Hasil Pencarian</h2>
                         </div>
                     </div>
                 </div>
@@ -217,7 +120,7 @@
                     <div class="container">
 
                         <div class="row">
-                            @foreach ($listpanti as $listpanti)
+                            @foreach ($hasil as $listpanti)
                             <div class="col-md-4">
                                 <div class="card mb-4 box-shadow" style="min-height: 380px; width: 380px;">
                                     <img class="card-img-top" src="{{ asset('upload/panti/foto/' . $listpanti->foto_panti) }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
@@ -247,8 +150,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
         <!-- Favourite Places End -->
         <!-- Video Start Arera -->
 
