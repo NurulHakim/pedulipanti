@@ -71,11 +71,19 @@ class UserController extends Controller
 
     public function filter(Request $request){
         $provinces = Province::pluck('name', 'id');
-        $kabupaten = $request->get('provinsi');
-        $kecamatan = $request->get('kabupaten');
+        $provinsi = $request->get('provinsi');
         $kebutuhan = $request->get('select-keb');
-        if(Empty($kabupaten) && Empty($kecamatan) && !Empty($kebutuhan)){
+        if(Empty($provinsi) && !Empty($kebutuhan)){
             $listpanti = DB::table('panti')->select()->where('kebutuhan_panti', '=',  $kebutuhan)->get();
+            return view('listpanti')->with('listpanti', $listpanti)->with('provinces', $provinces);
+        } elseif(!Empty($provinsi) && Empty($kebutuhan)){
+            $listpanti = DB::table('panti')->select()->where('provinsi', '=',  $provinsi)->get();
+            return view('listpanti')->with('listpanti', $listpanti)->with('provinces', $provinces);
+        } elseif(!Empty($provinsi) && !Empty('$kebutuhan')){
+            $listpanti = DB::table('panti')->select()->where('kebutuhan_panti', '=',  $kebutuhan)->where('provinsi', $provinsi)->get();
+            return view('listpanti')->with('listpanti', $listpanti)->with('provinces', $provinces);
+        } else{
+            $listpanti = DB::table('panti')->get();
             return view('listpanti')->with('listpanti', $listpanti)->with('provinces', $provinces);
         }
 
