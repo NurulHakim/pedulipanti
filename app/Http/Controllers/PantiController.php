@@ -262,12 +262,19 @@ class PantiController extends Controller
     
     public function listprogram()
     {
-        $program = program::all();
+        $email = \Auth::user()->email;
+        $ids = Panti::select('id')->where('email_user', '=', $email)->get();
+        $id= "";
+        foreach($ids as $ids){
+            $id = $ids->id;
+        }
+        $program = program::where('id_panti', $id)->get();
         return view('dahsprog')->with('program', $program);
     }
 
 public function editprogget($id)
 {
+    
     $data = program::where('id', $id)->get();
     return view('editprog')->with('data', $data);
 }
