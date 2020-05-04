@@ -41,6 +41,7 @@
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <h1 class="h2">Isi Profile</h1>
+                    
                 </div>
                 
                 <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
@@ -186,36 +187,39 @@
                     </div>
                     
                     <div class="form-grup row" style="margin-bottom: 1em">
-                        <label for="typePanti" class="col-sm-2 col-form-label">Logo Panti Asuhan</label>
+                        <label for="typePanti" class="col-sm-2 col-form-label">Logo Panti Asuhan* <p class="text-left">Keterangan : *Photo Wajib Dilampirkan </p></label>
+                        
                         <div class="col-sm-10">
                             <div class="col-sm-2 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary">
-                                    Upload<input name='logo_panti' type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                    Upload<input name='logo_panti' type="file" class="uploadFile img" value="" style="width: 0px;height: 0px;overflow: hidden;" required>
                                 </label>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-grup row" style="margin-bottom: 1em">
-                        <label for="typePanti" class="col-sm-2 col-form-label">Foto Panti Asuhan</label>
+                        <label for="typePanti" class="col-sm-2 col-form-label">Foto Panti Asuhan* <p class="text-left">Keterangan : *Photo Wajib Dilampirkan </p></label>
+                        
                         <div class="col-sm-10">
                             <div class="col-sm-2 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary">
-                                    Upload<input name='foto_panti' type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                    Upload<input name='foto_panti' type="file" class="uploadFile img" value="" style="width: 0px;height: 0px;overflow: hidden;" required>
                                 </label>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-grup row" style="margin-bottom: 1em">
-                        <label for="typePanti" class="col-sm-2 col-form-label">Foto Sertifikat Panti Asuhan</label>
+                        <label for="typePanti" class="col-sm-2 col-form-label">Foto Sertifikat Panti Asuhan* <p class="text-left">Keterangan : *Photo Wajib Dilampirkan </p></label>
+                     
                         <div class="col-sm-10">
                             <div class="col-sm-2 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary">
-                                    Upload<input name='sertifikat_panti' type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" >
+                                    Upload<input name='sertifikat_panti' type="file" class="uploadFile img" value="" style="width: 0px;height: 0px;overflow: hidden;" required>
                                 </label>
                             </div>
                         </div>
