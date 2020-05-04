@@ -72,12 +72,12 @@
                         <textarea id="form-program" rows="4" cols="50" name="deskripsi_program" form="form_program" style="margin-left: 1em; margin-right: 1em;resize: none;" placeholder="  Masukkan Deskripsi Program" required>{!!$datas->deskripsi_program!!}</textarea>
                         </div>
                     </div> <div class="form-grup row" style="margin-bottom: 1em">
-                        <label for="typePanti" class="col-sm-2 col-form-label">Foto Sertifikat Panti Asuhan</label>
+                        <label for="typePanti" class="col-sm-2 col-form-label">Foto Program</label>
                         <div class="col-sm-10">
                             <div class="col-sm-2 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary">
-                                    Upload<input name='sertifikat_panti' type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                    Upload<input name='photo_prog' type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
                                 </label>
                             </div>
                         </div>

@@ -231,12 +231,25 @@ public function editprogget($id)
 
     public function editprogram(Request $request, $id)
     {
-        
+        $programs = program::where('id', $id)->get();
+        if ($request->hasfile('photo_prog')) {
+            $file = $request->file('photo_prog');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('upload/panti/program', $filename);
+            $name = $filename;
+        } else {
+            // return $request;
+            foreach($programs as $prog){
+                $name = $prog->photo_program;
+            }
+        }
         DB::table('program_panti')->where('id', $id)->update([
                 'judul' => $request->judul,
                 'deskripsi_program' => $request->deskripsi_program,
                 'biaya' => $request->biaya,
                 'telp' => $request->no_telepon,
+                'photo_program' => $name,
         ]);
         $program = program::all();
         return view('dahsprog')->with('program', $program);
