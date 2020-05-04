@@ -79,6 +79,7 @@ Route::get('panti/{id?}', 'UserController@view_detail')->name('tampil_panti');
 
 // ROUTE HALAMAN LIST PANTI
 Route::get('/listpanti', 'UserController@listview');
+Route::post('/listpanti', 'UserController@filter')->name('filter');
 
 // ROUTE HALAMAN GALLERY PANTI
 Route::get('galerypanti/{id?}', 'UserController@galeri')->name('galeri_panti');
@@ -93,7 +94,7 @@ Route::get('delete', 'PantiController@deleteAccount')->name('deleteAccount');
 // ROUTE UNTUK SEARCH PANTI
 Route::get('search', 'UserController@searchPanti')->name('searchPanti');
 
-
+Route::post('/kabupatens', 'UserController@getKabupaten')->name('getKabupatens');
 Route::post('/kabupaten', 'PantiController@getKabupaten')->middleware('auth')->name('getKabupaten');
 Route::post('/kecamatan', 'PantiController@getKecamatan')->middleware('auth')->name('getKecamatan');
 Route::post('/kelurahan', 'PantiController@getKelurahan')->middleware('auth')->name('getKelurahan');

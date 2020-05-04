@@ -172,6 +172,7 @@ class PantiController extends Controller
         $provinces = Province::pluck('name', 'id');
 
         DB::table('panti')->where('email_user', $emails)->update([
+            'email_user' => $emails,
             'tipe_panti' => $request->tipe_panti,
             'jenis_yayasan' => $request->jenis_yayasan,
             'nama_panti' => $request->nama_panti,
@@ -180,7 +181,7 @@ class PantiController extends Controller
             'no_telepon_pemilik' => $request->no_telepon_pemilik,
             'alamat_panti' => $request->alamat_panti,
             'provinsi' => $request->provinsi,
-            'kabupaten_kota' => $request->kabupaten_kota,
+            'kabupaten_kota' => $request->kabupaten,
             'kecamatan' => $request->kecamatan,
             'kelurahan' => $request->kelurahan,
             'kebutuhan_panti' => $request->kebutuhan_panti,
@@ -191,38 +192,7 @@ class PantiController extends Controller
             'deskripsi_panti'=> $request->deskripsi_panti,
         ]);
         
-        // if ($request->hasfile('logo_panti')) {
-        //     $file = $request->file('logo_panti');
-        //     $extension = $file->getClientOriginalExtension();
-        //     $filename = time() . '.' . $extension;
-        //     $file->move('upload/panti/logo', $filename);
-        //     $panti->logo_panti = $filename;
-        // } else {
-        //     // return $request;
-        //     $panti->logo_panti = '';
-        // }
-
-        // if ($request->hasfile('foto_panti')) {
-        //     $file = $request->file('foto_panti');
-        //     $extension = $file->getClientOriginalExtension();
-        //     $filename = time() . '.' . $extension;
-        //     $file->move('upload/panti/foto', $filename);
-        //     $panti->foto_panti = $filename;
-        // } else {
-        //     // return $request;
-        //     $panti->foto_panti = '';
-        // }
-
-        // if ($request->hasfile('sertifikat_panti')) {
-        //     $file = $request->file('sertifikat_panti');
-        //     $extension = $file->getClientOriginalExtension();
-        //     $filename = time() . '.' . $extension;
-        //     $file->move('upload/panti/sertifikat', $filename);
-        //     $panti->sertifikat_panti = $filename;
-        // } else {
-        //     // return $request;
-        //     $panti->sertifikat_panti = '';
-        // }
+       
         $panti->save();
 
         return redirect('/profile_panti');
