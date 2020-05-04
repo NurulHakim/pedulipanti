@@ -156,10 +156,50 @@ class PantiController extends Controller
     public function edit(Request $request)
     {
         $panti = new Panti();
-
+        
         $emails = \Auth::user()->email;
         $provinces = Province::pluck('name', 'id');
-       
+        $pantis = Panti::where('email_user', '=', $emails)->get();
+        
+        if ($request->hasfile('logo_panti')) {
+            $file = $request->file('logo_panti');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('upload/panti/logo', $filename);
+            $logo_pantis = $filename;
+        } else {
+            // return $request;
+            foreach($pantis as $panti){
+                $logo_pantis = $panti->logo_panti;
+            }
+           
+        }
+
+        if ($request->hasfile('foto_panti')) {
+            $file = $request->file('foto_panti');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('upload/panti/foto', $filename);
+            $foto_pantis = $filename;
+        } else {
+            // return $request;
+            foreach($pantis as $panti){
+                $foto_pantis = $panti->foto_panti;
+            }
+        }
+
+        if ($request->hasfile('sertifikat_panti')) {
+            $file = $request->file('sertifikat_panti');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('upload/panti/sertifikat', $filename);
+            $sertifikat_pantis = $filename;
+        } else {
+            // return $request;
+            foreach($pantis as $panti){
+                $sertifikat_pantis = $panti->sertifikat_panti;
+            }
+        }
 
         
         DB::table('panti')->where('email_user', $emails)->update([
@@ -181,6 +221,9 @@ class PantiController extends Controller
             'jumlah_anak_laki' => $request->jumlah_anak_laki,
             'jumlah_anak_perempuan' => $request->jumlah_anak_perempuan,
             'deskripsi_panti'=> $request->deskripsi_panti,
+            'logo_panti' => $logo_pantis,
+            'sertifikat_panti' => $sertifikat_pantis,
+            'foto_panti' => $foto_pantis
         ]);
         
        
