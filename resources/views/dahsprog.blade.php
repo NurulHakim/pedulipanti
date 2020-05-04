@@ -15,7 +15,7 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/dashboard">
+                            <a class="nav-link" href="/dashboard">
                                 <span data-feather="home"></span>
                                 Dashboard <span class="sr-only">(current)</span>
                             </a>
@@ -27,7 +27,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('dash_program')}}">
+                            <a class="nav-link active" href="/profile_panti">
                                 <img src="https://img.icons8.com/ios/20/000000/activity-feed.png" />
                                 Program <span class="sr-only">(current)</span>
                             </a>
@@ -36,48 +36,40 @@
                 </div>
             </nav>
 
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" style=" ">
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 bg-light" style=" ">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Dashboard</h1>
+                    <h1 class="h2">Program Panti Kamu</h1>
 
                 </div>
-                <div class="btn-toolbar" role="toolbar" aria-label="Basic example">
-                    <div class="btn-group mr-2" role="group" aria-label="First group" style="margin-bottom: 2em">
-                        <a href="" data-toggle="modal" data-target="#exampleModal"><button class="btn btn-lg btn-primary"> Tambah Photo di Galeri </button></a>
-                    </div>
-                    <div class="btn-group mr-2" role="group" aria-label="First group">
-                        <a href="" data-toggle="modal" data-target="#Modal"><button class="btn btn-lg btn-primary"> Tambah Program Donasi</button></a>
-                    </div>
-                </div>
 
-                <main role="main">
-
-                    <div class="album py-5 bg-light" style="margin-top: 3em">
-                        <div class="container">
-
-                            <div class="row gallery-itemw">
-                                @foreach ($galeri as $galeri)
-                                <div class="con-gallery">
-                                    <div class="box-pic">
-                                        <div class="imgBox">
-                                            <img src="{{asset('upload/panti/images/'. $galeri->path)}}" alt="">
-                                        </div>
-                                        <center>
+                <main role="main" class="">
+                    <div class="container col-lg-12 ">
+                        <div class="row">
+                            @foreach ($program as $program)
+                            <div class="col-md-4" style="width: 380px; padding-left: 0em">
+                                <div class="card mb-4 box-shadow" style="min-height: 565px; width: 380px; ">
+                                    <img class="card-img-top" src="{{ asset('upload/panti/program/' . $program->photo_program) }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
+                                    <div class="card-body">
+                                        <h4 style="margin-bottom: 0em">{{ $program->judul }}</h4>
+                                        <p class="card-text">{!! substr($program->deskripsi_program,0, 100)!!}</p>
+                                        <p class="card-text"> Program ini Membutuhkan Dana Sebesar <b> Rp.{{$program->biaya}} </b></p>
+                                        <div class="d-flex justify-content-between align-items-left">
                                             <div class="btn-group">
-                                                <a href="{{ route('deletePhoto', $galeri->id )}}"><button type="button" class="btn btn-sm btn-outline-secondary" style="color: #014b85; background-color: white; border-style: solid; border-color:#014b85;  border-width: 3px">Hapus</button></a>
-                                        </center>
+                                                <a href="{{route('edit_program', $program->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                @endforeach
                             </div>
+                            @endforeach
+
                         </div>
                     </div>
         </div>
 
-        </main>
-        </main>
     </div>
-    </div>
+
+   
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

@@ -90,17 +90,6 @@ class PantiController extends Controller
         return response()->json($cities);
     }
 
-
-
-
-
-
-
-
-
-
-
-
     // MENGINPUT DATA PANTI KE DATABASE
     public function store(Request $request)
     {
@@ -170,7 +159,9 @@ class PantiController extends Controller
 
         $emails = \Auth::user()->email;
         $provinces = Province::pluck('name', 'id');
+       
 
+        
         DB::table('panti')->where('email_user', $emails)->update([
             'email_user' => $emails,
             'tipe_panti' => $request->tipe_panti,
@@ -206,6 +197,7 @@ class PantiController extends Controller
         foreach($ids as $ids){
             $program->id_panti = $ids->id;
         }
+        $program->telp = $request->input('telp_program');
         $program->judul = $request->input('judul_program');
         $program->biaya = $request->input('biaya_program');
         $program->deskripsi_program = $request->input('deskripsi_program');
@@ -225,7 +217,30 @@ class PantiController extends Controller
         return view('dashpanti')->with('galeri', $galeri);
     }
     
+    public function listprogram()
+    {
+        $program = program::all();
+        return view('dahsprog')->with('program', $program);
+    }
 
+public function editprogget($id)
+{
+    $data = program::where('id', $id)->get();
+    return view('editprog')->with('data', $data);
+}
+
+    public function editprogram(Request $request, $id)
+    {
+        
+        DB::table('program_panti')->where('id', $id)->update([
+                'judul' => $request->judul,
+                'deskripsi_program' => $request->deskripsi_program,
+                'biaya' => $request->biaya,
+                'telp' => $request->no_telepon,
+        ]);
+        $program = program::all();
+        return view('dahsprog')->with('program', $program);
+    }
 
     public function viewpanti(){
         $panti = Panti::all()->take(6);

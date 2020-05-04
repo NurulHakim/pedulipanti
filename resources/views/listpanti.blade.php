@@ -55,7 +55,7 @@
                     </div> -->
                     @foreach ($listpanti as $listpanti)
                     <div class="col-md-4">
-                        <div class="card mb-4 box-shadow" style="min-height: 380px; width: 380px;">
+                        <div class="card mb-4 box-shadow" style="min-height: 561px; width: 380px;">
                             <img class="card-img-top" src="{{ asset('upload/panti/foto/' . $listpanti->foto_panti) }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
                             <div class="card-body">
                                 <h4 style="margin-bottom: 0em">{{ $listpanti->nama_panti }}</h4>
@@ -103,11 +103,7 @@
                             <option value="{{ $id }}">{{$name}}</option>
                             @endforeach
                         </select>
-                        <h5> <br> <br> Kabupaten/Kota</h5>
-                        <select style="size: 100%" name='kabupaten' id="kabupaten">
-                            <option value="">-------------- Semua Lokasi --------------</option>
-
-                        </select>
+                       
                         <br> <br>
 
                         <div class="modal-header" style="padding-bottom: 0; padding-left: 0">

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 // use App\galeri;
 use Post;
 use Illuminate\Http\Request;
+use App\program;
 use PhpParser\Node\Expr\Empty_;
 use Laravolt\Indonesia\Models\City;
 use Laravolt\Indonesia\Models\Province;
@@ -28,6 +29,12 @@ class UserController extends Controller
 
         $program = DB::table('program_panti')->where('id_panti', '=', $id)->take(4)->get();
         return view('detailpanti')->with('panti', $panti)->with('galeri', $galeri)->with('program', $program);
+    }
+
+    public function detail_program($id)
+    {
+        $program = DB::table('program_panti')->where('id', $id)->get();
+        return view('program')->with('program', $program);
     }
 
     public function galeri($id)
@@ -63,12 +70,13 @@ class UserController extends Controller
     }
 
     public function filter(Request $request){
+        $provinces = Province::pluck('name', 'id');
         $kabupaten = $request->get('provinsi');
         $kecamatan = $request->get('kabupaten');
         $kebutuhan = $request->get('select-keb');
         if(Empty($kabupaten) && Empty($kecamatan) && !Empty($kebutuhan)){
             $listpanti = DB::table('panti')->select()->where('kebutuhan_panti', '=',  $kebutuhan)->get();
-            return view('listpanti')->with('listpanti', $listpanti);
+            return view('listpanti')->with('listpanti', $listpanti)->with('provinces', $provinces);
         }
 
     }
