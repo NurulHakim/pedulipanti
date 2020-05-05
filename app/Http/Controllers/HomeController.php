@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\AuthController;
+use App\Panti;
+use App\User;
+use App\galeri;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class HomeController extends Controller
 {
@@ -13,7 +20,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware(['auth', 'verified']);
+        $this->middleware(['auth', 'verified']);
     }
 
     /**
@@ -23,6 +30,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('body/landingpage');
+        // return view('/home');
+        $email = \Auth::user()->email;
+        // return view('body/landingpageafterlogin')->with('listpanti', $panti);
+        $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
+        return view('dashpanti')->with('galeri', $galeri);
     }
 }
