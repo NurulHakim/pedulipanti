@@ -368,8 +368,8 @@ public function editprogget($id)
     // MENGHAPUS AKUN  
     public function deleteAccount(){
         $email = \Auth::user()->email;
-        DB::table('panti')->where('email_user', $email)->delete();
         DB::table('galeris')->where('email_user', $email)->delete();
+        DB::table('panti')->where('email_user', $email)->delete();
         DB::table('users')->where('email', $email)->delete();
         return redirect('/');
     }
