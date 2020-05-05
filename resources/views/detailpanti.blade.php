@@ -24,14 +24,13 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/galeri.css')}}">
     <link href="{{ asset('css/album.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <style>
         .column {
             float: left;
             width: 50%;
             padding: 10px;
 
-            /* Should be removed. Only for demonstration */
         }
 
         @media screen and (max-width: 600px) {
@@ -45,6 +44,14 @@
             display: table;
             clear: both;
         }
+
+        /* .twitter-share-button {
+            display: inline-block;
+            width: 55px;
+            height: 21px;
+            background-color: blue;
+
+        } */
     </style>
 
 
@@ -57,125 +64,191 @@
 
     <!-- slider Area End-->
     <!--================Blog Area =================-->
-    <section class="blog_area single-post-area section-padding" style="padding-top: 1em">
-        <div class="container">
-            <div class="row">
-                @foreach($panti as $panti)
-                <div class="col-lg-12 posts-list">
-                    <div class="single-post">
-                        <h1 style="color: rgb(0, 178, 242)">{{$panti->nama_panti}}</h1>
-                       
-                        <div class=" feature-img" style="width: 100%; height: 50%">
-                            <img class="img-fluid" src="{{asset('upload/panti/foto/'. $panti->foto_panti)}}" style="" alt="">
-                        </div>
-                        <div class="section-top-border" style="padding: 0; margin-top: 1em"></div>
-                        <div class="navigation-top" style="padding-top: 0">
-                            <div class="d-sm-flex justify-content-between text-center">
-                                <div class="text-center my-2 my-sm-0">
-                                   <a href="" style=""><button class="btn btn-sm btn-primary" style="background-color: orange">Hubungi</button></a>
-                                </div>
-                                <ul class="social-icons">
-                                    <li>
-                                        <p>as</p>
-                                    </li>
-                                    <li>
-                                        <p>as</p>
-                                    </li>
-                                    <li>
-                                        <p>as</p>
-                                    </li>
-                                    <li>
-                                        <p>as</p>
-                                    </li>
-                                </ul>
+    <main role="main">
+        <section class="blog_area single-post-area section-padding" style="padding-top: 5em">
+            <div class="container">
+                <div class="row">
+                    @foreach($panti as $panti)
+                    <div class="col-lg-12 posts-list">
+                        <div class="single-post">
+                            <h1 style="color: rgb(0, 178, 242);">{{$panti->nama_panti}}</h1>
+                            <div class=" feature-img" style="width: 100%; height: 50%">
+                                <img class="img-fluid" src="{{asset('upload/panti/foto/'. $panti->foto_panti)}}" style="" alt="">
                             </div>
-                        </div>
-                        <div class="section-top-border"  style="padding-top: 0"></div>
-                        <div class="blog_details">
-                            <h3>Detail Panti</h3>
-                            <div class="rows">
-                                <div class="column" style="padding: 0em">
-                                    <p>
-                                        <h2 style="margin-bottom: 0">Deskripsi Panti</h2>
-                                        {{$panti->deskripsi_panti}}
-                                    </p>
+                            <div class="section-top-border" style="padding: 0; margin-top: 1em"></div>
+                            <div class="navigation-top" style="padding-top: 0">
+                                <div class="d-sm-flex justify-content-between text-center">
+                                    <div class="text-center my-2 my-sm-0">
+                                        <a target="_blank" href="https://wa.me/62{{$panti->no_telepon}}"><button class="btn btn-sm btn-primary" style="border-radius: 50px;background-color: orange">Hubungi</button></a>
+                                    </div>
+                                    <ul class="social-icons">
+                                        <li>
+                                            <div class="fb-share-button" data-href="http://pedulipanti.id/panti/{{$panti->id}}" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                                        </li>
+                                        <li>
+                                            <div><a href="https://twitter.com/intent/tweet?text=Ayo Bantu Panti {{$panti->nama_panti}} Mereka Butuh Bantuan Kamu!" class="twitter-share-button" data-show-count="false">Tweet</a></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                           
+                            <div class="blog_details">
+                                <h3>Detail Panti</h3>
+                                <div class="rows">
                                     <p class="excert" style="font-size: 13pt">
-                                        <h2 style="margin-bottom: 0">Alamat</h2>
+                                        <h2 style="margin-bottom: 0"><img src="https://img.icons8.com/material-sharp/24/000000/worldwide-location.png" /> Alamat</h2>
                                         {{$panti->alamat_panti}}
                                     </p>
                                     <p>
-                                        <h2 style="margin-bottom: 0">Nomor Telepon Panti</h2>
-                                        {{$panti->no_telepon}}
-                                    </p>
-                                    <p>
-                                        <h2 style="margin-bottom: 0">Nama Pemilik Panti</h2>
-                                        {{$panti->nama_pemilik}}
-                                    </p>
-                                    <p>
-                                        <h2 style="margin-bottom: 0">Nomor Telepon Pemilik Panti</h2>
-                                        {{$panti->no_telepon_pemilik}}
-                                    </p>
-                                </div>
-                                <div class="column" style="padding: 0em">
-                                    <p>
-                                        <h2 style="margin-bottom: 0">Deskripsi Panti</h2>
+                                        <h2 style="margin-bottom: 0"><img src="https://img.icons8.com/metro/24/000000/pin.png" /> Deskripsi Panti</h2>
                                         {{$panti->deskripsi_panti}}
                                     </p>
-                                    <p>
-                                        <h2 style="margin-bottom: 0">Deskripsi Kebutuhan Panti</h2>
-                                        {{$panti->deskripsi_kebutuhan}}
-                                    </p>
-                                    <p>
-                                        <h2 style="margin-bottom: 0">Deskripsi Program Panti</h2>
-                                        - Sekolah - Sholat berjamaah - Pengajian ashar - Pengajian ba'da magrib - Belajar bersama
-                                    </p>
-                                </div>
-                            </div>
 
-                            <div class="quote-wrapper">
-                                <div class="quotes">
-                                    "Jangan pernah lupa untuk selalu bersyukur. Dan berbagi adalah salah satu cara untuk bersyukur atas nikmatNya."
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <h3>Galeri Kegiatan Panti</h3>
-                        <div class="row gallery-item">
-                            @foreach($galeri as $galeri)
-                            <div class="con-gallery">
-                                <div class="box-pic">
-                                    <div class="imgBox">
-                                        <img src="{{asset('upload/panti/images/'. $galeri->path)}}" alt="">
+                                    <div class="column" style="padding: 0 4em 0 0">
+                                        <p>
+                                            <h2 style="margin-bottom: 0"><img src="https://img.icons8.com/material-rounded/24/000000/demand.png" /> Deskripsi Kebutuhan Panti</h2>
+                                            {{$panti->deskripsi_kebutuhan}}
+                                        </p>
+
+                                        <p>
+                                            <h2 style="margin-bottom: 0"><img src="https://img.icons8.com/android/24/000000/phone.png" /> Nomor Telepon Panti</h2>
+                                            {{$panti->no_telepon}}
+                                        </p>
+                                        <p>
+                                            <h2 style="margin-bottom: 0"><img src="https://img.icons8.com/ios-filled/24/000000/name.png" /> Nama Pemilik Panti</h2>
+                                            {{$panti->nama_pemilik}}
+                                        </p>
+                                        <p>
+                                            <h2 style="margin-bottom: 0"><img src="https://img.icons8.com/android/24/000000/phone.png" /> Nomor Telepon Pemilik Panti</h2>
+                                            {{$panti->no_telepon_pemilik}}
+                                        </p>
+                                    </div>
+                                    <div class="column" style="">
+
+                                        <p>
+                                            <h2 style="margin-bottom: 0">Tag Kebutuhan Utama Panti</h2>
+                                            <button class="btn btn-primary" style="border-radius: 50px; padding: 1.3em; margin-top: 1em" disabled>{{$panti->kebutuhan_panti}}</button>
+                                        </p>
+                                        <p>
+                                            <h2 style="margin-bottom: 0.5em">Jumlah Anak</h2>
+                                            <p style="margin-bottom: 0; color: red"><img src="https://img.icons8.com/ios/20/000000/men-age-group-4.png" /> Laki - Laki : {{$panti->jumlah_anak_laki}}</p>
+                                            <p><img src="https://img.icons8.com/ios/20/000000/standing-woman.png" />Perempuan : {{$panti->jumlah_anak_perempuan}}</p>
+                                        </p>
                                     </div>
                                 </div>
-                            @endforeach
+
+                                <div class="quote-wrapper">
+                                    <div class="quotes">
+                                        "Jangan pernah lupa untuk selalu bersyukur. Dan berbagi adalah salah satu cara untuk bersyukur atas nikmatNya."
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <center>
-                            <div class="btn-group">
-                                <a href="{{route('galeri_panti', $panti->email_user)}}"><button type="button" class="btn btn-sm btn-outline-secondary">Lihat Semua</button></a>
+                        <div>
+                            <div class="album py-5 bg-light" style="padding-top: 0em!important">
+                                <h3>Galeri Kegiatan Panti</h3>
+                                <div class="row gallery-item">
+
+                                    <div class="col-lg-12">
+
+                                        @if($galeri->count() > 0)
+
+                                        @foreach($galeri as $galeri)
+                                        <div class="box-pic">
+                                            <div class="imgBox">
+                                                <img src="{{asset('upload/panti/images/'. $galeri->path)}}" alt="">
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                        <center>
+                                            <div class="btn-group">
+                                                <a href="{{route('galeri_panti', $panti->id)}}" class="left"><button type="button" class="btn btn-sm btn-outline-secondary" style="float: left">Lihat Semua</button></a>
+                                            </div>
+                                        </center>
+
+                                    </div>
+
+                                    @else
+                                    <div class="col-lg-12">
+                                        <p class="text-center">Panti ini Belum Mempunyai Photo di Galeri</p>
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-tittle text-left">
+                            <h3>Program Donasi Panti</h3>
+                        </div>
+                    </div>
+                </div>
+                @if($program->count() > 0)
+                <div class="album py-5 bg-light">
+
+                    <div class="container">
+
+                        <div class="row">
+
+                            @foreach ($program as $program)
+                            <div class="col-md-4" style="width: 380px; padding-left: 0em">
+                                <div class="card mb-4 box-shadow" style="min-height: 565px; width: 380px; ">
+                                    <img class="card-img-top" src="{{ asset('upload/panti/program/' . $program->photo_program) }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
+                                    <div class="card-body">
+                                        <h4 style="margin-bottom: 0em">{{ $program->judul }}</h4>
+                                        <p class="card-text">{!! substr($program->deskripsi_program,0, 100)!!}</p>
+                                        <p class="card-text"> Program ini Membutuhkan Dana Sebesar <b> Rp.{{$program->biaya}} </b></p>
+                                        <div class="d-flex justify-content-between align-items-left">
+                                            <div class="btn-group">
+                                                <a href="{{route('detail_program', $program->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             @endforeach
+
                         </div>
-                        <div class="btn-group" style="margin-bottom: 1em">
-                            <a href="{{route('galeri_panti', $panti->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary" style="margin-top: 1em">Lihat Semua</button></a>
-                        </div>
-                    <div class="section-top-border">
-                       
                     </div>
-                    @endforeach
-
-
-
 
                 </div>
+                
+                @else
+                
+                <div class="album col-lg-12 bg-light">
+                    <p class="text-center" style="padding-bottom: 3em; padding-top: 3em">Panti ini Belum Memiliki Program Donasi</p>
+                </div>
+                
+                
+                @endif
+
+
             </div>
-        </div>
-    </section>
+
+
+        </section>
+
+    </main>
 
     <!-- FOOTER -->
     @include('footer.footerWebsite')
     <!-- END OF FOOTER -->
-
+    <script src="">
+        twttr.widgets.createShareButton(
+            '/',
+            document.getElementById('containerss'), {
+                text: 'Hello World'
+            }
+        );
+    </script>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <!-- All JS Custom Plugins Link Here here -->
     <script src="{{asset('js/modernizr-3.5.0.min.js')}}"></script>
 
@@ -195,7 +268,6 @@
     <script src="{{asset('js/jquery.magnific-popup.js')}}"></script>
 
     <!-- Scrollup, nice-select, sticky -->
-    <script src="{{asset('js/jquery.scrollUp.min.js')}}"></script>
     <script src="{{asset('js/jquery.nice-select.min.js')}}"></script>
     <script src="{{asset('js/jquery.sticky.js')}}"></script>
 

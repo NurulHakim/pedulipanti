@@ -34,9 +34,9 @@ class CreatePantiTable extends Migration
             $table->integer('jumlah_pengurus');
             $table->integer('jumlah_anak_laki');
             $table->integer('jumlah_anak_perempuan');
-            $table->mediumText('logo_panti')->nullable($value = true);
-            $table->mediumText('foto_panti')->nullable($value = true);
-            $table->mediumText('sertifikat_panti')->nullable($value = true);
+            $table->mediumText('logo_panti')->nullable();
+            $table->mediumText('foto_panti')->nullable();
+            $table->mediumText('sertifikat_panti')->nullable();
             $table->timestamps();
         });
     }

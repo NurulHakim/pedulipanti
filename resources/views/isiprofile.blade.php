@@ -11,19 +11,26 @@
 
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
-                    <ul class="nav flex-column">    
+                    <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link" href="/dashboard">
                                 <span data-feather="home"></span>
-                                Dashboard <span class="sr-only">(current)</span>
+                                Dashboard  <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="/profile_panti">
                                 <span data-feather="users"></span>
                                 Profile <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('dash_program')}}">
+                                <img src="https://img.icons8.com/ios/20/000000/activity-feed.png" />
+                                Program <span class="sr-only">(current)</span>
                             </a>
                         </li>
                        
@@ -34,15 +41,17 @@
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <h1 class="h2">Isi Profile</h1>
+                    
                 </div>
-
+                
                 <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
+
                     {{ csrf_field() }}
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Tipe Panti</label>
                         <div class="col-sm-10">
                             <select name='tipe_panti' class="form-control" id="exampleFormControlSelect1">
-
+                               
                                 <option>LKSA</option>
                             </select>
                         </div>
@@ -52,7 +61,7 @@
                         <label for="typePanti" class="col-sm-2 col-form-label">Jenis Yayasan</label>
                         <div class="col-sm-10">
                             <select name='jenis_yayasan' class="form-control" id="exampleFormControlSelect1">
-
+                                
                                 <option>PSAA</option>
                                 <option>TAS</option>
                                 <option>Pusaka</option>
@@ -65,28 +74,28 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Nama Panti</label>
                         <div class="col-sm-10">
-                            <input name='nama_panti' type="text" class="form-control" id="namapanti" placeholder="" required>
+                            <input name='nama_panti' type="text" class="form-control" id="namapanti" placeholder="" value="" required>
                         </div>
                     </div>
 
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Nomor Telepon Panti</label>
                         <div class="col-sm-10">
-                            <input name='no_telepon' type="text" class="form-control" id="notelp" placeholder="" required>
+                            <input name='no_telepon' type="text" class="form-control" id="notelp" placeholder="" value="" required>
                         </div>
                     </div>
 
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Nama Pemilik Panti</label>
                         <div class="col-sm-10">
-                            <input name='nama_pemilik' type="text" class="form-control" id="namapempanti" placeholder="" required>
+                            <input name='nama_pemilik' type="text" class="form-control" id="namapempanti" placeholder="" value="" required>
                         </div>
                     </div>
 
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Nomor Telepon Pemilik Panti</label>
                         <div class="col-sm-10">
-                            <input name='no_telepon_pemilik' type="text" class="form-control" id="notelppem" placeholder="" required>
+                            <input name='no_telepon_pemilik' type="text" class="form-control" id="notelppem" placeholder="" value="" required>
                         </div>
                     </div>
                     <div class="form-grup row" style="margin-bottom: 1em">
@@ -98,35 +107,20 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Provinsi</label>
                         <div class="col-sm-10">
-                            <select name='provinsi' class="form-control" id="exampleFormControlSelect1">
-
-                                <option>--------- Pilih Provinsi ----------</option>
-                                <option value='Lampung'>Lampung</option>
+                            <select name="provinsi" id="provinsi" class="form-control dynamic" data-dependent='kabupaten'> 
+                                <option value="">== Pilih Provinsi ==</option>                               
+                                @foreach ($provinces as $id => $name)
+                                    <option value="{{ $id }}">{{ $name }}</option>
+                                @endforeach  
                             </select>
                         </div>
                     </div>
+
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Kabupaten/Kota</label>
                         <div class="col-sm-10">
-                            <select name='kabupaten_kota' class="form-control" id="exampleFormControlSelect1">
-
-                                <option>--------- Pilih Kabupaten/Kota ----------</option>
-                                <option value='Bandar Lampung'>Bandar Lampung</option>
-                                <option value='Lampung Barat'>Lampung Barat</option>
-                                <option value='Lampung Selatan'>Lampung Lampung Selatan</option>
-                                <option value='Lampung Tengah '>Lampung Tengah </option>
-                                <option value='Lampung Utara '>Lampung Utara </option>
-                                <option value='Lampung Timur '>Lampung Timur </option>
-                                <option value='Metro'>Metro</option>
-                                <option value='Mesuji'>Mesuji</option>
-                                <option value='Pesawaran'>Pesawaran</option>
-                                <option value='Pesisir Barat'>Pesisir Barat</option>
-                                <option value='Metro'>Metro</option>
-                                <option value='Pringsewu'>Pringsewu</option>
-                                <option value='Tulang Bawang'>Tulang Bawang</option>
-                                <option value='Tulang Bawang Barat'>Tulang Bawang Barat</option>
-                                <option value='Tanggamus'>Tanggamus</option>
-                                <option value='Way Kanan'>Way Kanan</option>
+                            <select name='kabupaten' id="kabupaten" class="form-control dynamic" >
+                                <option value="">== Pilih Kabupaten ==</option>                               
                             </select>
                         </div>
                     </div>
@@ -134,10 +128,8 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Kecamatan</label>
                         <div class="col-sm-10">
-                            <select name='kecamatan' class="form-control" id="exampleFormControlSelect1">
-
-                                <option>--------- Pilih Kecamatan ----------</option>
-                                <option value='cilincing'>Cilincing</option>
+                            <select name='kecamatan' class="form-control dynamic" id="kecamatan">
+                                <option value="">== Pilih Kecamatan ==</option>
                             </select>
                         </div>
                     </div>
@@ -145,10 +137,8 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Kelurahan</label>
                         <div class="col-sm-10">
-                            <select name='kelurahan' class="form-control" id="exampleFormControlSelect1">
-
-                                <option>--------- Pilih Kelurahan ----------</option>
-                                <option value='sukapura'>Sukapura</option>
+                            <select name='kelurahan' class="form-control dynamic" id="kelurahan">
+                                <option value="">== Pilih Kelurahan ==</option>
                             </select>
                         </div>
                     </div>
@@ -162,7 +152,7 @@
                         <label for="typePanti" class="col-sm-2 col-form-label">Tag Kebutuhan Panti</label>
                         <div class="col-sm-10">
                             <select name='kebutuhan_panti' class="form-control" id="exampleFormControlSelect1">
-
+                                
                                 <option>Pakaian</option>
                                 <option>Makanan</option>
                                 <option>Uang</option>
@@ -180,53 +170,56 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Jumlah Pengurus Panti</label>
                         <div class="col-sm-10">
-                            <input name='jumlah_pengurus' type="number" class="form-control" id="notelppem" placeholder="" required>
+                            <input name='jumlah_pengurus' type="number" class="form-control" id="notelppem" placeholder="" value="" required>
                         </div>
                     </div>
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Jumlah Anak Laki-laki</label>
                         <div class="col-sm-10">
-                            <input name='jumlah_anak_laki' type="number" class="form-control" id="notelppem" placeholder="" required>
+                            <input name='jumlah_anak_laki' type="number" class="form-control" id="notelppem" placeholder="" value="" required>
                         </div>
                     </div>
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Jumlah Perempuan</label>
                         <div class="col-sm-10">
-                            <input name='jumlah_anak_perempuan' type="number" class="form-control" id="notelppem" placeholder="" required>
+                            <input name='jumlah_anak_perempuan' type="number" class="form-control" id="notelppem" placeholder="" value="" required>
                         </div>
                     </div>
-
+                    
                     <div class="form-grup row" style="margin-bottom: 1em">
-                        <label for="typePanti" class="col-sm-2 col-form-label">Logo Panti Asuhan</label>
+                        <label for="typePanti" class="col-sm-2 col-form-label">Logo Panti Asuhan* <p class="text-left">Keterangan : *Photo Wajib Dilampirkan </p></label>
+                        
                         <div class="col-sm-10">
                             <div class="col-sm-2 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary">
-                                    Upload<input name='logo_panti' type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                    Upload<input name='logo_panti' type="file" class="uploadFile img" value="" style="width: 0px;height: 0px;overflow: hidden;" required>
                                 </label>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-grup row" style="margin-bottom: 1em">
-                        <label for="typePanti" class="col-sm-2 col-form-label">Foto Panti Asuhan</label>
+                        <label for="typePanti" class="col-sm-2 col-form-label">Foto Panti Asuhan* <p class="text-left">Keterangan : *Photo Wajib Dilampirkan </p></label>
+                        
                         <div class="col-sm-10">
                             <div class="col-sm-2 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary">
-                                    Upload<input name='foto_panti' type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" required>
+                                    Upload<input name='foto_panti' type="file" class="uploadFile img" value="" style="width: 0px;height: 0px;overflow: hidden;" required>
                                 </label>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-grup row" style="margin-bottom: 1em">
-                        <label for="typePanti" class="col-sm-2 col-form-label">Foto Sertifikat Panti Asuhan</label>
+                        <label for="typePanti" class="col-sm-2 col-form-label">Foto Sertifikat Panti Asuhan* <p class="text-left">Keterangan : *Photo Wajib Dilampirkan </p></label>
+                     
                         <div class="col-sm-10">
                             <div class="col-sm-2 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary">
-                                    Upload<input name='sertifikat_panti' type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" required>
+                                    Upload<input name='sertifikat_panti' type="file" class="uploadFile img" value="" style="width: 0px;height: 0px;overflow: hidden;" required>
                                 </label>
                             </div>
                         </div>
@@ -237,17 +230,8 @@
                             <button name='submit' type="submit" class="btn btn-primary" style="background-color: rgb(245, 121, 12); border-color: rgb(245, 121, 12)">Save Data</button>
                         </div>
                     </div>
-
+                    {{ csrf_field()}}
                 </form>
-
-                <footer class="page-footer font-small blue" style="padding-top: 1em; padding-bottom: 1em">
-
-                    <!-- Copyright -->
-                    <div class="footer-copyright text-center py-3">© 2020 Copyright: v09042929
-                    </div>
-                    <!-- Copyright -->
-
-                </footer>
             </main>
 
 
@@ -262,6 +246,54 @@
             <script src="{{asset('js/popper.min.js')}}"></script>
             <script src="{{asset('js/bootstrap.min.js')}}"></script>
             <script src="{{asset('js/holder.min.js')}}"></script>
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+
+            <script type="text/javascript">
+                $(function () {
+                    $('#provinsi').on('change', function () {
+                        axios.post('{{ route('getKabupaten') }}', {id: $(this).val()})
+                            .then(function (response) {
+                                $('#kabupaten').empty();
+
+                                $.each(response.data, function (id, name) {
+                                    $('#kabupaten').append(new Option(name, id))
+                                })
+                            });
+                    });
+
+                    $('#kabupaten').on('change', function () {
+                        axios.post('{{ route('getKecamatan') }}', {id: $(this).val()})
+                            .then(function (response) {
+                                $('#kecamatan').empty();
+
+                                $.each(response.data, function (id, name) {
+                                    $('#kecamatan').append(new Option(name, id))
+                                })
+                            });
+                    });
+
+                    $('#kecamatan').on('change', function () {
+                        axios.post('{{ route('getKelurahan') }}', {id: $(this).val()})
+                            .then(function (response) {
+                                $('#kelurahan').empty();
+
+                                $.each(response.data, function (id, name) {
+                                    $('#kelurahan').append(new Option(name, id))
+                                })
+                            });
+                    });
+                    
+                    
+                });
+            </script>
+
+
+
+
+
+
             <script type="text/javascript">
                 $(document).ready(function() {
                     $("#sidebar").mCustomScrollbar({
@@ -307,5 +339,7 @@
             </script>
 
             <!-- Graphs -->
+
 </body>
+
 </html>

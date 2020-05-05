@@ -26,6 +26,13 @@
                                 Profile <span class="sr-only">(current)</span>
                             </a>
                         </li>
+                      
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('dash_program')}}">
+                                <img src="https://img.icons8.com/ios/20/000000/activity-feed.png" />
+                                Program <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
                        
                     </ul>
                 </div>
@@ -99,20 +106,20 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Provinsi</label>
                         <div class="col-sm-10">
-                            <select name='provinsi' class="form-control" id="exampleFormControlSelect1">
-                                <option>{{ $datas->provinsi }}</option>
-                                <option>--------- Pilih Provinsi ----------</option>
-                                <option value='jakarta'>Jakarta</option>
+                            <select name="provinsi" id="provinsi" class="form-control dynamic" data-dependent='kabupaten'> 
+                                <option value="{{$datas->provinsi}}">== Pilih Provinsi ==</option>                               
+                                @foreach ($provinces as $id => $name)
+                                    <option value="{{ $id }}">{{ $name }}</option>
+                                @endforeach  
                             </select>
                         </div>
                     </div>
+
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Kabupaten/Kota</label>
                         <div class="col-sm-10">
-                            <select name='kabupaten_kota' class="form-control" id="exampleFormControlSelect1">
-                                <option>{{ $datas->kabupaten_kota}}</option>
-                                <option>--------- Pilih Kabupaten/Kota ----------</option>
-                                <option value='jakarta utara'>Jakarta Utara</option>
+                            <select name='kabupaten' id="kabupaten" class="form-control dynamic" >
+                                <option value="{{$datas->kabupaten_kota}}">== Pilih Kabupaten ==</option>                               
                             </select>
                         </div>
                     </div>
@@ -120,10 +127,8 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Kecamatan</label>
                         <div class="col-sm-10">
-                            <select name='kecamatan' class="form-control" id="exampleFormControlSelect1">
-                                <option>{{ $datas->kecamatan }}</option>
-                                <option>--------- Pilih Kecamatan ----------</option>
-                                <option value='cilincing'>Cilincing</option>
+                            <select name='kecamatan' class="form-control dynamic" id="kecamatan">
+                                <option value="{{$datas->kecamatan}}">== Pilih Kecamatan ==</option>
                             </select>
                         </div>
                     </div>
@@ -131,10 +136,8 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Kelurahan</label>
                         <div class="col-sm-10">
-                            <select name='kelurahan' class="form-control" id="exampleFormControlSelect1">
-                                <option>{{ $datas->kelurahan }}</option>
-                                <option>--------- Pilih Kelurahan ----------</option>
-                                <option value='sukapura'>Sukapura</option>
+                            <select name='kelurahan' class="form-control dynamic" id="kelurahan">
+                                <option value="{{$datas->kelurahan}}">== Pilih Kelurahan ==</option>
                             </select>
                         </div>
                     </div>
@@ -223,7 +226,7 @@
                             <button name='submit' type="submit" class="btn btn-primary" style="background-color: rgb(245, 121, 12); border-color: rgb(245, 121, 12)">Save Data</button>
                         </div>
                     </div>
-
+                    {{ csrf_field()}}
                 </form>
             </main>
 
@@ -239,6 +242,54 @@
             <script src="{{asset('js/popper.min.js')}}"></script>
             <script src="{{asset('js/bootstrap.min.js')}}"></script>
             <script src="{{asset('js/holder.min.js')}}"></script>
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+
+            <script type="text/javascript">
+                $(function () {
+                    $('#provinsi').on('change', function () {
+                        axios.post('{{ route('getKabupaten') }}', {id: $(this).val()})
+                            .then(function (response) {
+                                $('#kabupaten').empty();
+
+                                $.each(response.data, function (id, name) {
+                                    $('#kabupaten').append(new Option(name, id))
+                                })
+                            });
+                    });
+
+                    $('#kabupaten').on('change', function () {
+                        axios.post('{{ route('getKecamatan') }}', {id: $(this).val()})
+                            .then(function (response) {
+                                $('#kecamatan').empty();
+
+                                $.each(response.data, function (id, name) {
+                                    $('#kecamatan').append(new Option(name, id))
+                                })
+                            });
+                    });
+
+                    $('#kecamatan').on('change', function () {
+                        axios.post('{{ route('getKelurahan') }}', {id: $(this).val()})
+                            .then(function (response) {
+                                $('#kelurahan').empty();
+
+                                $.each(response.data, function (id, name) {
+                                    $('#kelurahan').append(new Option(name, id))
+                                })
+                            });
+                    });
+                    
+                    
+                });
+            </script>
+
+
+
+
+
+
             <script type="text/javascript">
                 $(document).ready(function() {
                     $("#sidebar").mCustomScrollbar({

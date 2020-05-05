@@ -17,8 +17,8 @@
 
     <!-- Custom styles for this template -->
     <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
-            <!-- CSS here -->
-            <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
     <link rel="stylesheet" href="{{asset('css/slicknav.css')}}">
@@ -29,4 +29,8 @@
     <link rel="stylesheet" href="{{asset('css/slick.css')}}">
     <link rel="stylesheet" href="{{asset('css/nice-select.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('js/app_daerah.js')}}"> -->
     <link href="{{ asset('css/album.css') }}" rel="stylesheet">
+
+
+    <script src="{{asset('js/jquery.js')}}" type="text/javascript"></script>
