@@ -64,7 +64,8 @@
                                 <p class="card-text">{{ substr($listpanti->deskripsi_panti,0, 100)}}</p>
                                 <p>
                                     <h5 style="margin-bottom: 0">Tag Kebutuhan Utama Panti</h5>
-                                    <button class="btn btn-primary" style="border-radius: 50px; padding: 1.3em; margin-top: 1em" disabled>{{$listpanti->kebutuhan_panti}}</button>
+                                    <button class="btn btn-primary" style="border-radius: 50px; padding: 1.3em; margin-top: 1em" disabled>
+                                    <a href="{{ route('searchPanti')}}">{{$listpanti->kebutuhan_panti}}</a></button>
                                 </p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
