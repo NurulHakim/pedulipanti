@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\AuthController;
+use Laravolt\Indonesia\Models\Province;
+use Laravolt\Indonesia\Models\District;
+use Laravolt\Indonesia\Models\Village;
 use App\Panti;
 use App\User;
 use App\galeri;
@@ -33,7 +36,9 @@ class HomeController extends Controller
         // return view('/home');
         $email = \Auth::user()->email;
         // return view('body/landingpageafterlogin')->with('listpanti', $panti);
-        $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
-        return view('dashpanti')->with('galeri', $galeri);
+        // $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
+        // return view('isiprofile')->with('galeri', $galeri);
+        $provinces = Province::pluck('name', 'id');
+        return view('isiprofile')->with('provinces', $provinces);
     }
 }

@@ -314,10 +314,21 @@ public function editprogget($id)
 
     // MENAMPILKAN DASHBOARD
     public function indexDash(){
-        $email = \Auth::user()->email;
+        // $email = \Auth::user()->email;
 
-        $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
-        return view('dashpanti')->with('galeri', $galeri);
+        // $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
+        // return view('dashpanti')->with('galeri', $galeri);
+
+        $email = \Auth::user()->email;
+        $datas = DB::table('panti')->where('email_user', '=', $email)->get();
+        $data['data'] = $datas;
+        if ($datas->isEmpty()) {
+            $provinces = Province::pluck('name', 'id');
+            return view('isiprofile')->with('provinces', $provinces);
+        } else {
+            $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
+            return view('dashpanti')->with('galeri', $galeri);
+        }
     }
 
     // MENGUPLOAD FOTO GALLERY
@@ -350,7 +361,6 @@ public function editprogget($id)
         $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
         return view('dashpanti')->with('galeri', $galeri);
     }
-       
 
 
     // MENGHAPUS FOTO GALLERY
