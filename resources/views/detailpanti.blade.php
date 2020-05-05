@@ -127,8 +127,8 @@
 
                                         <p>
                                             <h2 style="margin-bottom: 0">Tag Kebutuhan Utama Panti</h2>
-                                            <button class="btn btn-primary" style="border-radius: 50px; padding: 1.3em; margin-top: 1em" disabled>
-                                            <a href="{{ route('searchPanti')}}">{{$panti->kebutuhan_panti}}</a></button>
+                                            <button class="btn btn-primary" style="color: white; border-radius: 50px; padding: 1.3em; margin-top: 1em" disabled>
+                                            {{$panti->kebutuhan_panti}}</button>
                                         </p>
                                         <p>
                                             <h2 style="margin-bottom: 0.5em">Jumlah Anak</h2>

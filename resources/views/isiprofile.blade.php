@@ -33,7 +33,7 @@
                     
                 </div>
                 
-                <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
+                <form idaction="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
 
                     {{ csrf_field() }}
                     <div class="form-grup row" style="margin-bottom: 1em">
@@ -277,12 +277,6 @@
                     
                 });
             </script>
-
-
-
-
-
-
             <script type="text/javascript">
                 $(document).ready(function() {
                     $("#sidebar").mCustomScrollbar({
