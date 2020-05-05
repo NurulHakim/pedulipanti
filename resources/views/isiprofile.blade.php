@@ -33,7 +33,7 @@
                     
                 </div>
                 
-                <form idaction="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
 
                     {{ csrf_field() }}
                     <div class="form-grup row" style="margin-bottom: 1em">
@@ -96,7 +96,7 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Provinsi</label>
                         <div class="col-sm-10">
-                            <select name="provinsi" id="provinsi" class="form-control dynamic" data-dependent='kabupaten'> 
+                            <select name="provinsi" id="provinsi" class="form-control dynamic" data-dependent='kabupaten' required> 
                                 <option value="">== Pilih Provinsi ==</option>                               
                                 @foreach ($provinces as $id => $name)
                                     <option value="{{ $id }}">{{ $name }}</option>
@@ -108,7 +108,7 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Kabupaten/Kota</label>
                         <div class="col-sm-10">
-                            <select name='kabupaten' id="kabupaten" class="form-control dynamic" >
+                            <select name='kabupaten' id="kabupaten" class="form-control dynamic" required>
                                 <option value="">== Pilih Kabupaten ==</option>                               
                             </select>
                         </div>
@@ -117,7 +117,7 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Kecamatan</label>
                         <div class="col-sm-10">
-                            <select name='kecamatan' class="form-control dynamic" id="kecamatan">
+                            <select name='kecamatan' class="form-control dynamic" id="kecamatan" required>
                                 <option value="">== Pilih Kecamatan ==</option>
                             </select>
                         </div>
@@ -126,7 +126,7 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Kelurahan</label>
                         <div class="col-sm-10">
-                            <select name='kelurahan' class="form-control dynamic" id="kelurahan">
+                            <select name='kelurahan' class="form-control dynamic" id="kelurahan" required>
                                 <option value="">== Pilih Kelurahan ==</option>
                             </select>
                         </div>
@@ -134,7 +134,7 @@
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Deskripsi Panti</label>
                         <div class="col-sm-10">
-                            <textarea name='deskripsi_panti' class="form-control " name="alamat" id="alamat" rows="6" style="resize: none"></textarea>
+                            <textarea name='deskripsi_panti' class="form-control " name="alamat" id="alamat" rows="6" style="resize: none" required></textarea>
                         </div>
                     </div>
                     <div class="form-grup row" style="margin-bottom: 1em">

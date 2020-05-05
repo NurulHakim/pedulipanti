@@ -54,7 +54,7 @@
                         <a class="nav-link" href="/listpanti">Cari Panti<span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item" style="margin-right: 1em">
-                        <a class="nav-link" href="#">Tentang Kami</a>
+                        <a class="nav-link" href="/tentangkami">Tentang Kami</a>
                     </li>
                     @guest
                     <li class="nav-item" style="margin-right: 1em">

@@ -62,19 +62,31 @@ class UserController extends Controller
         $search = $request->get('query');
         $searchloc = $request->get('lokasi');
         if(Empty($search) && Empty($searchloc)){
-            $hasil = DB::table('panti')->get();
+            $hasil =DB::table('panti')
+            ->join('indonesia_cities', 'indonesia_cities.id','=','panti.kabupaten_kota')
+            ->join('indonesia_districts', 'indonesia_districts.id','=','panti.kecamatan')
+            ->get(['panti.*', 'indonesia_cities.name as nama_kabupaten', 'indonesia_districts.name as nama_kecamatan']);
             return view('hasil')->with('hasil', $hasil);
         }else if(!Empty($search) && Empty($searchloc)){
-            $hasil = DB::table('panti')->select()->where('nama_panti', 'LIKE', '%' . $search . '%')->orwhere('deskripsi_panti', 'LIKE', '%' . $search . '%')->orwhere('kebutuhan_panti', 'LIKE', '%' . $search . '%')->get();
+            $hasil =DB::table('panti')
+            ->join('indonesia_cities', 'indonesia_cities.id','=','panti.kabupaten_kota')
+            ->join('indonesia_districts', 'indonesia_districts.id','=','panti.kecamatan')
+            ->where('nama_panti', 'LIKE', '%' . $search . '%')->orwhere('kebutuhan_panti', 'LIKE', '%' . $search . '%')->get(['panti.*', 'indonesia_cities.name as nama_kabupaten', 'indonesia_districts.name as nama_kecamatan']);
             return view('hasil')->with('hasil', $hasil);
           
         }else if(Empty($search) && !Empty($searchloc)){
-            $hasil = DB::table('panti')->select()->where('kecamatan', $searchloc)->get();
+            $hasil =DB::table('panti')
+            ->join('indonesia_cities', 'indonesia_cities.id','=','panti.kabupaten_kota')
+            ->join('indonesia_districts', 'indonesia_districts.id','=','panti.kecamatan')
+            ->where('kecamatan', $searchloc)->get(['panti.*', 'indonesia_cities.name as nama_kabupaten', 'indonesia_districts.name as nama_kecamatan']);
        
             return view('hasil')->with('hasil', $hasil);
           
         }else{
-            $hasil = DB::table('panti')->select()->where('nama_panti', 'LIKE', '%' . $search . '%')->orwhere('deskripsi_panti', 'LIKE', '%' . $search . '%')->orwhere('kebutuhan_panti', 'LIKE', '%' . $search . '%')->where('kecamatan', $searchloc)->get();
+            $hasil =DB::table('panti')
+            ->join('indonesia_cities', 'indonesia_cities.id','=','panti.kabupaten_kota')
+            ->join('indonesia_districts', 'indonesia_districts.id','=','panti.kecamatan')
+            ->where('nama_panti', 'LIKE', '%' . $search . '%')->where('kecamatan', $searchloc)->orwhere('kebutuhan_panti', 'LIKE', '%' . $search . '%')->where('kecamatan', $searchloc)->get(['panti.*', 'indonesia_cities.name as nama_kabupaten', 'indonesia_districts.name as nama_kecamatan']);
          
             return view('hasil')->with('hasil', $hasil);
         
@@ -87,16 +99,28 @@ class UserController extends Controller
         $provinsi = $request->get('provinsi');
         $kebutuhan = $request->get('select-keb');
         if(Empty($provinsi) && !Empty($kebutuhan)){
-            $listpanti = DB::table('panti')->select()->where('kebutuhan_panti', '=',  $kebutuhan)->get();
+            $listpanti =DB::table('panti')
+            ->join('indonesia_cities', 'indonesia_cities.id','=','panti.kabupaten_kota')
+            ->join('indonesia_districts', 'indonesia_districts.id','=','panti.kecamatan')
+            ->get(['panti.*', 'indonesia_cities.name as nama_kabupaten', 'indonesia_districts.name as nama_kecamatan'])->where('kebutuhan_panti', '=',  $kebutuhan);
             return view('listpanti')->with('listpanti', $listpanti)->with('provinces', $provinces);
         } elseif(!Empty($provinsi) && Empty($kebutuhan)){
-            $listpanti = DB::table('panti')->select()->where('provinsi', '=',  $provinsi)->get();
+            $listpanti = DB::table('panti')
+            ->join('indonesia_cities', 'indonesia_cities.id','=','panti.kabupaten_kota')
+            ->join('indonesia_districts', 'indonesia_districts.id','=','panti.kecamatan')
+            ->get(['panti.*', 'indonesia_cities.name as nama_kabupaten', 'indonesia_districts.name as nama_kecamatan'])->where('provinsi', '=',  $provinsi);
             return view('listpanti')->with('listpanti', $listpanti)->with('provinces', $provinces);
         } elseif(!Empty($provinsi) && !Empty('$kebutuhan')){
-            $listpanti = DB::table('panti')->select()->where('kebutuhan_panti', '=',  $kebutuhan)->where('provinsi', $provinsi)->get();
+            $listpanti = DB::table('panti')
+            ->join('indonesia_cities', 'indonesia_cities.id','=','panti.kabupaten_kota')
+            ->join('indonesia_districts', 'indonesia_districts.id','=','panti.kecamatan')
+            ->get(['panti.*', 'indonesia_cities.name as nama_kabupaten', 'indonesia_districts.name as nama_kecamatan'])->where('kebutuhan_panti', '=',  $kebutuhan)->where('provinsi', $provinsi);
             return view('listpanti')->with('listpanti', $listpanti)->with('provinces', $provinces);
         } else{
-            $listpanti = DB::table('panti')->get();
+            $listpanti = DB::table('panti')
+            ->join('indonesia_cities', 'indonesia_cities.id','=','panti.kabupaten_kota')
+            ->join('indonesia_districts', 'indonesia_districts.id','=','panti.kecamatan')
+            ->get(['panti.*', 'indonesia_cities.name as nama_kabupaten', 'indonesia_districts.name as nama_kecamatan']);
             return view('listpanti')->with('listpanti', $listpanti)->with('provinces', $provinces);
         }
 

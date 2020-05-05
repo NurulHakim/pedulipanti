@@ -77,11 +77,14 @@ Route::get('dashboard/{id?}', 'PantiController@deletePhoto')->name('deletePhoto'
 // ROUTE HALAMAN PROFILE PANTI/ISI PANTI
 Route::get('profile_panti', 'PantiController@index')->middleware('auth')->name('profile.view');
 Route::post('profiles_panti/{id?}', 'PantiController@store')->middleware('auth')->name('upload');
-Route::post('profile_panti/{id?}', 'PantiController@edit')->middleware('auth')->name('edit');
+Route::post('profile_pantis/{id?}', 'PantiController@edit')->middleware('auth')->name('edit');
 
 //
 Route::get('edit_program/{id?}', 'PantiController@editprogget')->middleware('auth')->name('edit_program');
 Route::post('edit_programs/{id?}', 'PantiController@editprogram')->middleware('auth')->name('edit_program_post');
+Route::get('tentangkami', function(){
+    return view('tentangkami');
+});
 
 Auth::routes(['verify' => true]);
 

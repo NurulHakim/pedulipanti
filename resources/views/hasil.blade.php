@@ -23,6 +23,11 @@
     <link rel="stylesheet" href="{{asset('css/nice-select.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link href="{{ asset('css/album.css') }}" rel="stylesheet">
+    <style>
+        h2{
+            z-index: -1;
+        }
+    </style>
 </head>
 
 <body>
@@ -59,16 +64,16 @@
                         </div>
                         <!-- Search Box -->
                         <div class="row">
-                            <div class="col-xl-12">
+                            <div class="col-xl-12" >
                                 <!-- form -->
                                 <form action="{{ route('searchPanti')}}" method="get" class="search-box">
                                     <div class="input-form mb-30">
-                                        <input name="query" type="text" placeholder="Ayo cari Panti Sekarang!">
+                                        <input name="query" type="text" placeholder="Masukkan Nama Panti atau Tag Kebutuhan Panti! Contoh : Makanan">
                                     </div>
                                     <div class="select-form mb-30">
-                                        <div class="select-itms">
-                                            <select name="lokasi" id="lokasi">
-                                                <option value="">Lokasi</option>
+                                        <div class="select-itms"  >
+                                            <select name="lokasi" id="lokasi" >
+                                                <option value="">Semua Lokasi</option>
                                                 <option value="1871021">BUMI WARAS</option>
                                                 <option value="1871061">ENGGAL</option>
                                                 <option value="1871041">KEDAMAIAN</option>
@@ -108,9 +113,9 @@
         <div class="favourite-place place-padding" style="padding-bottom: 1em">
             <div class="container">
                 <!-- Section Tittle -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-tittle text-center">
+                <div class="row" style=" z-index: -1;">
+                    <div class="col-lg-12" style=" z-index: -1;">
+                        <div class="section-tittle text-center" style=" z-index: -1;">
 
                             <h2>Hasil Pencarian</h2>
                         </div>
@@ -127,7 +132,7 @@
                                     <img class="card-img-top" src="{{ asset('upload/panti/foto/' . $listpanti->foto_panti) }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
                                     <div class="card-body">
                                         <h4 style="margin-bottom: 0em">{{ $listpanti->nama_panti }}</h4>
-                                        <p class="card-text" style="color: orange"><img src="https://img.icons8.com/pastel-glyph/20/ffa200/worldwide-location--v2.png" /> {{$listpanti->kecamatan}}, {{$listpanti->kabupaten_kota}}</p>
+                                        <p class="card-text" style="color: orange"><img src="https://img.icons8.com/pastel-glyph/20/ffa200/worldwide-location--v2.png" />  {{ $listpanti->nama_kecamatan }}, {{ $listpanti->nama_kabupaten }}</p>
                                         <p class="card-text">{{ substr($listpanti->deskripsi_panti,0, 100)}}</p>
                                         <p>
                                             <h5 style="margin-bottom: 0">Tag Kebutuhan Utama Panti</h5>

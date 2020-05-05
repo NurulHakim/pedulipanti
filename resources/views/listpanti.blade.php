@@ -129,7 +129,7 @@
                         <br><br>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" style=" border-radius: 40px;  border-style: solid; border-color:#014b85;  border-width: 3px">Upload</button>
+                        <button type="submit" class="btn btn-primary" style=" border-radius: 40px;  border-style: solid; border-color:#014b85;  border-width: 3px">Save</button>
                         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" style="  border-radius: 40px;  color: #014b85; background-color: white; border-style: solid; border-color:#014b85;  border-width: 3px">Close</button>
 
                     </div>
