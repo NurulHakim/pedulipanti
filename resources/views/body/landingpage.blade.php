@@ -102,7 +102,7 @@
 
     <main>
         <!-- slider Area Start-->
-        <div class="slider-area ">
+        <div class="slider-area " >
             <!-- Mobile Menu -->
             <div class="slider-active">
                 <div class="single-slider hero-overly  slider-height d-flex align-items-center" data-background="{{asset('img/slidekesatu.png')}}">
@@ -123,15 +123,15 @@
                                         <input style="font-size: 12pt" name="query" type="text" placeholder="Masukkan Nama Panti atau Tag Kebutuhan Panti! Contoh : Makanan">
                                     </div>
                                     <div class="select-form mb-30">
-                                        <div class="select-itms">
-                                            <select name="lokasi" id="lokasi">
+                                        <div class="select-itms"> 
+                                            <select name="lokasi" id="lokasi" >
                                                 <option value="">Semua Lokasi</option>
                                                 <option value="1871021">BUMI WARAS</option>
                                                 <option value="1871061">ENGGAL</option>
                                                 <option value="1871041">KEDAMAIAN</option>
                                                 <option value="1871080">KEDATON</option>
                                                 <option value="1871071">KEMILING</option>
-                                                <option value="1871083">LABUHAN RATU</option>
+                                                <option value="1871083" >LABUHAN RATU</option>
                                                 <option value="1871072">LANGKAPURA</option>
                                                 <option value="1871030">PANJANG</option>
                                                 <option value="1871081">RAJABASA</option>
