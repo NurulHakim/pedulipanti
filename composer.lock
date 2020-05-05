@@ -508,8 +508,7 @@
                 "guzzlehttp/promises": "^1.0",
                 "guzzlehttp/psr7": "^1.6.1",
                 "php": ">=5.5",
-                "symfony/polyfill-intl-idn": "^1.11" <<
-                    << << < HEAD
+                "symfony/polyfill-intl-idn": "^1.11"
             },
             "require-dev": {
                 "ext-curl": "*",
@@ -517,8 +516,7 @@
                 "psr/log": "^1.1"
             },
             "suggest": {
-                "psr/log": "Required for using the Log middleware" ===
-                    === =
+                "psr/log": "Required for using the Log middleware"
             },
             "require-dev": {
                 "ext-curl": "*",
@@ -709,16 +707,12 @@
             "suggest": {
                 "ext-gd": "to use GD library based image processing.",
                 "ext-imagick": "to use Imagick based image processing.",
-                "intervention/imagecache": "Caching extension for the Intervention Image library" >>>
-                    >>> > backend
+                "intervention/imagecache": "Caching extension for the Intervention Image library"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    <<
-                    << << < HEAD "dev-master": "6.5-dev" ===
-                        === =
-                        "dev-master": "2.4-dev"
+                    "dev-master": "6.5-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -726,14 +720,12 @@
                     ],
                     "aliases": {
                         "Image": "Intervention\\Image\\Facades\\Image"
-                    } >>>
-                    >>> > backend
+                    }
                 }
             },
             "autoload": {
                 "psr-4": {
-                    <<
-                    << << < HEAD "GuzzleHttp\\": "src/"
+                    "GuzzleHttp\\": "src/"
                 },
                 "files": [
                     "src/functions_include.php"
@@ -784,10 +776,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev" ===
-                        === =
-                        "Intervention\\Image\\": "src/Intervention/Image" >>>
-                        >>> > backend
+                    "dev-master": "1.4-dev",
+                    "Intervention\\Image\\": "src/Intervention/Image"
                 }
             },
             "autoload": {
@@ -803,8 +793,7 @@
                 "MIT"
             ],
             "authors": [{
-                <<
-                << << < HEAD "name": "Michael Dowling",
+                "name": "Michael Dowling",
                 "email": "mtdowling@gmail.com",
                 "homepage": "https://github.com/mtdowling"
             }],
@@ -882,9 +871,8 @@
                 "uri",
                 "url"
             ],
-            "time": "2019-07-01T23:21:34+00:00" ===
-                === =
-                "name": "Oliver Vogel",
+            "time": "2019-07-01T23:21:34+00:00",
+            "name": "Oliver Vogel",
             "email": "oliver@olivervogel.com",
             "homepage": "http://olivervogel.com/"
         }
@@ -899,8 +887,7 @@
         "thumbnail",
         "watermark"
     ],
-    "time": "2019-11-02T09:15:47+00:00" >>>
-        >>> > backend
+    "time": "2019-11-02T09:15:47+00:00"
 }, {
     "name": "laravel/framework",
     "version": "v7.9.2",
@@ -1238,8 +1225,7 @@
         "laravolt",
         "provinsi"
     ],
-    <<
-    << << < HEAD "time": "2020-04-07T15:01:31+00:00"
+    "time": "2020-04-07T15:01:31+00:00"
 }, {
     "name": "laravel/ui",
     "version": "v2.0.3",
@@ -1268,10 +1254,9 @@
     "extra": {
         "laravel": {
             "providers": [
-                    "Laravel\\Ui\\UiServiceProvider"
-                ] ===
-                === =
-                "time": "2020-03-09T09:11:49+00:00"
+                "Laravel\\Ui\\UiServiceProvider"
+            ]
+            "time": "2020-03-09T09:11:49+00:00"
         },
         {
             "name": "league/commonmark",
@@ -1313,8 +1298,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev" >>>
-                        >>> > backend
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -1331,8 +1315,7 @@
                 "name": "Taylor Otwell",
                 "email": "taylor@laravel.com"
             }],
-            <<
-            << << < HEAD "description": "Laravel UI utilities and presets.",
+            "description": "Laravel UI utilities and presets.",
             "keywords": [
                 "laravel",
                 "ui"
@@ -1486,8 +1469,6 @@
                 "md",
                 "parser"
             ],
-            ===
-            === =
             "description": "Highly-extensible PHP Markdown parser which fully supports the CommonMark spec and Github-Flavored Markdown (GFM)",
             "homepage": "https://commonmark.thephpleague.com",
             "keywords": [
@@ -1500,8 +1481,7 @@
                 "md",
                 "parser"
             ],
-            >>>
-            >>> > backend "time": "2020-05-04T22:15:21+00:00"
+            "time": "2020-05-04T22:15:21+00:00"
         },
         {
             "name": "league/flysystem",
