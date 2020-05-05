@@ -53,13 +53,14 @@
 
                         </div>
                     </div> -->
+                    @if($listpanti->count() > 0)
                     @foreach ($listpanti as $listpanti)
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow" style="min-height: 561px; width: 380px;">
                             <img class="card-img-top" src="{{ asset('upload/panti/foto/' . $listpanti->foto_panti) }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
                             <div class="card-body">
                                 <h4 style="margin-bottom: 0em">{{ $listpanti->nama_panti }}</h4>
-                                <p class="card-text" style="color: orange"><img src="https://img.icons8.com/pastel-glyph/20/ffa200/worldwide-location--v2.png" /> {{$listpanti->kecamatan}}, {{$listpanti->kabupaten_kota}}</p>
+                                <p class="card-text" style="color: orange"><img src="https://img.icons8.com/pastel-glyph/20/ffa200/worldwide-location--v2.png" /> {{ $listpanti->nama_kecamatan }}, {{ $listpanti->nama_kabupaten }}</p>
                                 <p class="card-text">{{ substr($listpanti->deskripsi_panti,0, 100)}}</p>
                                 <p>
                                     <h5 style="margin-bottom: 0">Tag Kebutuhan Utama Panti</h5>
@@ -74,6 +75,11 @@
                         </div>
                     </div>
                     @endforeach
+                    @else
+                    <div class="col-lg-12">
+                        <p class="text-center">Maaf, Pencarian Tidak Ditemukan</p>
+                    </div>
+                    @endif
                 </div>
                 <a href="" data-toggle="modal" data-target="#Modal" class="btn btn-outline-secondary" style="position: fixed;right: 46%; bottom: 40px; border-radius: 40px; background-color: orange">Filter</a>
             </div>
@@ -97,13 +103,13 @@
                             <h4 class="modal-title" id="exampleModalLabel">Lokasi</h4>
                         </div>
                         <h5 style="padding-top: 0.5em">Provinsi</h5>
-                        <select  name='provinsi' id="provinsi" data-dependent='kabupaten'>
+                        <select name='provinsi' id="provinsi" data-dependent='kabupaten'>
                             <option value="">-------------- Semua Lokasi --------------</option>
                             @foreach ($provinces as $id => $name)
                             <option value="{{ $id }}">{{$name}}</option>
                             @endforeach
                         </select>
-                       
+
                         <br> <br>
 
                         <div class="modal-header" style="padding-bottom: 0; padding-left: 0">
@@ -143,7 +149,7 @@
     <script type="text/javascript">
         $(function() {
             $('#provinsi').on('change', function() {
-                axios.post('{{ route('getKabupatens') }}', {
+                axios.post('{{ route('getKabupaten') }}', {
                             id: $(this).val()
                         })
                     .then(function(response) {

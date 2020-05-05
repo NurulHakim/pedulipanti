@@ -16,7 +16,7 @@ class Program extends Migration
         Schema::create('program_panti', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_panti');
-            $table->foreign('id_panti')->references('id')->on('panti');
+            $table->foreign('id_panti')->references('id')->on('users');
             $table->mediumText('photo_program')->nullable($value = true);
             $table->text('deskripsi_program');
             $table->bigInteger('biaya');

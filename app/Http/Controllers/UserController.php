@@ -17,8 +17,21 @@ class UserController extends Controller
 {
     public function listview()
     {
-        $panti = Panti::all();
+       
         $provinces = Province::pluck('name', 'id');
+       
+        $panti = Panti::all();
+        $kabupaten = City::all();
+        $kecamatan = District::all();
+
+        $panti = DB::table('panti')
+        ->join('indonesia_cities', 'indonesia_cities.id','=','panti.kabupaten_kota')
+        ->join('indonesia_districts', 'indonesia_districts.id','=','panti.kecamatan')
+        ->get(['panti.*', 'indonesia_cities.name as nama_kabupaten', 'indonesia_districts.name as nama_kecamatan']);
+        
+        // echo "<pre>";
+        // print_r($panti);
+
         return view('listpanti')->with('listpanti', $panti)->with('provinces', $provinces);
     }
 

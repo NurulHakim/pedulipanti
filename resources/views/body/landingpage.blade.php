@@ -217,7 +217,7 @@
                     <div class="container">
 
                         <div class="row">
-                            
+                            @if($listpanti->count() > 0)
                             @foreach ($listpanti as $listpanti)
                             <div class="col-md-4">
                                 <div class="card mb-4 box-shadow" style="min-height: 380px; width: 380px;">
@@ -241,10 +241,16 @@
                                 </div>
                             </div>
                             @endforeach
+
                         </div>
                         <div style=" justify-content: center; display: flex;">
                             <a href="/listpanti"><button type="button" class="btn btn-sm btn-outline-secondary">Lihat Semua</button></a>
                         </div>
+                        @else
+                        <div class="col-lg-12">
+                            <p class="text-center">Maaf, Belum Ada Panti Yang Terdaftar</p>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
