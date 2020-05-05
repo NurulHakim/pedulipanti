@@ -219,18 +219,12 @@
                         <div class="row">
                             
                             @foreach ($listpanti as $listpanti)
-                              
-                            <!-- endforeach -->
-                            
-                            
-
-                            
                             <div class="col-md-4">
                                 <div class="card mb-4 box-shadow" style="min-height: 380px; width: 380px;">
                                     <img class="card-img-top" src="{{ asset('upload/panti/foto/' . $listpanti->foto_panti) }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
                                     <div class="card-body">
                                         <h4 style="margin-bottom: 0em">{{ $listpanti->nama_panti }}</h4>
-                                        <p class="card-text" style="color: orange"><img src="https://img.icons8.com/pastel-glyph/20/ffa200/worldwide-location--v2.png" /> </p>
+                                        <p class="card-text" style="color: orange"><img src="https://img.icons8.com/pastel-glyph/20/ffa200/worldwide-location--v2.png" /> {{ $listpanti->nama_kecamatan }}, {{ $listpanti->nama_kabupaten }} </p>
                                         <p class="card-text">{{ substr($listpanti->deskripsi_panti,0, 100)}}</p>
                                         <p>
                                             <h5 style="margin-bottom: 0">Tag Kebutuhan Utama Panti</h5>
