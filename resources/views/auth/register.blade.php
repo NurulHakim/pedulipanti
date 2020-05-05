@@ -3,7 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6 ">
+        <div class="col-md-8">
+            <!-- <div class="card"> -->
             <div class="card border-0">
             <div class="card-header text-center"  style="background-color: white">
                 <img class="mb-4" src="{{asset('upload/panti/pedulipanti.png')}}" alt="" width="72" height="72">
@@ -18,6 +19,8 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nama Yayasan : ') }}</label>
 
                             <div class="col-md-6">
+                                <!-- <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus> -->
+
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" pattern="[a-zA-Z\s]*" autofocus >
 
                                 @error('name')
@@ -32,6 +35,8 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Alamat E-Mail : ') }}</label>
 
                             <div class="col-md-6">
+                                <!-- <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"> -->
+
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}">
 
                                 @error('email')
@@ -65,12 +70,8 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                        <div class="col-md-6 offset-md-4"> 
-                                <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-                               
-                                </button><br>
-
-
+                            <div class="col-md-6 offset-md-4">
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
                             </div>
                         </div>
                     </form>

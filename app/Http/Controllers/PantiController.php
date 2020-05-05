@@ -11,6 +11,7 @@ use Laravolt\Indonesia\Models\City;
 use Laravolt\Indonesia\Models\Province;
 use Laravolt\Indonesia\Models\District;
 use Laravolt\Indonesia\Models\Village;
+use Intervention\Image\ImageManagerStatic;
 // use App\Http\Controllers\Province;
 use App\User;
 // use App\Province;

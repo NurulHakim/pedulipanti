@@ -19,8 +19,8 @@ class LandingPageController extends Controller
         $panti = Panti::all();
         
         // $kabupaten = City::all();
-        $kabupaten = kabupaten::all();
-        $kecamatan = District::all();
+        // $kabupaten = kabupaten::all();
+        // $kecamatan = District::all();
         // foreach($panti as $panti){
         //     foreach($kabupaten as $kabupaten){
         //         echo $kabupaten;
@@ -43,7 +43,7 @@ class LandingPageController extends Controller
 
         
         // $panti = Panti::all();
-        return view('body/landingpage')->with('listpanti', $panti)->with('kabupaten', $kabupaten)->with('kecamatan', $kecamatan);
+        return view('body/landingpage')->with('listpanti', $panti);
     }
 
     // public function getNameLocation($id){

@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,7 +13,13 @@
 |
 */
 
-use Illuminate\Support\Facades\Route;
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Auth::routes(['verify' => true]);
+
+// Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');;
 
 Route::get('/tentangkami', function () {
     return view('tentangkami');
@@ -37,7 +45,7 @@ Route::get('footer/index', function () {
 Auth::routes(['verify' => true]);
 
 // ROUTE HALAMAN HOME
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 
 
@@ -108,5 +116,3 @@ Route::post('/kelurahan', 'PantiController@getKelurahan')->middleware('auth')->n
 Route::get('tentangkami', function(){
     return view('tentangkami');
 });
-
-// Route::post('/', 'LandingPageController@getNameLocation')->name('location');
