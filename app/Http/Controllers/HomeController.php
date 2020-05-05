@@ -35,9 +35,6 @@ class HomeController extends Controller
     {
         // return view('/home');
         $email = \Auth::user()->email;
-        // return view('body/landingpageafterlogin')->with('listpanti', $panti);
-        // $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
-        // return view('isiprofile')->with('galeri', $galeri);
         $datas = DB::table('panti')->where('email_user', '=', $email)->get();
         $data['data'] = $datas;
         if ($datas->isEmpty()) {
