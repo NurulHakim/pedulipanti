@@ -116,3 +116,5 @@ Route::post('/kelurahan', 'PantiController@getKelurahan')->middleware('auth')->n
 Route::get('tentangkami', function(){
     return view('tentangkami');
 });
+
+
