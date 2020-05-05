@@ -38,7 +38,14 @@ class HomeController extends Controller
         // return view('body/landingpageafterlogin')->with('listpanti', $panti);
         // $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
         // return view('isiprofile')->with('galeri', $galeri);
-        $provinces = Province::pluck('name', 'id');
-        return view('isiprofile')->with('provinces', $provinces);
+        $datas = DB::table('panti')->where('email_user', '=', $email)->get();
+        $data['data'] = $datas;
+        if ($datas->isEmpty()) {
+            $provinces = Province::pluck('name', 'id');
+            return view('isiprofile')->with('provinces', $provinces);
+        } else {
+            $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
+            return view('dashpanti')->with('galeri', $galeri);
+        }
     }
 }
