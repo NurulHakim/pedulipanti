@@ -91,7 +91,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="section-top-border" style="padding: 0"></div>
+                           
                             <div class="blog_details">
                                 <h3>Detail Panti</h3>
                                 <div class="rows">
@@ -145,10 +145,14 @@
                             </div>
                         </div>
                         <div>
-                            <div class="album py-5 bg-light">
+                            <div class="album py-5 bg-light" style="padding-top: 0em!important">
                                 <h3>Galeri Kegiatan Panti</h3>
                                 <div class="row gallery-item">
-                                    <div class="con-gallery">
+
+                                    <div class="col-lg-12">
+
+                                        @if($galeri->count() > 0)
+
                                         @foreach($galeri as $galeri)
                                         <div class="box-pic">
                                             <div class="imgBox">
@@ -161,8 +165,14 @@
                                                 <a href="{{route('galeri_panti', $panti->id)}}" class="left"><button type="button" class="btn btn-sm btn-outline-secondary" style="float: left">Lihat Semua</button></a>
                                             </div>
                                         </center>
+
                                     </div>
-                                    
+
+                                    @else
+                                    <div class="col-lg-12">
+                                        <p class="text-center">Panti ini Belum Mempunyai Photo di Galeri</p>
+                                    </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -171,40 +181,56 @@
 
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-tittle text-center">
-
-                    <h3>Program Donasi Panti</h3>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-tittle text-left">
+                            <h3>Program Donasi Panti</h3>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="album py-5 bg-light">
-                
-                <div class="container">
-                    <div class="row">
-                        @foreach ($program as $program)
-                        <div class="col-md-4" style="width: 380px;">
-                            <div class="card mb-4 box-shadow" style="min-height: 460px; width: 380px;">
-                                <img class="card-img-top" src="{{ asset('upload/panti/program/' . $program->photo_program) }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
-                                <div class="card-body">
-                                    <h4 style="margin-bottom: 0em">{{ $program->judul }}</h4>
-                                    <p class="card-text">{!! substr($program->deskripsi_program,0, 100)!!}</p>
-                                    <p class="card-text"> Program ini Membutuhkan Dana Sebesar <b> Rp.{{$program->biaya}} </b></p>
-                                    <div class="d-flex justify-content-between align-items-left">
-                                        <div class="btn-group">
-                                            <a href="{{route('tampil_panti', $program->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                @if($program->count() > 0)
+                <div class="album py-5 bg-light">
+
+                    <div class="container">
+
+                        <div class="row">
+
+                            @foreach ($program as $program)
+                            <div class="col-md-4" style="width: 380px; padding-left: 0em">
+                                <div class="card mb-4 box-shadow" style="min-height: 565px; width: 380px; ">
+                                    <img class="card-img-top" src="{{ asset('upload/panti/program/' . $program->photo_program) }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
+                                    <div class="card-body">
+                                        <h4 style="margin-bottom: 0em">{{ $program->judul }}</h4>
+                                        <p class="card-text">{!! substr($program->deskripsi_program,0, 100)!!}</p>
+                                        <p class="card-text"> Program ini Membutuhkan Dana Sebesar <b> Rp.{{$program->biaya}} </b></p>
+                                        <div class="d-flex justify-content-between align-items-left">
+                                            <div class="btn-group">
+                                                <a href="{{route('detail_program', $program->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
+
                         </div>
-                        @endforeach
                     </div>
+
                 </div>
+                
+                @else
+                
+                <div class="album col-lg-12 bg-light">
+                    <p class="text-center" style="padding-bottom: 3em; padding-top: 3em">Panti ini Belum Memiliki Program Donasi</p>
+                </div>
+                
+                
+                @endif
+
+
             </div>
+
+
         </section>
 
     </main>

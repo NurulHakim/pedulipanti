@@ -96,10 +96,10 @@
         </nav>
     </header>
 
-    <!-- HEADER -->  -->
+    <!-- HEADER --> -->
     <!-- @include('header.headerWebsite') -->
     <!-- END OF HEADER -->
-    
+
     <main>
         <!-- slider Area Start-->
         <div class="slider-area ">
@@ -120,12 +120,12 @@
                                 <!-- form -->
                                 <form action="{{ route('searchPanti')}}" method="get" class="search-box">
                                     <div class="input-form mb-30">
-                                        <input name="query" type="text" placeholder="Ayo cari Panti Sekarang!">
+                                        <input style="font-size: 12pt" name="query" type="text" placeholder="Masukkan Nama Panti atau Tag Kebutuhan Panti! Contoh : Makanan">
                                     </div>
                                     <div class="select-form mb-30">
                                         <div class="select-itms">
                                             <select name="lokasi" id="lokasi">
-                                                <option value="">Lokasi</option>
+                                                <option value="">Semua Lokasi</option>
                                                 <option value="1871021">BUMI WARAS</option>
                                                 <option value="1871061">ENGGAL</option>
                                                 <option value="1871041">KEDAMAIAN</option>
@@ -162,14 +162,14 @@
         <!-- slider Area End-->
         <!-- Our Services Start -->
 
-        
+
         <div class="our-services servic-padding">
             <div class="container">
                 <div class="row d-flex justify-contnet-center">
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
                         <div class="single-services text-center mb-30">
                             <div class="services-ion" style="">
-                                <span> <img src="https://img.icons8.com/material-rounded/40/000000/fast-browsing.png"/></span>
+                                <span> <img src="https://img.icons8.com/material-rounded/40/000000/fast-browsing.png" /></span>
                             </div>
                             <div class="services-cap">
                                 <h4>Cepat</h4>
@@ -179,7 +179,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
                         <div class="single-services text-center mb-30">
                             <div class="services-ion">
-                                <span ><img src="https://img.icons8.com/carbon-copy/40/000000/easy.png"/></span>
+                                <span><img src="https://img.icons8.com/carbon-copy/40/000000/easy.png" /></span>
                             </div>
                             <div class="services-cap">
                                 <h4>Mudah</h4>
@@ -189,14 +189,14 @@
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
                         <div class="single-services text-center mb-30">
                             <div class="services-ion">
-                                <span><img src="https://img.icons8.com/wired/40/000000/untested.png"/></span>
+                                <span><img src="https://img.icons8.com/wired/40/000000/untested.png" /></span>
                             </div>
                             <div class="services-cap">
                                 <h4>Banyak Pilihan</h4>
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -217,14 +217,20 @@
                     <div class="container">
 
                         <div class="row">
+                            
                             @foreach ($listpanti as $listpanti)
+                                {{$listpanti}}
+                            <!-- endforeach -->
+                            
+                            
+
+                            
                             <div class="col-md-4">
                                 <div class="card mb-4 box-shadow" style="min-height: 380px; width: 380px;">
                                     <img class="card-img-top" src="{{ asset('upload/panti/foto/' . $listpanti->foto_panti) }}" alt="Card image cap" style="height: 200px; background-position: center center; background-repeat: no-repeat;">
                                     <div class="card-body">
-                                        <center>
-                                            <h3 style="margin-bottom: 1em">{{ $listpanti->nama_panti }}</h3>
-                                        </center>
+                                        <h4 style="margin-bottom: 0em">{{ $listpanti->nama_panti }}</h4>
+                                        <p class="card-text" style="color: orange"><img src="https://img.icons8.com/pastel-glyph/20/ffa200/worldwide-location--v2.png" /> </p>
                                         <p class="card-text">{{ substr($listpanti->deskripsi_panti,0, 100)}}</p>
                                         <p>
                                             <h5 style="margin-bottom: 0">Tag Kebutuhan Utama Panti</h5>
@@ -235,7 +241,7 @@
                                                 <div class="btn-group">
                                                     <a href="{{route('tampil_panti', $listpanti->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
                                                 </div>
-                                            </center>                                            
+                                            </center>
                                         </div>
                                     </div>
                                 </div>

@@ -90,17 +90,6 @@ class PantiController extends Controller
         return response()->json($cities);
     }
 
-
-
-
-
-
-
-
-
-
-
-
     // MENGINPUT DATA PANTI KE DATABASE
     public function store(Request $request)
     {
@@ -167,11 +156,54 @@ class PantiController extends Controller
     public function edit(Request $request)
     {
         $panti = new Panti();
-
+        
         $emails = \Auth::user()->email;
         $provinces = Province::pluck('name', 'id');
+        $pantis = Panti::where('email_user', '=', $emails)->get();
+        
+        if ($request->hasfile('logo_panti')) {
+            $file = $request->file('logo_panti');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('upload/panti/logo', $filename);
+            $logo_pantis = $filename;
+        } else {
+            // return $request;
+            foreach($pantis as $panti){
+                $logo_pantis = $panti->logo_panti;
+            }
+           
+        }
 
+        if ($request->hasfile('foto_panti')) {
+            $file = $request->file('foto_panti');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('upload/panti/foto', $filename);
+            $foto_pantis = $filename;
+        } else {
+            // return $request;
+            foreach($pantis as $panti){
+                $foto_pantis = $panti->foto_panti;
+            }
+        }
+
+        if ($request->hasfile('sertifikat_panti')) {
+            $file = $request->file('sertifikat_panti');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('upload/panti/sertifikat', $filename);
+            $sertifikat_pantis = $filename;
+        } else {
+            // return $request;
+            foreach($pantis as $panti){
+                $sertifikat_pantis = $panti->sertifikat_panti;
+            }
+        }
+
+        
         DB::table('panti')->where('email_user', $emails)->update([
+            'email_user' => $emails,
             'tipe_panti' => $request->tipe_panti,
             'jenis_yayasan' => $request->jenis_yayasan,
             'nama_panti' => $request->nama_panti,
@@ -180,7 +212,7 @@ class PantiController extends Controller
             'no_telepon_pemilik' => $request->no_telepon_pemilik,
             'alamat_panti' => $request->alamat_panti,
             'provinsi' => $request->provinsi,
-            'kabupaten_kota' => $request->kabupaten_kota,
+            'kabupaten_kota' => $request->kabupaten,
             'kecamatan' => $request->kecamatan,
             'kelurahan' => $request->kelurahan,
             'kebutuhan_panti' => $request->kebutuhan_panti,
@@ -189,40 +221,12 @@ class PantiController extends Controller
             'jumlah_anak_laki' => $request->jumlah_anak_laki,
             'jumlah_anak_perempuan' => $request->jumlah_anak_perempuan,
             'deskripsi_panti'=> $request->deskripsi_panti,
+            'logo_panti' => $logo_pantis,
+            'sertifikat_panti' => $sertifikat_pantis,
+            'foto_panti' => $foto_pantis
         ]);
         
-        // if ($request->hasfile('logo_panti')) {
-        //     $file = $request->file('logo_panti');
-        //     $extension = $file->getClientOriginalExtension();
-        //     $filename = time() . '.' . $extension;
-        //     $file->move('upload/panti/logo', $filename);
-        //     $panti->logo_panti = $filename;
-        // } else {
-        //     // return $request;
-        //     $panti->logo_panti = '';
-        // }
-
-        // if ($request->hasfile('foto_panti')) {
-        //     $file = $request->file('foto_panti');
-        //     $extension = $file->getClientOriginalExtension();
-        //     $filename = time() . '.' . $extension;
-        //     $file->move('upload/panti/foto', $filename);
-        //     $panti->foto_panti = $filename;
-        // } else {
-        //     // return $request;
-        //     $panti->foto_panti = '';
-        // }
-
-        // if ($request->hasfile('sertifikat_panti')) {
-        //     $file = $request->file('sertifikat_panti');
-        //     $extension = $file->getClientOriginalExtension();
-        //     $filename = time() . '.' . $extension;
-        //     $file->move('upload/panti/sertifikat', $filename);
-        //     $panti->sertifikat_panti = $filename;
-        // } else {
-        //     // return $request;
-        //     $panti->sertifikat_panti = '';
-        // }
+       
         $panti->save();
 
         return redirect('/profile_panti');
@@ -236,6 +240,7 @@ class PantiController extends Controller
         foreach($ids as $ids){
             $program->id_panti = $ids->id;
         }
+        $program->telp = $request->input('telp_program');
         $program->judul = $request->input('judul_program');
         $program->biaya = $request->input('biaya_program');
         $program->deskripsi_program = $request->input('deskripsi_program');
@@ -255,7 +260,50 @@ class PantiController extends Controller
         return view('dashpanti')->with('galeri', $galeri);
     }
     
+    public function listprogram()
+    {
+        $email = \Auth::user()->email;
+        $ids = Panti::select('id')->where('email_user', '=', $email)->get();
+        $id= "";
+        foreach($ids as $ids){
+            $id = $ids->id;
+        }
+        $program = program::where('id_panti', $id)->get();
+        return view('dahsprog')->with('program', $program);
+    }
 
+public function editprogget($id)
+{
+    
+    $data = program::where('id', $id)->get();
+    return view('editprog')->with('data', $data);
+}
+
+    public function editprogram(Request $request, $id)
+    {
+        $programs = program::where('id', $id)->get();
+        if ($request->hasfile('photo_prog')) {
+            $file = $request->file('photo_prog');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('upload/panti/program', $filename);
+            $name = $filename;
+        } else {
+            // return $request;
+            foreach($programs as $prog){
+                $name = $prog->photo_program;
+            }
+        }
+        DB::table('program_panti')->where('id', $id)->update([
+                'judul' => $request->judul,
+                'deskripsi_program' => $request->deskripsi_program,
+                'biaya' => $request->biaya,
+                'telp' => $request->no_telepon,
+                'photo_program' => $name,
+        ]);
+        $program = program::all();
+        return view('dahsprog')->with('program', $program);
+    }
 
     public function viewpanti(){
         $panti = Panti::all()->take(6);

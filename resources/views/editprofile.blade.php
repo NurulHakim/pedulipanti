@@ -26,6 +26,13 @@
                                 Profile <span class="sr-only">(current)</span>
                             </a>
                         </li>
+                      
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('dash_program')}}">
+                                <img src="https://img.icons8.com/ios/20/000000/activity-feed.png" />
+                                Program <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
                        
                     </ul>
                 </div>
@@ -100,7 +107,7 @@
                         <label for="typePanti" class="col-sm-2 col-form-label">Provinsi</label>
                         <div class="col-sm-10">
                             <select name="provinsi" id="provinsi" class="form-control dynamic" data-dependent='kabupaten'> 
-                                <option value="">== Pilih Provinsi ==</option>                               
+                                <option value="{{$datas->provinsi}}">== Pilih Provinsi ==</option>                               
                                 @foreach ($provinces as $id => $name)
                                     <option value="{{ $id }}">{{ $name }}</option>
                                 @endforeach  
@@ -112,7 +119,7 @@
                         <label for="typePanti" class="col-sm-2 col-form-label">Kabupaten/Kota</label>
                         <div class="col-sm-10">
                             <select name='kabupaten' id="kabupaten" class="form-control dynamic" >
-                                <option value="">== Pilih Kabupaten ==</option>                               
+                                <option value="{{$datas->kabupaten_kota}}">== Pilih Kabupaten ==</option>                               
                             </select>
                         </div>
                     </div>
@@ -121,7 +128,7 @@
                         <label for="typePanti" class="col-sm-2 col-form-label">Kecamatan</label>
                         <div class="col-sm-10">
                             <select name='kecamatan' class="form-control dynamic" id="kecamatan">
-                                <option value="">== Pilih Kecamatan ==</option>
+                                <option value="{{$datas->kecamatan}}">== Pilih Kecamatan ==</option>
                             </select>
                         </div>
                     </div>
@@ -130,7 +137,7 @@
                         <label for="typePanti" class="col-sm-2 col-form-label">Kelurahan</label>
                         <div class="col-sm-10">
                             <select name='kelurahan' class="form-control dynamic" id="kelurahan">
-                                <option value="">== Pilih Kelurahan ==</option>
+                                <option value="{{$datas->kelurahan}}">== Pilih Kelurahan ==</option>
                             </select>
                         </div>
                     </div>

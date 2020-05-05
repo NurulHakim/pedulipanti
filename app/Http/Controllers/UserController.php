@@ -6,13 +6,20 @@ use Illuminate\Support\Facades\DB;
 // use App\galeri;
 use Post;
 use Illuminate\Http\Request;
+use App\program;
+use PhpParser\Node\Expr\Empty_;
+use Laravolt\Indonesia\Models\City;
+use Laravolt\Indonesia\Models\Province;
+use Laravolt\Indonesia\Models\District;
+use Laravolt\Indonesia\Models\Village;
 
 class UserController extends Controller
 {
     public function listview()
     {
         $panti = Panti::all();
-        return view('listpanti')->with('listpanti', $panti);
+        $provinces = Province::pluck('name', 'id');
+        return view('listpanti')->with('listpanti', $panti)->with('provinces', $provinces);
     }
 
     public function view_detail($id)
@@ -24,14 +31,15 @@ class UserController extends Controller
         return view('detailpanti')->with('panti', $panti)->with('galeri', $galeri)->with('program', $program);
     }
 
+    public function detail_program($id)
+    {
+        $program = DB::table('program_panti')->where('id', $id)->get();
+        return view('program')->with('program', $program);
+    }
+
     public function galeri($id)
     {
-        // $panti = DB::table('panti')->where('id', '=', $id)->get();
-        // foreach($panti as $panti){
-        //     $email = $panti->email_user;
-        // }
-        // $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
-
+       
         $galeri = DB::table('galeris')->where('id_panti', '=', $id)->get();
         
         return view('/galerypanti')->with('galeri', $galeri);
@@ -40,28 +48,51 @@ class UserController extends Controller
     public function searchPanti(Request $request){
         $search = $request->get('query');
         $searchloc = $request->get('lokasi');
-        // $hasil = Post::where('nama_panti', 'LIKE', '%' . $search . '%')->paginate(10);
         if(Empty($search) && Empty($searchloc)){
             $hasil = DB::table('panti')->get();
-            // return view('hasil', compact('search', 'searchloc', 'hasil'));
             return view('hasil')->with('hasil', $hasil);
-            // echo("a");
         }else if(!Empty($search) && Empty($searchloc)){
             $hasil = DB::table('panti')->select()->where('nama_panti', 'LIKE', '%' . $search . '%')->orwhere('deskripsi_panti', 'LIKE', '%' . $search . '%')->orwhere('kebutuhan_panti', 'LIKE', '%' . $search . '%')->get();
-            // return view('hasil', compact('search', 'hasil'));
             return view('hasil')->with('hasil', $hasil);
-            // echo("b");
+          
         }else if(Empty($search) && !Empty($searchloc)){
             $hasil = DB::table('panti')->select()->where('kecamatan', $searchloc)->get();
-            // return view('hasil', \compact('searchloc', 'hasil'));
+       
             return view('hasil')->with('hasil', $hasil);
-            // echo("c");
+          
         }else{
             $hasil = DB::table('panti')->select()->where('nama_panti', 'LIKE', '%' . $search . '%')->orwhere('deskripsi_panti', 'LIKE', '%' . $search . '%')->orwhere('kebutuhan_panti', 'LIKE', '%' . $search . '%')->where('kecamatan', $searchloc)->get();
-            // return view('hasil', compact('search', 'searchloc', 'hasil'));
+         
             return view('hasil')->with('hasil', $hasil);
-            // echo("d");
+        
         }
 
     }
+
+    public function filter(Request $request){
+        $provinces = Province::pluck('name', 'id');
+        $provinsi = $request->get('provinsi');
+        $kebutuhan = $request->get('select-keb');
+        if(Empty($provinsi) && !Empty($kebutuhan)){
+            $listpanti = DB::table('panti')->select()->where('kebutuhan_panti', '=',  $kebutuhan)->get();
+            return view('listpanti')->with('listpanti', $listpanti)->with('provinces', $provinces);
+        } elseif(!Empty($provinsi) && Empty($kebutuhan)){
+            $listpanti = DB::table('panti')->select()->where('provinsi', '=',  $provinsi)->get();
+            return view('listpanti')->with('listpanti', $listpanti)->with('provinces', $provinces);
+        } elseif(!Empty($provinsi) && !Empty('$kebutuhan')){
+            $listpanti = DB::table('panti')->select()->where('kebutuhan_panti', '=',  $kebutuhan)->where('provinsi', $provinsi)->get();
+            return view('listpanti')->with('listpanti', $listpanti)->with('provinces', $provinces);
+        } else{
+            $listpanti = DB::table('panti')->get();
+            return view('listpanti')->with('listpanti', $listpanti)->with('provinces', $provinces);
+        }
+
+    }
+    public function getKabupaten(Request $request)
+    {
+        $cities = City::where('province_id', $request->get('id'))->pluck('name', 'id');
+    
+        return response()->json($cities);
+    }
+
 }
