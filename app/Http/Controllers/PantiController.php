@@ -236,11 +236,15 @@ class PantiController extends Controller
     public function tambah_program(Request $request)
     {
         $program = new program();
+        $id_user = \Auth::user()->id;
         $email = \Auth::user()->email;
         $ids = Panti::select('id')->where('email_user', '=', $email)->get();
+        $id= "";
         foreach($ids as $ids){
-            $program->id_panti = $ids->id;
+            $id = $ids->id;
         }
+        $program->id_pantis=$id;
+        $program->id_panti = $id_user;
         $program->telp = $request->input('telp_program');
         $program->judul = $request->input('judul_program');
         $program->biaya = $request->input('biaya_program');
@@ -263,12 +267,7 @@ class PantiController extends Controller
     
     public function listprogram()
     {
-        $email = \Auth::user()->email;
-        $ids = Panti::select('id')->where('email_user', '=', $email)->get();
-        $id= "";
-        foreach($ids as $ids){
-            $id = $ids->id;
-        }
+        $id = \Auth::user()->id;
         $program = program::where('id_panti', $id)->get();
         return view('dahsprog')->with('program', $program);
     }
@@ -369,7 +368,7 @@ public function editprogget($id)
     public function deleteAccount(){
         $email = \Auth::user()->email;
         $id = \Auth::user()->id;
-        DB::table('program')->where('id_panti', $id)->delete();
+        DB::table('program_panti')->where('id_panti', $id)->delete();
         DB::table('galeris')->where('email_user', $email)->delete();
         DB::table('panti')->where('email_user', $email)->delete();
         DB::table('users')->where('email', $email)->delete();
