@@ -219,7 +219,7 @@
                         <div class="row">
                             
                             @foreach ($listpanti as $listpanti)
-                                {{$listpanti}}
+                              
                             <!-- endforeach -->
                             
                             
