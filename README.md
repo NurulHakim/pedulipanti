@@ -1,20 +1,20 @@
 # Dokumentasi Fungsi yang Digunakan
 
 ## HomeController
-<p>
+
     public function __construct()
     {
         $this->middleware(['auth', 'verified']);
     }
-</p>
+
 -   #### Fungsi tersebut berfungsi untuk keamanan dari pemilik akan, sehingga setiap route yang memanggil home controller akan diminta untuk login.
-<p>
+
     public function index(){
-        $email = \Auth::user()->email;
+    $email = \Auth::user()->email;
         $datas = DB::table('panti')->where('email_user', '=', $email)->get();
         $data['data'] = $datas;
         if (!$datas->isEmpty()) {
-            $provinces = Province::pluck('name', 'id');
+    $provinces = Province::pluck('name', 'id');
             $panti = Panti::all();
 
             foreach($panti as $panti){
@@ -33,8 +33,8 @@
             $provinces = Province::pluck('name', 'id');
             return view('isiprofile')->with('provinces', $provinces);
         }
+
     }
-</p>
 
 -   #### Fungsi diatas berfungsi untuk masuk kehalaman dashboard panti dengan beberapa parameter yang sudah di sesuaikan.
 
@@ -311,7 +311,7 @@
         return view('editprog')->with('data', $data);
     }
 
--   #### a
+-   #### Fungsi tersebut berfungsi untuk menampilkan program yang telah diinputkakn
 
     public function editprogram(Request $request, $id)
     {
@@ -339,7 +339,7 @@
         return view('dahsprog')->with('program', $program);
     }
 
--   #### a
+-   #### Fungsi tersebut berfungsi untuk mengubah program yang telah ditambahkan sebelumnya
 
     public function viewpanti(){
     $panti = Panti::all()->take(6);
@@ -460,7 +460,7 @@
         return view('program')->with('program', $program);
     }
 
--   #### a
+-   #### Fungsi tersebut berfungsi untuk menampilkan detail dari program yang telah ditambahkan oleh admin panti
 
     public function galeri($id)
     {
@@ -507,7 +507,7 @@
 
     }
 
--   #### search
+-   #### Fungsi tersebut berfungsi untuk melakukan pencarian panti berdasarkan nama, kebutuhan pantinya atau lokasinya
 
 public function filter(Request $request){
         $provinces = Province::pluck('name', 'id');
@@ -541,7 +541,7 @@ return view('listpanti')->with('listpanti', $listpanti)->with('provinces', $prov
 
     }
 
--   #### asa
+-   #### Fungsi tersebut berfungsi untuk memfilter dari panti-panti yang terdaftar berdasarkan kebutuhan ataupun lookasinya
 
     public function getKabupaten(Request $request)
     {
@@ -549,4 +549,4 @@ return view('listpanti')->with('listpanti', $listpanti)->with('provinces', $prov
         return response()->json($cities);
     }
 
--   #### dsadas
+-   #### Fungsi tersebut berfungsi untuk mendapatkan daftar kabupaten berdasarkan provinsi yang dipilih sebelumnya
