@@ -9,8 +9,7 @@
 
 -   #### Fungsi tersebut berfungsi untuk keamanan dari pemilik akan, sehingga setiap route yang memanggil home controller akan diminta untuk login.
 
-    public function index()
-    {
+    public function index(){
         $email = \Auth::user()->email;
         $datas = DB::table('panti')->where('email_user', '=', $email)->get();
         $data['data'] = $datas;
