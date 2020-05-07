@@ -1,14 +1,14 @@
 # Dokumentasi Fungsi yang Digunakan
 
 ## HomeController
-
+<p>
     public function __construct()
     {
         $this->middleware(['auth', 'verified']);
     }
-
+</p>
 -   #### Fungsi tersebut berfungsi untuk keamanan dari pemilik akan, sehingga setiap route yang memanggil home controller akan diminta untuk login.
-
+<p>
     public function index(){
         $email = \Auth::user()->email;
         $datas = DB::table('panti')->where('email_user', '=', $email)->get();
@@ -34,6 +34,7 @@
             return view('isiprofile')->with('provinces', $provinces);
         }
     }
+</p>
 
 -   #### Fungsi diatas berfungsi untuk masuk kehalaman dashboard panti dengan beberapa parameter yang sudah di sesuaikan.
 
