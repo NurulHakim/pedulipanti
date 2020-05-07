@@ -236,11 +236,15 @@ class PantiController extends Controller
     public function tambah_program(Request $request)
     {
         $program = new program();
+        $id_user = \Auth::user()->id;
         $email = \Auth::user()->email;
         $ids = Panti::select('id')->where('email_user', '=', $email)->get();
+        $id= "";
         foreach($ids as $ids){
-            $program->id_panti = $ids->id;
+            $id = $ids->id;
         }
+        $program->id_pantis=$id;
+        $program->id_panti = $id_user;
         $program->telp = $request->input('telp_program');
         $program->judul = $request->input('judul_program');
         $program->biaya = $request->input('biaya_program');
@@ -273,12 +277,12 @@ class PantiController extends Controller
         return view('dahsprog')->with('program', $program);
     }
 
-public function editprogget($id)
-{
-    
-    $data = program::where('id', $id)->get();
-    return view('editprog')->with('data', $data);
-}
+    public function editprogget($id)
+    {
+        
+        $data = program::where('id', $id)->get();
+        return view('editprog')->with('data', $data);
+    }
 
     public function editprogram(Request $request, $id)
     {
@@ -305,6 +309,7 @@ public function editprogget($id)
         $program = program::all();
         return view('dahsprog')->with('program', $program);
     }
+
 
     public function viewpanti(){
         $panti = Panti::all()->take(6);
