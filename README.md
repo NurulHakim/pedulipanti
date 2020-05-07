@@ -54,11 +54,14 @@
 
     public function index()
     {
-    $email = \Auth::user()->email;
+
+        $email = \Auth::user()->email;
         $datas = DB::table('panti')->where('email_user', '=', $email)->get();
         $data['data'] = $datas;
+
         if (!$datas->isEmpty()) {
-    $provinces = Province::pluck('name', 'id');
+
+            $provinces = Province::pluck('name', 'id');
             $panti = Panti::all();
 
             foreach($panti as $panti){
@@ -82,3 +85,36 @@
     }
 
 -   #### fungsi tersebut tersebut berisi percabangan apabila pemilik akun belum mengisi data maka akan diarahkan ke halaman profilepanti namun jika sudah mengisinya maka akan diarahkan kehalaman editprofile.
+
+    public function getKabupaten(Request $request)
+    {
+        $cities = City::where('province_id', \$request->get('id'))->pluck('name', 'id');
+
+        return response()->json(\$cities);
+
+    }
+
+-   #### Fungsi ini berfungsi untuk mendapatkan daftar kabupaten dari provinsi yang dipilih saat pengisian profile.
+
+
+    public function getKecamatan(Request $request)
+    {
+        $cities = District::where('city_id', \$request->get('id'))->pluck('name', 'id');
+
+        return response()->json(\$cities);
+
+    }
+
+-   #### Fungsi ini berfungsi untuk mendapatkan daftar kecamatan dari kabupaten yang dipilih saat pengisian profile.
+
+
+    public function getKelurahan(Request $request)
+    {
+
+        $cities = Village::where('district_id', \$request->get('id'))->pluck('name', 'id');
+
+        return response()->json(\$cities);
+
+    }
+
+-   #### fungsi ini berfungsi untuk mendapatkan daftar desa atau kelurahan dari kecamatan yang dipilih saat pengisian profile.
