@@ -191,7 +191,7 @@
                             <div class="col-sm-2 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary">
-                                    Upload<input name='logo_panti' type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                    Upload<input accept="image/x-png,image/gif,image/jpeg" name='logo_panti' type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
                                 </label>
                             </div>
                         </div>
@@ -203,7 +203,7 @@
                             <div class="col-sm-2 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary">
-                                    Upload<input name='foto_panti' type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                    Upload<input accept="image/x-png,image/gif,image/jpeg" name='foto_panti' type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
                                 </label>
                             </div>
                         </div>
@@ -215,7 +215,7 @@
                             <div class="col-sm-2 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary">
-                                    Upload<input name='sertifikat_panti' type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" >
+                                    Upload<input accept="image/x-png,image/gif,image/jpeg" name='sertifikat_panti' type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" >
                                 </label>
                             </div>
                         </div>
