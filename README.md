@@ -23,7 +23,7 @@
         $data['data'] = $datas;
         if ($datas->isEmpty()) {
     $provinces = Province::pluck('name', 'id');
-            return view('isiprofile')->with('provinces', $provinces);
+                return view('isiprofile')->with('provinces', $provinces);
     } else {
     $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
     return view('dashpanti')->with('galeri', \$galeri);
