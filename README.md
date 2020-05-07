@@ -11,9 +11,9 @@
 
     public function index()
     {
-    $email = \Auth::user()->email;
-        
-        $datas = DB::table('panti')->where('email_user', '=', $email)->get();
+
+        $email = \Auth::user()->email;
+        $datas = DB::table('panti')->where('email_user', '=', \$email)->get();
         $data['data'] = $datas;
         if ($datas->isEmpty()) {
 
