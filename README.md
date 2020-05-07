@@ -54,13 +54,11 @@
 
     public function index()
     {
-
-        $email = \Auth::user()->email;
+    $email = \Auth::user()->email;
         $datas = DB::table('panti')->where('email_user', '=', $email)->get();
-        $data['data'] = $datas;
+        $data['data'] = \$datas;
 
         if (!$datas->isEmpty()) {
-
             $provinces = Province::pluck('name', 'id');
             $panti = Panti::all();
 
