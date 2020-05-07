@@ -32,12 +32,10 @@
         $panti = Panti::all();
         $kabupaten = City::all();
         $kecamatan = District::all();
-
         $panti = DB::table('panti')
         ->join('indonesia_cities', 'indonesia_cities.id','=','panti.kabupaten_kota')
         ->join('indonesia_districts', 'indonesia_districts.id','=','panti.kecamatan')
         ->get(['panti.*', 'indonesia_cities.name as nama_kabupaten', 'indonesia_districts.name as nama_kecamatan']);
-
         return view('body/landingpage')->with('listpanti', $panti);
     }
 
@@ -54,7 +52,9 @@
 
     public function index()
     {
-    $email = \Auth::user()->email;
+
+        $email = \Auth::user()->email;
+
         $datas = DB::table('panti')->where('email_user', '=', $email)->get();
         $data['data'] = \$datas;
 
