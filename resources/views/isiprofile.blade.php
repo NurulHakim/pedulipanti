@@ -182,7 +182,7 @@
                             <div class="col-sm-2 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary">
-                                    Upload<input name='logo_panti' type="file" class="uploadFile img" value="" style="width: 0px;height: 0px;overflow: hidden;" required>
+                                    Upload<input accept="image/x-png,image/gif,image/jpeg" name='logo_panti' type="file" class="uploadFile img" value="" style="width: 0px;height: 0px;overflow: hidden;" required>
                                 </label>
                             </div>
                         </div>
@@ -190,12 +190,11 @@
 
                     <div class="form-grup row" style="margin-bottom: 1em">
                         <label for="typePanti" class="col-sm-2 col-form-label">Foto Panti Asuhan* <p class="text-left">Keterangan : *Photo Wajib Dilampirkan </p></label>
-                        
                         <div class="col-sm-10">
                             <div class="col-sm-2 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary">
-                                    Upload<input name='foto_panti' type="file" class="uploadFile img" value="" style="width: 0px;height: 0px;overflow: hidden;" required>
+                                    Upload<input accept="image/x-png,image/gif,image/jpeg" name='foto_panti' type="file" class="uploadFile img" value="" style="width: 0px;height: 0px;overflow: hidden;" required>
                                 </label>
                             </div>
                         </div>
@@ -208,7 +207,7 @@
                             <div class="col-sm-2 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary">
-                                    Upload<input name='sertifikat_panti' type="file" class="uploadFile img" value="" style="width: 0px;height: 0px;overflow: hidden;" required>
+                                    Upload<input accept="image/x-png,image/gif,image/jpeg"name='sertifikat_panti' type="file" class="uploadFile img" value="" style="width: 0px;height: 0px;overflow: hidden;" required>
                                 </label>
                             </div>
                         </div>
