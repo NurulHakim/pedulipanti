@@ -11,8 +11,8 @@
 
     public function index()
     {
-
-        $email = \Auth::user()->email;
+    $email = \Auth::user()->email;
+        
         $datas = DB::table('panti')->where('email_user', '=', $email)->get();
         $data['data'] = $datas;
         if ($datas->isEmpty()) {
@@ -412,3 +412,133 @@
     }
 
 -   #### Fungsi diatas berfungsi untuk menghapus akun panti yang sudah terdaftar sebelumnya.
+
+## UserController
+
+    public function listview()
+    {
+
+        $provinces = Province::pluck('name', 'id');
+
+        $panti = Panti::all();
+        $kabupaten = City::all();
+        $kecamatan = District::all();
+
+        $panti = DB::table('panti')
+        ->join('indonesia_cities', 'indonesia_cities.id','=','panti.kabupaten_kota')
+        ->join('indonesia_districts', 'indonesia_districts.id','=','panti.kecamatan')
+        ->get(['panti.*', 'indonesia_cities.name as nama_kabupaten', 'indonesia_districts.name as nama_kecamatan']);
+
+        return view('listpanti')->with('listpanti', $panti)->with('provinces', $provinces);
+    }
+
+-   #### Fungsi diatas berfungsi untuk mengambil semua data dari setiap panti yang terdaftar dan menampilkannya pada halaman listview.
+
+    public function view_detail($id)
+    {
+        $panti = DB::table('panti')->where('id', '=', $id)->get();
+        $galeri = DB::table('galeris')->where('id_panti', '=', \$id)->take(4)->get();
+
+        $program = DB::table('program_panti')->where('id_panti', '=', $id)->take(4)->get();
+        return view('detailpanti')->with('panti', $panti)->with('galeri', $galeri)->with('program', $program);
+
+    }
+
+-   #### Fungsi diatas berfungsi untuk mengambil data dari suatu panti yang dipilih oleh user dan menampilkannya di halaman detailpanti
+
+    public function detail_program($id)
+    {
+        $program = DB::table('program_panti')->where('id', $id)->get();
+        return view('program')->with('program', $program);
+    }
+
+-   #### a
+
+    public function galeri($id)
+    {
+        $galeri = DB::table('galeris')->where('id_panti', '=', $id)->get();
+        
+        return view('/galerypanti')->with('galeri', $galeri);
+    }
+
+-   #### Fungsi diatas berfungsi untuk mengambil foto-foto dari panti yang telah dipilih oleh user dan menampilkan semuanya di halaman galerypanti
+
+    public function searchPanti(Request $request){
+        $search = $request->get('query');
+        $searchloc = $request->get('lokasi');
+        if(Empty($search) && Empty($searchloc)){
+            $hasil =DB::table('panti')
+    ->join('indonesia_cities', 'indonesia_cities.id','=','panti.kabupaten_kota')
+    ->join('indonesia_districts', 'indonesia_districts.id','=','panti.kecamatan')
+    ->get(['panti.*', 'indonesia_cities.name as nama_kabupaten', 'indonesia_districts.name as nama_kecamatan']);
+    return view('hasil')->with('hasil', $hasil);
+        }else if(!Empty($search) && Empty($searchloc)){
+            $hasil =DB::table('panti')
+    ->join('indonesia_cities', 'indonesia_cities.id','=','panti.kabupaten_kota')
+    ->join('indonesia_districts', 'indonesia_districts.id','=','panti.kecamatan')
+    ->where('nama_panti', 'LIKE', '%' . $search . '%')->orwhere('kebutuhan_panti', 'LIKE', '%' . $search . '%')->get(['panti.*', 'indonesia_cities.name as nama_kabupaten', 'indonesia_districts.name as nama_kecamatan']);
+    return view('hasil')->with('hasil', $hasil);
+          
+        }else if(Empty($search) && !Empty($searchloc)){
+            $hasil =DB::table('panti')
+    ->join('indonesia_cities', 'indonesia_cities.id','=','panti.kabupaten_kota')
+    ->join('indonesia_districts', 'indonesia_districts.id','=','panti.kecamatan')
+    ->where('kecamatan', \$searchloc)->get(['panti.*', 'indonesia_cities.name as nama_kabupaten', 'indonesia_districts.name as nama_kecamatan']);
+
+            return view('hasil')->with('hasil', $hasil);
+
+        }else{
+            $hasil =DB::table('panti')
+            ->join('indonesia_cities', 'indonesia_cities.id','=','panti.kabupaten_kota')
+            ->join('indonesia_districts', 'indonesia_districts.id','=','panti.kecamatan')
+            ->where('nama_panti', 'LIKE', '%' . $search . '%')->where('kecamatan', $searchloc)->orwhere('kebutuhan_panti', 'LIKE', '%' . $search . '%')->where('kecamatan', $searchloc)->get(['panti.*', 'indonesia_cities.name as nama_kabupaten', 'indonesia_districts.name as nama_kecamatan']);
+
+            return view('hasil')->with('hasil', $hasil);
+
+        }
+
+    }
+
+-   #### search
+
+public function filter(Request $request){
+        $provinces = Province::pluck('name', 'id');
+$provinsi = $request->get('provinsi');
+$kebutuhan = $request->get('select-keb');
+if(Empty($provinsi) && !Empty($kebutuhan)){
+$listpanti =DB::table('panti')
+            ->join('indonesia_cities', 'indonesia_cities.id','=','panti.kabupaten_kota')
+            ->join('indonesia_districts', 'indonesia_districts.id','=','panti.kecamatan')
+            ->get(['panti.*', 'indonesia_cities.name as nama_kabupaten', 'indonesia_districts.name as nama_kecamatan'])->where('kebutuhan_panti', '=',  $kebutuhan);
+return view('listpanti')->with('listpanti', $listpanti)->with('provinces', $provinces);
+} elseif(!Empty($provinsi) && Empty($kebutuhan)){
+$listpanti = DB::table('panti')
+            ->join('indonesia_cities', 'indonesia_cities.id','=','panti.kabupaten_kota')
+            ->join('indonesia_districts', 'indonesia_districts.id','=','panti.kecamatan')
+            ->get(['panti.*', 'indonesia_cities.name as nama_kabupaten', 'indonesia_districts.name as nama_kecamatan'])->where('provinsi', '=',  $provinsi);
+return view('listpanti')->with('listpanti', $listpanti)->with('provinces', $provinces);
+} elseif(!Empty($provinsi) && !Empty('$kebutuhan')){
+$listpanti = DB::table('panti')
+            ->join('indonesia_cities', 'indonesia_cities.id','=','panti.kabupaten_kota')
+            ->join('indonesia_districts', 'indonesia_districts.id','=','panti.kecamatan')
+            ->get(['panti.*', 'indonesia_cities.name as nama_kabupaten', 'indonesia_districts.name as nama_kecamatan'])->where('kebutuhan_panti', '=',  $kebutuhan)->where('provinsi', $provinsi);
+            return view('listpanti')->with('listpanti', $listpanti)->with('provinces', $provinces);
+        } else{
+            $listpanti = DB::table('panti')
+->join('indonesia_cities', 'indonesia_cities.id','=','panti.kabupaten_kota')
+->join('indonesia_districts', 'indonesia_districts.id','=','panti.kecamatan')
+->get(['panti.*', 'indonesia_cities.name as nama_kabupaten', 'indonesia_districts.name as nama_kecamatan']);
+return view('listpanti')->with('listpanti', $listpanti)->with('provinces', $provinces);
+}
+
+    }
+
+-   #### asa
+
+    public function getKabupaten(Request $request)
+    {
+        $cities = City::where('province_id', $request->get('id'))->pluck('name', 'id');
+        return response()->json($cities);
+    }
+
+-   #### dsadas
