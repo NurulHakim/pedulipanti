@@ -272,12 +272,12 @@ class PantiController extends Controller
         return view('dahsprog')->with('program', $program);
     }
 
-public function editprogget($id)
-{
-    
-    $data = program::where('id', $id)->get();
-    return view('editprog')->with('data', $data);
-}
+    public function editprogget($id)
+    {
+        
+        $data = program::where('id', $id)->get();
+        return view('editprog')->with('data', $data);
+    }
 
     public function editprogram(Request $request, $id)
     {
