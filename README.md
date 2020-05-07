@@ -11,16 +11,21 @@
 
     public function index()
     {
-    $email = \Auth::user()->email;
+
+        $email = \Auth::user()->email;
         $datas = DB::table('panti')->where('email_user', '=', $email)->get();
         $data['data'] = $datas;
         if ($datas->isEmpty()) {
-    $provinces = Province::pluck('name', 'id');
+
+            $provinces = Province::pluck('name', 'id');
             return view('isiprofile')->with('provinces', $provinces);
-    } else {
-    $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
-    return view('dashpanti')->with('galeri', \$galeri);
-    }
+
+        } else {
+
+            $galeri = DB::table('galeris')->where('email_user', '=', $email)->get();
+            return view('dashpanti')->with('galeri', \$galeri);
+        }
+
     }
 
 -   #### Fungsi diatas berfungsi untuk masuk kehalaman dashboard panti dengan beberapa parameter yang sudah di sesuaikan.
@@ -51,6 +56,7 @@
 -   #### Sama seperti sebelumnya fungsi diatas untuk keamanan dari pemilik akun.
 
     public function index()
+
     {
 
         $email = \Auth::user()->email;
